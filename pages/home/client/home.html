@@ -1,9 +1,12 @@
 <template name="home">
 
   <h1>Welcome to Virtual Pet! - Vincent's dev demo!!!!!!!!!!!!!!</h1>
-  <h1>Brandeis CarPooling App!!</h1>
-  Welcome! Have fun with your pet!
-
+   Welcome! Have fun with your pet!
+  <img id="js-pet" src="images/fig1.png">
+  <button onclick="document.getElementById('js-pet').src='images/fig1_jump.gif'">Jump
+  </button>
+ <button onclick="document.getElementById('js-pet').src='images/fig1.png'">Stop
+  </button>
   {{#if currentUser}}
      Congratulations for getting logged in! Vincent edited this one
   {{else}}  
