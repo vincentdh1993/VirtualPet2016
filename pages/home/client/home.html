@@ -1,12 +1,17 @@
 <template name="home">
+  
+  <div class="jumbotron">
 
-  <h1>Welcome to Virtual Pet! - Vincent's dev demo!!!!!!!!!!!!!!</h1>
-   Welcome! Have fun with your pet!
+   <h3>Welcome! Have fun with your pet!</h3>
+   
   <img id="js-pet" src="images/fig1.png">
   <button onclick="document.getElementById('js-pet').src='images/fig1_jump.gif'">Jump
   </button>
  <button onclick="document.getElementById('js-pet').src='images/fig1.png'">Stop
   </button>
+  <button>Melt</button>
+  <button>Materialize</button>
+</div>
   {{#if currentUser}}
      Congratulations for getting logged in! Vincent edited this one
   {{else}}  
