@@ -4,13 +4,16 @@
 
    <h3>Welcome! Have fun with your pet!</h3>
    
-  <img id="js-pet" src="images/fig1.png">
+  <img sytel="" id="js-pet" src="images/fig1.png" class="img-responsive center-block" alt="Responsive image" margin:0 auto>
+  <br>
   <button onclick="document.getElementById('js-pet').src='images/fig1_jump.gif'">Jump
   </button>
- <button onclick="document.getElementById('js-pet').src='images/fig1.png'">Stop
+  
+  <button onclick="document.getElementById('js-pet').src='images/fig1_melt.gif'">Melt</button>
+
+  <button onclick="document.getElementById('js-pet').src='images/fig1.png'">Reset
   </button>
-  <button>Melt</button>
-  <button>Materialize</button>
+  
 </div>
   {{#if currentUser}}
      Congratulations for getting logged in! Vincent edited this one
