@@ -15,6 +15,8 @@ Template.home.events({
 			console.log("hi click");
 		}else if($(".js-contents").val()=="stop"){
 			document.getElementById('js-pet').src='images/fig1.png'
+		}else if($(".js-contents").val()=="i love you"){
+			document.getElementById('js-pet').src='images/fig1_jump.gif'
 		}
 	}
 
