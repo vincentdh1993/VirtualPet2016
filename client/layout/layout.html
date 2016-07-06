@@ -4,23 +4,30 @@
   			<li role="presentation">
   				<a href="{{pathFor 'home'}}"><span class="glyphicon glyphicon-home" style="color:black" aria-hidden="true" ></span></a>
   			</li>
-  			<li role="presentation">
-  				<a href="/about">About</a>
-  			 </li>
- 			 <li role="presentation">
- 			 	<a href="/comments">Comments</a>
- 			 </li>
- 			 <li role="presentation">
- 			 	<a href="/play">Play with your pet</a>
- 			 </li>
- 			 <li role="presentation">
- 			 	<a href="/commandList">Command List</a>
- 			 </li>
+  			
+        <li role="presentation">
+        <a href="/dashboard">Dashboard</a>
+       </li>
+       <li role="presentation">
+        <a href="/gamecenter">Game Center</a>
+       </li>
+       <li role="presentation">
+        <a href="/chat">Chat Room</a>
+       </li>
+       <li role="presentation">
+        <a href="/commandList">Command List</a>
+       </li>
+       <li role="presentation">
+          <a href="/about">About</a>
+       </li>
+       <li role="presentation">
+        <a href="/comments">Comments</a>
+       </li>
  			 <li>
  			 	{{> loginButtons}}
  			 </li>
 		</ul>
-	{{> yield}}
+	 {{> yield}}
 
 	</div>
 </template>
