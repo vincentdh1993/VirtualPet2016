@@ -1,5 +1,5 @@
 <template name="home">
-  
+  {{#if currentUser}}
   <div class="jumbotron">
 
    <h3>Welcome! Have fun with your pet!</h3>
@@ -33,8 +33,6 @@
 </button>
   
 </div>
-  {{#if currentUser}}
-     Congratulations for getting logged in!
   {{else}}  
      You better log in!!!
   {{/if}}
