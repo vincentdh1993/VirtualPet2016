@@ -14,6 +14,10 @@ Template.home.events({
 			document.getElementById('js-pet').src='images/fig1_jump.gif'
 			console.log("hi click");
 		}
+	},
+
+	"click .js-register":function(){
+		Router.go('register');
 	}
 
 })
