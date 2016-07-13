@@ -28,7 +28,7 @@
     var paddleX = (canvas.width - paddleWidth)/2;
     var rightPressed = false;
     var leftPressed = false;
-    var lives = 3
+    var lives = 2;
 ;    
     var brickRowCount = 4;
     var brickColumnCount = 11;
@@ -155,7 +155,6 @@
         ctx.arc(x, y, ballRadius, 0, Math.PI*2);
         ctx.fillStyle = "#008B45";
         ctx.fill();
-
         ctx.closePath();
     }
     function drawPaddle() {
