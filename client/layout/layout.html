@@ -4,7 +4,7 @@
   			<li role="presentation">
   				<a href="{{pathFor 'home'}}"><span class="glyphicon glyphicon-home" style="color:black" aria-hidden="true" ></span></a>
   			</li>
-  			
+
         <li role="presentation">
         <a href="/dashboard">Dashboard</a>
        </li>
@@ -23,16 +23,17 @@
        <li role="presentation">
         <a href="/comments">Comments</a>
        </li>
-       {{#if currentUser}}
-        <li><a href="#" class="logout">Logout</a></li>
-       {{else}}
-       <li><a href="{{pathFor route='register'}}">Register</a></li>
-       <li><a href="{{pathFor route='login'}}">Login</a></li>
+			 <li>
+			 {{#if currentUser}}
+         <li><a href="#" class="logout">Logout</a></li>
+        {{else}}
+        <li><a href="{{pathFor route='register'}}">Register</a></li>
+        <li><a href="{{pathFor route='login'}}">Login</a></li>
        {{/if}}
-      
-       <!-- <li>
+ 			</li>
+ 			 <!-- <li>
  			 	{{> loginButtons}}
- 			 </li>  -->
+ 			 </li> -->
 		</ul>
 	 {{> yield}}
 

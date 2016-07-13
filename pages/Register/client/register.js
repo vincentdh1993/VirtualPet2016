@@ -1,7 +1,3 @@
-Template.register.helpers({
-
-})
-
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
