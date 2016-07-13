@@ -9,10 +9,15 @@
  <body>
    <p>Dodge Ball</p>
 
+<div align="bottom">
 
-<img src="images/fig1.png" id="fig" width="32" height="32">
 
-  <canvas id="myCanvas" width="480" height="320"></canvas>
+<img src="images/fig1.png" id="fig" width="64" height="64" class="js-fig">
+
+
+</div>
+
+  <canvas id="myCanvas" width="960" height="640"></canvas>
 
    <script type="text/javascript">
     var canvas = document.getElementById("myCanvas");
@@ -36,7 +41,7 @@
     var dollHeight = 100;
     var dollWidth = 45;
     var dollX = (canvas.width-dollWidth)/480;
-    var img = fig;
+    var fig = "fig1.png";
 
 
 
@@ -93,7 +98,7 @@ function drawBall(radius , color , xa,ya) {
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = fig;
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 }
@@ -102,6 +107,14 @@ function drawDoll() {
     ctx.rect(dollX, canvas.height-dollHeight, dollWidth, dollHeight);
     ctx.fillStyle = 'pink';
     ctx.fill();
+    var imageObj = new Image();
+         function drawPattern() {
+        var pattern = ctx.createPattern(imageObj, "no-repeat");
+       ctx.fillStyle = pattern;
+       ctx.fill();
+        }
+  imageObj.onload = drawPattern;
+  imageObj.src = "images/fig1.png";
     ctx.closePath();
 }
 /*detects the collision between the paddle and the balls*/
