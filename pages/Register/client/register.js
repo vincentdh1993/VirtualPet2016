@@ -1,9 +1,6 @@
-Template.register.events({
-    'submit form': function(){
-        // code goes here
-    }
-});
+Template.register.helpers({
 
+})
 
 Template.register.events({
     'submit form': function(event){
