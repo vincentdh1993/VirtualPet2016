@@ -23,9 +23,17 @@
        <li role="presentation">
         <a href="/comments">Comments</a>
        </li>
- 			 <li>
+       <li>
+       {{#if currentUser}}
+         <li><a href="#" class="logout">Logout</a></li>
+        {{else}}
+        <li><a href="{{pathFor route='register'}}">Register</a></li>
+        <li><a href="{{pathFor route='login'}}">Login</a></li>
+       {{/if}}
+      </li>
+ 			 <!-- <li>
  			 	{{> loginButtons}}
- 			 </li>
+ 			 </li> -->
 		</ul>
 	 {{> yield}}
 

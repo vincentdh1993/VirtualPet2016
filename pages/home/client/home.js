@@ -20,6 +20,10 @@ Template.home.events({
 		}else if($(".js-contents").val()=="who wants a cookie"){
 			document.getElementById('js-pet').src='images/fig1_evolution_hands_wave.gif'
 		}
-	}
+	},
+
+	"click .js-register":function(){
+		Router.go('register');
+	},
 
 })
