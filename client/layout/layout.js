@@ -5,3 +5,9 @@ Template.layout.events({
          Router.go('login');
      }
  });
+    'click .logout': function(event){
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('registerorlogin');
+    }
+});
