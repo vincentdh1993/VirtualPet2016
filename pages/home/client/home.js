@@ -24,12 +24,10 @@ Template.home.events({
 			document.getElementById('js-pet').src='images/fig1_jump.gif'
 		}else if($(".js-contents").val()=="who wants a cookie"){
 			document.getElementById('js-pet').src='images/fig1_evolution_hands_wave.gif'
-		}else if($(".js-contents").val()=="weather"){
-			// random weather generator
-			Session.set("obj",Weather.findOne({rnd:{$gte:Math.random()*6+1}}));
-			console.dir( Session.get("obj"));
-			document.getElementById('js-pet').src= Session.get("obj").imgsrc
 		}
+
+
+		execute($(".js-contents").val()); 
 	},
 
 	"click .js-talk": function(event){
@@ -44,12 +42,7 @@ Template.home.events({
           console.log(event.results[0][0].transcript);
           Session.set("transcript",event.results[0][0].transcript);
           console.log(event.results[0][0].confidence);   
-	        if(Session.get("transcript").includes("weather")){
-			// random weather generator
-			Session.set("obj",Weather.findOne({rnd:{$gte:Math.random()*6+1}}));
-			console.dir( Session.get("obj"));
-			document.getElementById('js-pet').src= Session.get("obj").imgsrc
-			}
+	      execute(Session.get("transcript")); 
           console.log("done");
         };
 		recognition.start();
@@ -57,4 +50,35 @@ Template.home.events({
     },
 
 })
+
+
+function execute(transcript){
+	if(transcript.includes("weather")){
+	// random weather generator
+		Session.set("obj",Weather.findOne({rnd:{$gte:Math.random()*6+1}}));
+		console.dir( Session.get("obj"));
+		document.getElementById('js-pet').src= Session.get("obj").imgsrc
+	}
+	if(transcript.includes("jump")){
+	// random weather generator
+		document.getElementById('js-pet').src='images/fig1_jump.gif'
+	}
+	if(transcript.includes("game")||transcript.includes("break")||transcript.includes("dodge")){
+		Router.go('/gamecenter')
+	}
+	if(transcript.includes("dashboard")){
+	// random weather generator
+		Router.go('/dashboard')
+	}
+}
+
+
+
+
+
+
+
+
+
+
 
