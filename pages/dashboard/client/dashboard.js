@@ -1,3 +1,4 @@
+
 Template.dashboard.onCreated(function() {
 	this.state = new ReactiveDict();
 	this.state.setDefault({
@@ -5,6 +6,7 @@ Template.dashboard.onCreated(function() {
        //instance.state.set("lastError","* "+ error.reason)
  	});
 });
+
 
 
 Template.dashboard.helpers({
