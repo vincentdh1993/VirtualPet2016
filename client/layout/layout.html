@@ -1,10 +1,12 @@
 <template name="layout">
-	<div class="container">
-		<ul class="nav nav-pills">
+	<div class="navbar">
+<!-- 		<ul class="nav nav-pills"> -->
+  <ul class="topnav">
+
   			<li role="presentation">
   				<a href="{{pathFor 'home'}}"><span class="glyphicon glyphicon-home" style="color:black" aria-hidden="true" ></span></a>
   			</li>
-  			
+  			{{#if currentUser}}
         <li role="presentation">
         <a href="/dashboard">Dashboard</a>
        </li>
@@ -23,11 +25,9 @@
        <li role="presentation">
         <a href="/comments">Comments</a>
        </li>
-       {{#if currentUser}}
         <li><a href="#" class="logout">Logout</a></li>
        {{else}}
-       <li><a href="{{pathFor route='register'}}">Register</a></li>
-       <li><a href="{{pathFor route='login'}}">Login</a></li>
+       <li><a href="{{pathFor route='registerorlogin'}}">Register/ Login</a></li>
        {{/if}}
       
        <!-- <li>
