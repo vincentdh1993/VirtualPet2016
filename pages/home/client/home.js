@@ -38,7 +38,7 @@ Template.home.events({
       recognition.lang = 'en-US' 
       recognition.onresult = function(event) {
           console.dir(event);
-          $(".js-talk").html("Talk");
+          $(".js-talk").html("Talk to Pet!");
           console.log(event.results[0][0].transcript);
           Session.set("transcript",event.results[0][0].transcript);
           console.log(event.results[0][0].confidence);   
