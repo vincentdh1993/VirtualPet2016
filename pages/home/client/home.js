@@ -32,11 +32,6 @@ Template.home.events({
 		}
 	},
 
-
-	"click .js-register":function(){
-		Router.go('register');
-	},
-
 	"click .js-talk": function(event){
       console.log("clicked it");
       $(".js-talk").html("Listening...");
