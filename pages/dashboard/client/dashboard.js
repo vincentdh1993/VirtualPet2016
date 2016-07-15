@@ -21,14 +21,23 @@ Template.dashboard.events({
 	"click .js-clickme": function(event,instance){
 		var elem = document.getElementById("myBar");
   		var width = 100;
-  		var id = setInterval(frame, 100);
+  		var id = setInterval(frame, 1000);
  		 function frame() {
   			  if (width <= 0) {
   			  	document.getElementById('js-pet').src='images/fig1_melt.gif'
-  			    clearInterval(id);
-  		  } else {
-  		  		width--;
+  			     instance.state.set("w",100);
+            elem.style.backgroundColor = "green";
+            clearInterval(id);
+           
+  		  } else{
+  		  	width--;
    			   elem.style.width = width + '%';
+          if(width<=60){
+            elem.style.backgroundColor = "yellow";
+          }
+          if(width<=30){
+             elem.style.backgroundColor = "red";
+          }
    			   instance.state.set("w",width); 
    			   //Next step: instead of having local variables, push the width value to pet object's field 
    			   //so the timer still does count down in the background
