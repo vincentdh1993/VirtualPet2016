@@ -1,12 +1,16 @@
 Session.set("obj",null);
 Session.set("transcript","");
+var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
+var subscriptionKey = "<your agent subscription key>";
+var baseUrl = "https://api.api.ai/v1/";
 
-// Template.home.helpers({
-// 	routeToLogReg: function(){
-// 		Router.go('registerorlogin');
-// 	}
+var synth = window.speechSynthesis;
 
-// })
+
+Template.home.helpers({
+	
+
+})
 
 Template.home.events({
 	"click .js-pet": function(){
@@ -39,15 +43,20 @@ Template.home.events({
       recognition.onresult = function(event) {
           console.dir(event);
           $(".js-talk").html("Talk to Pet!");
-          console.log(event.results[0][0].transcript);
           Session.set("transcript",event.results[0][0].transcript);
-          console.log(event.results[0][0].confidence);   
-	      execute(Session.get("transcript")); 
-          console.log("done");
+         
+         send();
+          
+//	      execute(Session.get("transcript")); 
         };
 		recognition.start();
-        console.log("starting the recognizer")
+   //      console.log("starting the recognizer")
+
     },
+
+    "click .js-text": function(event){
+    	send();
+    }
 
 })
 
@@ -70,6 +79,38 @@ function execute(transcript){
 	// random weather generator
 		Router.go('/dashboard')
 	}
+}
+
+function send() {
+//  var text = $("#input").val();
+	var text =  Session.get("transcript");
+  $.ajax({
+		type: "POST",
+		url: baseUrl + "query/",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		headers: {
+			"Authorization": "Bearer " + accessToken,
+			"ocp-apim-subscription-key": subscriptionKey
+		},
+		data: JSON.stringify({ q: text, lang: "en" }),	
+		success: function(data) {
+				//	setResponse(JSON.stringify(data, undefined, 2));
+				//  r= JSON.parse(results);
+				//	console.dir(data.result.speech);
+			setResponse(data.result.speech);
+			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
+			synth.speak(utterThis);
+		},
+		error: function() {
+			setResponse("Internal Server Error");
+		}
+  });
+		setResponse("Loading...");
+}
+
+function setResponse(val) {
+	$("#response").text(val);
 }
 
 
