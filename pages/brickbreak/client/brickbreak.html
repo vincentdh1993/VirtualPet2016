@@ -181,8 +181,7 @@
             } else {
                 lives--;
                 if(!lives) {
-                    alert("GAME OVER");
-                    document.location.reload();
+                    location.replace("/gameover");
                 }
                 else {
                     x = canvas.width/2;
@@ -211,4 +210,21 @@
 
 </body>
 <iframe width="1" height="1" src="https://www.youtube.com/embed/GlYj0ogWNRA" frameborder="0" allowfullscreen></iframe>
+</template>
+
+
+
+<template name = "gameover">
+    
+<h1>GAME OVER</h1>
+
+
+score: 
+<br>
+
+<h1><a href="/gamecenter">Go back to GameCenter!</a></h1>
+
+
+
+
 </template>
