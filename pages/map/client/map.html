@@ -1,0 +1,10 @@
+<template name="map">
+<h1>Map</h1>
+<div class="map-container">
+    {{#unless geolocationError}}
+      {{latLong.lat}} and {{latLong.lng}}
+    {{else}}
+      Geolocation failed: {{geolocationError}}
+    {{/unless}}
+  </div>
+</template>
