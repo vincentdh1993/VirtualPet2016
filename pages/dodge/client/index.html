@@ -9,13 +9,11 @@
  <body>
    <p>Dodge Ball</p>
 
-<div align="bottom">
+
+<img src="images/fig1_evolution_hands_wave.gif" id="fig" width="300" height="300" class="js-fig">
 
 
-<img src="images/fig1.png" id="fig" width="64" height="64" class="js-fig">
 
-
-</div>
 
   <canvas id="myCanvas" width="960" height="640"></canvas>
 
@@ -25,12 +23,15 @@
     var score = 0;
     var ballRadius = 10;
     var x = canvas.width/2;
+    var x1 = canvas.width/3;
     var y = canvas.height-30;
+    var y1 = canvas.height - 60;
     var dx = 3;
     var dy = -3;
     var dbx = 10;
     var dby = -10;
     var balloonRadius = 10;
+     var balloonRadius1 = 10;
     var xb = canvas.width/3;
     var yb = canvas.height-30;
     var paddleHeight = 10;
@@ -128,6 +129,7 @@ function collisionDetection() {
                   dollX= (canvas.width-dollWidth);
               }
                score++;
+
             }
 }
 /*Sends the score to the server and displays the message of Game over*/
@@ -137,8 +139,7 @@ function gameover(){
           "score": score
         };
         window.parent.postMessage(msg, "*");
-          alert("GAME OVER!!!");
-          document.location.reload();
+          document.location.replace("/gameover");
 }
 /*settings for size of the box where game will be displayed*/
 var message =  {
@@ -184,6 +185,10 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall(ballRadius , 'blue', x,y);
     drawBall(balloonRadius, 'green',xb,yb);
+    drawBall(balloonRadius1, 'red',xb-90,yb+90);
+    drawBall(balloonRadius1, 'red',xb+60,yb+60);
+    drawBall(balloonRadius1, 'red',xb+200,yb+200);
+
     drawPaddle();
     drawDoll();
     drawScore();
@@ -203,6 +208,28 @@ function draw() {
         dy = -dy;
         }
     }
+
+
+
+if(yb +dby < balloonRadius1)
+{
+  dby= -dby;
+}
+else if(yb + dby > (canvas.height-balloonRadius1)) {
+    //checking if the ball hits the paddle
+     if(xb > paddleX && xb < paddleX + paddleWidth ) {
+        gameover();
+       }
+       else
+       {
+       dby = -dby;
+       }
+}
+
+
+
+
+
 /*bouncing the blue ball from top to bottom*/
 if(yb +dby < balloonRadius)
 {
