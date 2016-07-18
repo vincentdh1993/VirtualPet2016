@@ -15,15 +15,23 @@ Template.register.helpers({
 Template.register.events({
     'submit form': function(event,instance){
         event.preventDefault();
+        const email = $(".js-email").val()
+        const password =  $(".js-password").val()
+        const nickname = $(".js-nickname").val()
+        const petname =  $(".js-petname").val()
+        
         var user = {
-            email: $('[name=email]').val(),
-            password: $('[name=password]').val(),
+            email: email,
+            password: password,
+            nickname: nickname,
+            petname:petname,
         }
         Accounts.createUser(user,function(error){
             if (error) {
                 instance.state.set("lastError","* "+ error.reason);
                 console.log(instance.state.get("lastError"));
             } else {
+                Meteor.call("addUserProf",user);
                 instance.state.set("lastError",null);
                 Router.go('home');
                 
