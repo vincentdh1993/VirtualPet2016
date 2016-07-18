@@ -101,7 +101,7 @@ function send() {
 
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
 			voices = synth.getVoices();
-			utterThis.voice = voices[32];
+			utterThis.voice = voices[17];
 			synth.speak(utterThis);
 		},
 		error: function() {
