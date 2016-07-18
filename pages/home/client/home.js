@@ -6,10 +6,13 @@ var baseUrl = "https://api.api.ai/v1/";
 
 var synth = window.speechSynthesis;
 
+Template.home.onRendered(function () {
+
+
+})
 
 Template.home.helpers({
 	
-
 })
 
 Template.home.events({
@@ -46,13 +49,9 @@ Template.home.events({
           Session.set("transcript",event.results[0][0].transcript);
          
          send();
-          
-//	      execute(Session.get("transcript")); 
         };
 		recognition.start();
-   //      console.log("starting the recognizer")
-
-    },
+   },
 
     "click .js-text": function(event){
     	send();
@@ -82,24 +81,27 @@ function execute(transcript){
 }
 
 function send() {
-//  var text = $("#input").val();
 	var text =  Session.get("transcript");
-  $.ajax({
+	$.ajax({
 		type: "POST",
 		url: baseUrl + "query/",
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		headers: {
 			"Authorization": "Bearer " + accessToken,
-			"ocp-apim-subscription-key": subscriptionKey
+		//	"ocp-apim-subscription-key": subscriptionKey
 		},
 		data: JSON.stringify({ q: text, lang: "en" }),	
 		success: function(data) {
-				//	setResponse(JSON.stringify(data, undefined, 2));
+			//setResponse(JSON.stringify(data, undefined, 2));
 				//  r= JSON.parse(results);
 				//	console.dir(data.result.speech);
+			console.dir(data)
 			setResponse(data.result.speech);
+
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
+			voices = synth.getVoices();
+			utterThis.voice = voices[32];
 			synth.speak(utterThis);
 		},
 		error: function() {
