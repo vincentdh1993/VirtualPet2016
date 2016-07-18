@@ -41,6 +41,7 @@ Template.home.events({
 		if($(".js-contents").val()=="jump"){
 			document.getElementById('js-pet').src='images/fig1_jump.gif'
 			console.log("hi click");
+			Meteor.call("getWeather",Session.get("latLong").lat,Session.get("latLong").lng);
 		}else if($(".js-contents").val()=="stop"){
 			document.getElementById('js-pet').src='images/fig1.png'
 		}else if($(".js-contents").val()=="i love you"){
@@ -91,14 +92,14 @@ function execute(transcript){
 		console.log("lat: "+ lat);
 		console.log("lng: "+ lng);
  		
- 		Meteor.apply("getWeather",lat, lng, {returnStubValue: true},
-      	function(error,result){
+ 		// Meteor.apply("getWeather",lat, lng, {returnStubValue: true},
+   //    	function(error,result){
 
-        	console.dir(['getWeather',error,result]);
-        	r = JSON.parse(result);
-        	console.dir(r);
-        	// return instance.state.set("recipes",r.results);
-      });
+   //      	console.dir(['getWeather',error,result]);
+   //      	r = JSON.parse(result);
+   //      	console.dir(r);
+   //      	// return instance.state.set("recipes",r.results);
+   //    });
 		// Session.set("obj",Weather.findOne({rnd:{$gte:Math.random()*6+1}}));
 		// console.dir( Session.get("obj"));
 		// document.getElementById('js-pet').src= Session.get("obj").imgsrc
