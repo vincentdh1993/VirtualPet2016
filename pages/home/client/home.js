@@ -15,11 +15,7 @@ var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
 var subscriptionKey = "<your agent subscription key>";
 var baseUrl = "https://api.api.ai/v1/";
 
-var synth = window.speechSynthesis;
-
-
-Template.home.helpers({
-	
+var synth = window.speechSynthesis;	
 
 var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
 var subscriptionKey = "<your agent subscription key>";
@@ -27,14 +23,13 @@ var baseUrl = "https://api.api.ai/v1/";
 
 var synth = window.speechSynthesis;
 
+
 Template.home.onRendered(function () {
 
 
 })
 
-Template.home.helpers({
-	
-})
+
 
 Template.home.events({
 	"click .js-pet": function(){
@@ -76,18 +71,14 @@ Template.home.events({
 		recognition.start();
    //      console.log("starting the recognizer")
 
-    },
-        };
-		recognition.start();
+    
    },
 
     "click .js-text": function(event){
     	send();
-    }
+    },
 
-    "click .js-text": function(event){
-    	send();
-    }
+    
 
 })
 
@@ -136,10 +127,7 @@ function execute(transcript){
 //      // lng: -73,
 //    });
 // })
-function send() {
-//  var text = $("#input").val();
-	var text =  Session.get("transcript");
-  $.ajax({
+
 function send() {
 	var text =  Session.get("transcript");
 	$.ajax({
@@ -170,7 +158,7 @@ function send() {
 
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
 			voices = synth.getVoices();
-			utterThis.voice = voices[32];
+			utterThis.voice = voices[61]; //61-82    
 			synth.speak(utterThis);
 		},
 		error: function() {
