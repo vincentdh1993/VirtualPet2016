@@ -2,22 +2,22 @@ var MAP_ZOOM = 15;
 // var lat_Lng = Geolocation.latLng();
 
 Template.map.helpers({  
-  geolocationError: function() {
-    var error = Geolocation.error();
-    return error && error.message;
-  },
-  mapOptions: function() {
-    var latLng = Geolocation.latLng();
-    // Initialize the map once we have the latLng.
-    if (GoogleMaps.loaded() && latLng) {
-      return {
-        center: new google.maps.LatLng(latLng.lat, latLng.lng),
-        zoom: MAP_ZOOM
-      };
-    }
-  },
+  // geolocationError: function() {
+  //   var error = Geolocation.error();
+  //   return error && error.message;
+  // },
+  // mapOptions: function() {
+  //   var latLng = Geolocation.latLng();
+  //   // Initialize the map once we have the latLng.
+  //   if (GoogleMaps.loaded() && latLng) {
+  //     return {
+  //       center: new google.maps.LatLng(latLng.lat, latLng.lng),
+  //       zoom: MAP_ZOOM
+  //     };
+  //   }
+  // },
   latLong: function(){
-	const instance = Template.instance();
+	  const instance = Template.instance();
   	instance.state.set("latLng", Geolocation.latLng());
   	var lat_Lng = instance.state.get("latLng");
   	if(lat_Lng !== null){
