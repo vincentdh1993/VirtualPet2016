@@ -1,12 +1,29 @@
 Session.set("obj",null);
 Session.set("transcript","");
+<<<<<<< HEAD
+// Session.set("latLong", Geolocation.currentLocation());
 
-// Template.home.helpers({
-// 	routeToLogReg: function(){
-// 		Router.go('registerorlogin');
-// 	}
+Tracker.autorun(function(){
+	console.log(Session.get("latLong"));
+});
 
+// console.log(Session.get(""))
+//  Tracker.autorun(function(){
+//  console.log(Session.get("latLong"));
 // })
+=======
+var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
+var subscriptionKey = "<your agent subscription key>";
+var baseUrl = "https://api.api.ai/v1/";
+>>>>>>> origin/master
+
+var synth = window.speechSynthesis;
+
+
+Template.home.helpers({
+	
+
+})
 
 Template.home.events({
 	"click .js-pet": function(){
@@ -39,25 +56,43 @@ Template.home.events({
       recognition.onresult = function(event) {
           console.dir(event);
           $(".js-talk").html("Talk to Pet!");
-          console.log(event.results[0][0].transcript);
           Session.set("transcript",event.results[0][0].transcript);
-          console.log(event.results[0][0].confidence);   
-	      execute(Session.get("transcript")); 
-          console.log("done");
+         
+         send();
+          
+//	      execute(Session.get("transcript")); 
         };
 		recognition.start();
-        console.log("starting the recognizer")
+   //      console.log("starting the recognizer")
+
     },
+
+    "click .js-text": function(event){
+    	send();
+    }
 
 })
 
 
 function execute(transcript){
 	if(transcript.includes("weather")){
-	// random weather generator
-		Session.set("obj",Weather.findOne({rnd:{$gte:Math.random()*6+1}}));
-		console.dir( Session.get("obj"));
-		document.getElementById('js-pet').src= Session.get("obj").imgsrc
+		const lat = Session.get("lat");
+		const lng = Session.get("lng");
+	
+		console.log("lat: "+ lat);
+		console.log("lng: "+ lng);
+ 		
+ 		Meteor.apply("getWeather",lat, lng, {returnStubValue: true},
+      	function(error,result){
+
+        	console.dir(['getWeather',error,result]);
+        	r = JSON.parse(result);
+        	console.dir(r);
+        	// return instance.state.set("recipes",r.results);
+      });
+		// Session.set("obj",Weather.findOne({rnd:{$gte:Math.random()*6+1}}));
+		// console.dir( Session.get("obj"));
+		// document.getElementById('js-pet').src= Session.get("obj").imgsrc
 	}
 	if(transcript.includes("jump")){
 	// random weather generator
@@ -72,9 +107,54 @@ function execute(transcript){
 	}
 }
 
+<<<<<<< HEAD
+// Template.map.onCreated(function() {
+//   this.state = new ReactiveDict();
+//   // this.state.set("latLng", Geolocation.latLng());
+//    // this.map.set("lat",)
+//    this.state.setDefault({
+//      latLng: null,
+//      // lat: 42,
+//      // lng: -73,
+//    });
+// })
+=======
+function send() {
+//  var text = $("#input").val();
+	var text =  Session.get("transcript");
+  $.ajax({
+		type: "POST",
+		url: baseUrl + "query/",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		headers: {
+			"Authorization": "Bearer " + accessToken,
+			"ocp-apim-subscription-key": subscriptionKey
+		},
+		data: JSON.stringify({ q: text, lang: "en" }),	
+		success: function(data) {
+				//	setResponse(JSON.stringify(data, undefined, 2));
+				//  r= JSON.parse(results);
+				//	console.dir(data.result.speech);
+			setResponse(data.result.speech);
+			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
+			synth.speak(utterThis);
+		},
+		error: function() {
+			setResponse("Internal Server Error");
+		}
+  });
+		setResponse("Loading...");
+}
+
+function setResponse(val) {
+	$("#response").text(val);
+}
 
 
 
+
+>>>>>>> origin/master
 
 
 
