@@ -1,31 +1,22 @@
 <template name="register">
-     <!--  <form class="register">
-        <p>Email: <input type="email" name="email"></p>
-        <p>Password: <input type="password" name="password"></p>
-        <p>Choose your pet: </p><br>
-        <img src="/images/weather/cloudy.gif" width="200">
-        <img src="/images/weather/windy.gif" width="200">
-        <img src="/images/weather/thunder.gif" width="200">
-        <p><input type="submit" value="Register"></p>
-    </form> -->
 <div class="aligncenter">
 	<form class="form-horizontal register transbox">
 		<h2 class="text-center">Welcome to Virtual Pet</h2>
-
+<!-- email  -->
   		<div class="form-group">
   		  <label for="inputEmail3" class="col-sm-offset-1 col-sm-2 control-label">Email</label>
     		<div class="col-sm-6">
     		  <input type="email" class="form-control js-email" placeholder="Email">
    			</div>
   		</div>
-
+<!-- password -->
   		<div class="form-group">
   		  <label for="inputPassword3" class="col-sm-offset-1 col-sm-2 control-label">Password</label>
     		<div class="col-sm-6">
     		  <input type="password" class="form-control js-password" placeholder="Password">
    			</div>
   		</div>
-
+<!-- user's nickname -->
       <div class="form-group">
         <label class="col-sm-offset-1 col-sm-2 control-label">Nickname</label>
         <div class="col-sm-6">
@@ -36,20 +27,42 @@
   		<div class="form-group">
   		  <label class="col-sm-2 col-sm-offset-1 control-label">Choose your pet</label>
     		<div class="col-sm-6">
-    			<!-- Pet's image goes here -->
+
+<!-- slide show of choosing your pet -->
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <div class="item active" align="center"><img src="/default/default.png" width="200" height="180"></div>
+      <div class="item" align="center"><img src="/ghost/ghost.gif" height="180"></div>
+      <div class="item" align="center"><img src="/slime/bounce.gif" height="180"></div>
+    </div>
+
+    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev" >
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span></a>
+    <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span></a>
+    </div>
+    			<!-- Pet's image
+
     			<img src="/images/weather/cloudy.gif" width="150">
       			<img src="/images/weather/windy.gif" width="150">
       			<img src="/images/weather/thunder.gif" width="150">
       			<img src="/slime/bounce.gif" width="150">
-   			</div>
-  		</div>
+
+           goes here -->
+   		</div>
+  	</div>
+<!-- pet's name -->
   		<div class="form-group">
   		  <label class="col-sm-offset-1 col-sm-2 control-label">Please name your pet</label>
     		<div class="col-sm-6">
     		  <input type="text" class="form-control js-petname" placeholder='e.g. " Ollie the Owl "'>
    			</div>
   		</div>
+<!-- showing error message -->
   		<div class="error">{{errorMessage}}</div>
+<!-- submit registration form -->
   		<div class="form-group">
     			<button type="submit" class="button buttonblue" value="Register">Register</button>	
   		</div>
