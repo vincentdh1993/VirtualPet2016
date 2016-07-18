@@ -158,11 +158,7 @@ function send() {
 
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
 			voices = synth.getVoices();
-<<<<<<< HEAD
-			utterThis.voice = voices[17];
-=======
 			utterThis.voice = voices[74]; //61-82    61,64, 66, 67,  74 is top, 80, 22 weird singing
->>>>>>> 12fa6b383b4c055bb8e36a39e7284d5e9a5c58fb
 			synth.speak(utterThis);
 		},
 		error: function() {
