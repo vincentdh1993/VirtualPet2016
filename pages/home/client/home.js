@@ -1,6 +1,7 @@
 Session.set("obj",null);
 Session.set("transcript","");
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Session.set("latLong", Geolocation.currentLocation());
 
 Tracker.autorun(function(){
@@ -23,6 +24,21 @@ var synth = window.speechSynthesis;
 Template.home.helpers({
 	
 
+=======
+var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
+var subscriptionKey = "<your agent subscription key>";
+var baseUrl = "https://api.api.ai/v1/";
+
+var synth = window.speechSynthesis;
+
+Template.home.onRendered(function () {
+
+
+})
+
+Template.home.helpers({
+	
+>>>>>>> origin/master
 })
 
 Template.home.events({
@@ -59,6 +75,7 @@ Template.home.events({
           Session.set("transcript",event.results[0][0].transcript);
          
          send();
+<<<<<<< HEAD
           
 //	      execute(Session.get("transcript")); 
         };
@@ -66,6 +83,15 @@ Template.home.events({
    //      console.log("starting the recognizer")
 
     },
+=======
+        };
+		recognition.start();
+   },
+
+    "click .js-text": function(event){
+    	send();
+    }
+>>>>>>> origin/master
 
     "click .js-text": function(event){
     	send();
@@ -108,6 +134,7 @@ function execute(transcript){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Template.map.onCreated(function() {
 //   this.state = new ReactiveDict();
 //   // this.state.set("latLng", Geolocation.latLng());
@@ -123,12 +150,18 @@ function send() {
 //  var text = $("#input").val();
 	var text =  Session.get("transcript");
   $.ajax({
+=======
+function send() {
+	var text =  Session.get("transcript");
+	$.ajax({
+>>>>>>> origin/master
 		type: "POST",
 		url: baseUrl + "query/",
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		headers: {
 			"Authorization": "Bearer " + accessToken,
+<<<<<<< HEAD
 			"ocp-apim-subscription-key": subscriptionKey
 		},
 		data: JSON.stringify({ q: text, lang: "en" }),	
@@ -138,6 +171,21 @@ function send() {
 				//	console.dir(data.result.speech);
 			setResponse(data.result.speech);
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
+=======
+		//	"ocp-apim-subscription-key": subscriptionKey
+		},
+		data: JSON.stringify({ q: text, lang: "en" }),	
+		success: function(data) {
+			//setResponse(JSON.stringify(data, undefined, 2));
+				//  r= JSON.parse(results);
+				//	console.dir(data.result.speech);
+			console.dir(data)
+			setResponse(data.result.speech);
+
+			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
+			voices = synth.getVoices();
+			utterThis.voice = voices[32];
+>>>>>>> origin/master
 			synth.speak(utterThis);
 		},
 		error: function() {
