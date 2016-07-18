@@ -158,7 +158,7 @@ function send() {
 
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
 			voices = synth.getVoices();
-			utterThis.voice = voices[61]; //61-82    
+			utterThis.voice = voices[21]; //61-82    61,64, 66, 67,  74 is top, 80, 
 			synth.speak(utterThis);
 		},
 		error: function() {
