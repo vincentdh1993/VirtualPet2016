@@ -1,38 +1,5 @@
 <template name = "weather">
-    <head></head>
-    <body>
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        
-        <script type="text/javascript">
-        
-            $( document ).ready(function() {
-        
-                var apiServer = 'https://query.yahooapis.com/v1/public/yql';
-                var cityName = "Boston";
-                var queryString = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + cityName + '")';
-                
-                $.ajax({
-                    url: apiServer,
-                    data: {
-                        format: 'json',
-                        q: queryString,
-                    },
-                    success: function(data) {
-                
-                        var temp = data.query.results.channel.item.condition.temp;
-                        $( ".temp" ).html(temp + "&deg;");
+  
+<h1>Under Construction</h1>
 
-
-        
-                    }  // success
-                });  // ajax
-            }); // .ready
-        
-        </script>
-        <h1>The current temperature is:</h1>
-        
-        <div class="temp">
-        </div>
-        
-    </body>
 </template>
