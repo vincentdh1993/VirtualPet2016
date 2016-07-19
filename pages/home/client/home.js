@@ -29,16 +29,16 @@ Template.home.onRendered(function () {
 
 })
 
-Template.home.helpers({
-	userName: function(){
-		return UserProfile.findOne().nickname;
-	},
+// Template.home.helpers({
+// 	userName: function(){
+// 		return UserProfile.findOne().nickname;
+// 	},
 
-	petName: function(){
-		return UserProfile.findOne().petname;
-	}
+// 	petName: function(){
+// 		return UserProfile.findOne().petname;
+// 	}
 
-})
+// })
 
 
 Template.home.events({
