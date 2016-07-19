@@ -77,10 +77,20 @@ Template.home.events({
           Session.set("transcript",event.results[0][0].transcript);
          
         	if(!(Session.get("transcript").includes("in"))){
+<<<<<<< HEAD
           		execute(Session.get("transcript")); 
       		}
       			send();
   
+=======
+        		if(Session.get("transcript").includes("weather")){
+        			execute(Session.get("transcript"));
+        		}
+      		}
+
+      		send();
+      		
+>>>>>>> cf239246b9d4fe07489c64adb04d960077a562d5
       		
 		};
 		recognition.start();
