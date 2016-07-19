@@ -77,10 +77,13 @@ Template.home.events({
           Session.set("transcript",event.results[0][0].transcript);
          
         	if(!(Session.get("transcript").includes("in"))){
-          		execute(Session.get("transcript")); 
-      		}else{
-      			send();
+        		if(Session.get("transcript").includes("weather")){
+        			execute(Session.get("transcript"));
+        		}
       		}
+
+      		send();
+      		
       		
 		};
 		recognition.start();
