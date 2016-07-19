@@ -19,11 +19,13 @@ Template.register.events({
         const password =  $(".js-password").val()
         const nickname = $(".js-nickname").val()
         const petname =  $(".js-petname").val()
+        const petshape = $(".carousel-inner").val();
         
         var user = {
             email: email,
             password: password,
             nickname: nickname,
+            petshape:petshape,
             petname:petname,
         }
         Accounts.createUser(user,function(error){

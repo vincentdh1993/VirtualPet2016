@@ -29,16 +29,16 @@ Template.home.onRendered(function () {
 
 })
 
-// Template.home.helpers({
-// 	userName: function(){
-// 		return UserProfile.findOne().nickname;
-// 	},
+Template.home.helpers({
+ 	userName: function(){
+ 		return UserProfile.findOne().nickname;
+ 	},
 
-// 	petName: function(){
-// 		return UserProfile.findOne().petname;
-// 	}
+ 	petName: function(){
+ 		return UserProfile.findOne().petname;
+ 	}
 
-// })
+ })
 
 
 Template.home.events({
@@ -78,9 +78,9 @@ Template.home.events({
          
         	if(!(Session.get("transcript").includes("in"))){
           		execute(Session.get("transcript")); 
-      		}else{
-      			send();
       		}
+      			send();
+  
       		
 		};
 		recognition.start();
@@ -178,14 +178,49 @@ function send() {
 
 
 			if(url.includes("YouTube")||url.includes("video")){
-			window.open('https://www.youtube.com', '_blank');
+			//window.open('https://www.youtube.com', '_blank');
+			var n = url.startsWith("Search") || url.startsWith("search");
+				if (n == true){
+					console.log(n);
+					var a = url.search("on YouTube");
+					console.log(a);
+					var search = url.substring(7,a);
+					console.log(search);
+					window.open('https://www.youtube.com/results?search_query='+search, '_blank');
+
+				} else{
+					window.open('https://www.youtube.com', '_blank');
+				}
 			}
+
 			if(url.includes("FaceBook")||url.includes("Facebook")){
 			window.open('https://www.facebook.com', '_blank');
 			}
+
 			if(url.includes("Google")||url.includes("google")){
-			window.open('https://www.google.com', '_blank');
+			//window.open('https://www.google.com', '_blank');
+			var n = url.startsWith("Search") || url.startsWith("search");
+			var s = url.startsWith("Google") || url.startsWith("google");
+				if (n == true){
+					console.log(n);
+					var a = url.search("on Google");
+					console.log(a);
+					var search = url.substring(7,a);
+					console.log(search);
+					window.open('https://www.google.com/#q='+search, '_blank');
+
+				} else if(s==true){
+					var a = url.length;
+					var search = url.substring(7,a);
+					console.log(search);
+					window.open('https://www.google.com/#q='+search, '_blank');
+				}
+
+				else{
+					window.open('https://www.google.com', '_blank');
+				}
 			}
+
 			if(url.includes("gmail")||url.includes("Gmail")){
 			window.open('https://www.gmail.com', '_blank');
 			}
@@ -223,14 +258,3 @@ function send() {
 function setResponse(val) {
 	$("#response").text(val);
 }
-
-
-
-
-
-
-
-
-
-
-
