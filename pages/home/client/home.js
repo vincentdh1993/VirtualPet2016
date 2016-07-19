@@ -41,6 +41,7 @@ Template.home.events({
 		if($(".js-contents").val()=="jump"){
 			document.getElementById('js-pet').src='images/fig1_jump.gif'
 			console.log("hi click");
+			Meteor.call("getWeather",Session.get("latLong").lat,Session.get("latLong").lng);
 		}else if($(".js-contents").val()=="stop"){
 			document.getElementById('js-pet').src='images/fig1.png'
 		}else if($(".js-contents").val()=="i love you"){
@@ -55,6 +56,7 @@ Template.home.events({
 
 	"click .js-talk": function(event){
       console.log("clicked it");
+
       $(".js-talk").html("Listening...");
    // https://shapeshed.com/html5-speech-recognition-api/
       const recognition = new webkitSpeechRecognition();
@@ -64,10 +66,13 @@ Template.home.events({
           $(".js-talk").html("Talk to Pet!");
           Session.set("transcript",event.results[0][0].transcript);
          
-         send();
-          
-//	      execute(Session.get("transcript")); 
-        };
+        	if(!(Session.get("transcript").includes("in"))){
+          		execute(Session.get("transcript")); 
+      		}else{
+      			send();
+      		}
+      		
+		};
 		recognition.start();
    //      console.log("starting the recognizer")
 
@@ -88,20 +93,20 @@ function execute(transcript){
 		const lat = Session.get("lat");
 		const lng = Session.get("lng");
 	
-		console.log("lat: "+ lat);
-		console.log("lng: "+ lng);
- 		
- 		Meteor.apply("getWeather",lat, lng, {returnStubValue: true},
-      	function(error,result){
-
-        	console.dir(['getWeather',error,result]);
-        	r = JSON.parse(result);
-        	console.dir(r);
-        	// return instance.state.set("recipes",r.results);
-      });
-		// Session.set("obj",Weather.findOne({rnd:{$gte:Math.random()*6+1}}));
-		// console.dir( Session.get("obj"));
-		// document.getElementById('js-pet').src= Session.get("obj").imgsrc
+		Meteor.call("getWeather", lat, lng,function(error,result){
+			if (error) {
+				console.log(error);
+			}
+			else {
+				console.log(result);
+				var utterThis = new SpeechSynthesisUtterance(result);
+				voices = synth.getVoices();
+				utterThis.voice = voices[44]; //61-82    61,64, 66, 67,  74 is top, 80, 22 weird singing
+				utterThis.pitch = 1.3;
+				utterThis.rate = 1;
+				synth.speak(utterThis);
+			}
+		});
 	}
 	if(transcript.includes("jump")){
 	// random weather generator
