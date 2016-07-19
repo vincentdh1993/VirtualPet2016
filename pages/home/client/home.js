@@ -29,6 +29,16 @@ Template.home.onRendered(function () {
 
 })
 
+Template.home.helpers({
+	userName: function(){
+		return UserProfile.findOne().nickname;
+	},
+
+	petName: function(){
+		return UserProfile.findOne().petname;
+	}
+
+})
 
 
 Template.home.events({
@@ -158,7 +168,13 @@ function send() {
 
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
 			voices = synth.getVoices();
-			utterThis.voice = voices[74]; //61-82    61,64, 66, 67,  74 is top, 80, 22 weird singing
+
+			utterThis.voice = voices[14]; //44, 12 drowning, 14 singing, 16,20
+		//	utterThis.pitch = 2.2; //for 20
+		//	utterThis.pitch = 1.3; //for 44
+		//	utterThis.rate = 1.5; // for 20 
+		//	utterThis.rate = 1;  //for 44
+
 			synth.speak(utterThis);
 		},
 		error: function() {
