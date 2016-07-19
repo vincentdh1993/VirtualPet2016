@@ -1,4 +1,4 @@
-Session.set("obj",null);
+Session.set("obj", null);
 Session.set("transcript","");
 
 // Session.set("latLong", Geolocation.currentLocation());
