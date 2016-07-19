@@ -11,7 +11,7 @@ Tracker.autorun(function(){
 //  Tracker.autorun(function(){
 //  console.log(Session.get("latLong"));
 // })
-var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
+var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b"; 
 var subscriptionKey = "<your agent subscription key>";
 var baseUrl = "https://api.api.ai/v1/";
 
@@ -29,6 +29,16 @@ Template.home.onRendered(function () {
 
 })
 
+Template.home.helpers({
+	userName: function(){
+		return UserProfile.findOne().nickname;
+	},
+
+	petName: function(){
+		return UserProfile.findOne().petname;
+	}
+
+})
 
 
 Template.home.events({
@@ -119,6 +129,9 @@ function execute(transcript){
 	// random weather generator
 		Router.go('/dashboard')
 	}
+	if(transcript.includes("youtube")||transcript.includes("video")){
+		window.open('https://www.youtube.com', '_blank');
+	}
 }
 
 
@@ -158,12 +171,46 @@ function send() {
 			//setResponse(JSON.stringify(data, undefined, 2));
 				//  r= JSON.parse(results);
 				//	console.dir(data.result.speech);
-			console.dir(data)
+			console.dir(data);
+			var url = data.result.resolvedQuery;
+			console.dir(url);
 			setResponse(data.result.speech);
+
+
+			if(url.includes("YouTube")||url.includes("video")){
+			window.open('https://www.youtube.com', '_blank');
+			}
+			if(url.includes("FaceBook")||url.includes("Facebook")){
+			window.open('https://www.facebook.com', '_blank');
+			}
+			if(url.includes("Google")||url.includes("google")){
+			window.open('https://www.google.com', '_blank');
+			}
+			if(url.includes("gmail")||url.includes("Gmail")){
+			window.open('https://www.gmail.com', '_blank');
+			}
+			if(url.includes("GitHub")||url.includes("github")){
+			window.open('https://www.github.com', '_blank');
+			}
+			if(url.includes("Yahoo")||url.includes("yahoo")){
+			window.open('https://www.yahoo.com', '_blank');
+			}
+			if(url.includes("Baidu")||url.includes("baidu")){
+			window.open('https://www.baidu.com', '_blank');
+			}
+
+
+
 
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
 			voices = synth.getVoices();
-			utterThis.voice = voices[74]; //61-82    61,64, 66, 67,  74 is top, 80, 22 weird singing
+
+			utterThis.voice = voices[14]; //44, 12 drowning, 14 singing, 16,20
+		//	utterThis.pitch = 2.2; //for 20
+		//	utterThis.pitch = 1.3; //for 44
+		//	utterThis.rate = 1.5; // for 20 
+		//	utterThis.rate = 1;  //for 44
+
 			synth.speak(utterThis);
 		},
 		error: function() {

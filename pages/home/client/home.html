@@ -2,26 +2,26 @@
   {{#if currentUser}}
   <div class="jumbotron">
 
-   <h3>Welcome! Have fun with your pet!</h3>
+   <h3>Welcome back {{userName}}! Have fun with your pet {{petName}}!</h3>
    
-  <img style="" id="js-pet" src="images/fig1.png" class="img-responsive center-block" alt="Responsive image" margin:0 auto>
+  <img style="" id="js-pet" src="default/default.png" class="img-responsive center-block" alt="Responsive image" margin:0 auto>
   <br>
 
   <div class="btn-group">
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_jump.gif'">Jump</button>
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_jump.gif'">Jump</button>
 
   
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_melt.gif'">Melt</button>
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_melt.gif'">Melt</button>
 
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_melt_sad_nocry.gif'">Unhappy</button>
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_sad.gif'">Unhappy</button>
 
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_melt_sad_cry.gif'">Sad</button>
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_verysad.gif'">Sad</button>
 
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_melt_sad_crypuddle.gif'">Super Sad</button>
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_supersad.gif'">Super Sad</button>
 
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_evolution_hands_wave.gif'">Evolve</button>
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_wavehands.gif'">Evolve</button>
 
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1.png'">Reset</button>
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default.png'">Reset</button>
 </div>
 <br>
 
