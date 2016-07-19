@@ -77,20 +77,10 @@ Template.home.events({
           Session.set("transcript",event.results[0][0].transcript);
          
         	if(!(Session.get("transcript").includes("in"))){
-<<<<<<< HEAD
           		execute(Session.get("transcript")); 
       		}
       			send();
-  
-=======
-        		if(Session.get("transcript").includes("weather")){
-        			execute(Session.get("transcript"));
-        		}
-      		}
-
-      		send();
       		
->>>>>>> cf239246b9d4fe07489c64adb04d960077a562d5
       		
 		};
 		recognition.start();
@@ -119,6 +109,7 @@ function execute(transcript){
 			}
 			else {
 				console.log(result);
+				setResponse(result);
 				var utterThis = new SpeechSynthesisUtterance(result);
 				voices = synth.getVoices();
 				utterThis.voice = voices[44]; //61-82    61,64, 66, 67,  74 is top, 80, 22 weird singing
@@ -132,7 +123,7 @@ function execute(transcript){
 	// random weather generator
 		document.getElementById('js-pet').src='images/fig1_jump.gif'
 	}
-	if(transcript.includes("game")||transcript.includes("break")||transcript.includes("dodge")){
+	if(transcript.includes("game")||transcript.includes("break")||transcript.includes("Game Center")||transcript.includes("dodge")){
 		Router.go('/gamecenter')
 	}
 	if(transcript.includes("dashboard")){
@@ -184,6 +175,7 @@ function send() {
 			console.dir(data);
 			var url = data.result.resolvedQuery;
 			console.dir(url);
+			setInput(url);
 			setResponse(data.result.speech);
 
 
@@ -267,4 +259,8 @@ function send() {
 
 function setResponse(val) {
 	$("#response").text(val);
+}
+
+function setInput(val) {
+	$("#input").text(val);
 }
