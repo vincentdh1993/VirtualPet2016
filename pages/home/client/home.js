@@ -110,8 +110,8 @@ function execute(transcript){
 			else {
 				console.log(result);
 				if(result.includes("Clouds")){
+					document.getElementById('js-pet').src='images/weather/cloudy.gif'
 					console.log("hello");
-					document.getElementById('js-pet').src='/public/images/weather/suuny-cloud.gif'
 				}
 				//setResponse(result);
 				var utterThis = new SpeechSynthesisUtterance(result);
@@ -181,6 +181,21 @@ function send() {
 			console.dir(url);
 			setInput(url);
 			setResponse(data.result.speech);
+			console.dir(data.result.speech);
+
+			if(data.result.speech.includes("sunny")){
+				console.log("sunny");
+				document.getElementById('js-pet').src='images/weather/sunny-cloud.gif'
+			} if(data.result.speech.includes("thunderstorm")){
+				console.log("thunderstorm");
+				document.getElementById('js-pet').src='images/weather/thunder.gif'
+			} if(data.result.speech.includes("clear")){
+				console.log("clear");
+				document.getElementById('js-pet').src='images/weather/sunny.gif'
+			} if(data.result.speech.includes("rain")){
+				console.log("rain");
+				document.getElementById('js-pet').src='images/weather/rainy.gif'
+			}
 
 
 			if(url.includes("YouTube")||url.includes("video")){
