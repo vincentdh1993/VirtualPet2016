@@ -109,7 +109,11 @@ function execute(transcript){
 			}
 			else {
 				console.log(result);
-				setResponse(result);
+				if(result.includes("Clouds")){
+					console.log("hello");
+					document.getElementById('js-pet').src='/public/images/weather/suuny-cloud.gif'
+				}
+				//setResponse(result);
 				var utterThis = new SpeechSynthesisUtterance(result);
 				voices = synth.getVoices();
 				utterThis.voice = voices[44]; //61-82    61,64, 66, 67,  74 is top, 80, 22 weird singing
