@@ -31,7 +31,10 @@ Template.home.helpers({
 
  	petName: function(){
  		return UserProfile.findOne().petname;
- 	}
+ 	},
+ 	petType: function(){
+ 		return UserProfile.findOne().pettype;
+ 	},
 
  })
 

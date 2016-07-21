@@ -31,8 +31,8 @@ Template.register.events({
         const nickname = $(".js-nickname").val()
         const petname =  $(".js-petname").val()
         const petshape = $(".carousel-inner").val();
-        var type = calculate();
-        console.log(type);
+        var pettype = calculate();
+        console.log(pettype);
         
         var user = {
             email: email,
@@ -40,6 +40,7 @@ Template.register.events({
             nickname: nickname,
             petshape:petshape,
             petname:petname,
+            pettype:pettype,
         }
         Accounts.createUser(user,function(error){
             if (error) {
@@ -70,13 +71,13 @@ function calculate(){
     var r = c%3;
     if (r==0 || r==-0){
         console.log("default");
-        type = "default";
+        type = "default/default.png";
     } else if(r==1||r==-2){
         console.log("ghost");
-        type = "ghost";
+        type = "/ghost/ghost.gif";
     } else {
         console.log("slime");
-        type = "slime";
+        type = "/slime/bounce.gif";
     }
     return type;
 }
