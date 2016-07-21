@@ -1,50 +1,74 @@
 <template name="home">
-  {{#if currentUser}}
-  <div class="jumbotron">
+{{#if currentUser}}
+  <div class="row">
+    <div class="col-md-8 col-md-offset-0 transbox">
+        <!-- <img style="" id="js-pet" src="/ghost/ghost.gif" class="img-responsive center-block" alt="Responsive image" margin:0 auto><br> -->
+         <div class="ghost">
+          <div class="ghost-face">
+            <div class="ghost-eyes">
+              <div class="ghost-eyes">
+                <div class="ghosteye">
+                  <div class="ghosteye ghosteyeball"></div>
+                  <div class="ghosteye ghosteyeball ghostiris"></div>
+                  <div class="ghosteye ghosteyeball ghosteyelight"></div>
+                </div>
+                <div class="ghosteye">
+                  <div class="ghosteye ghosteyeball"></div>
+                  <div class="ghosteye ghosteyeball ghostiris"></div>
+                  <div class="ghosteye ghosteyeball ghosteyelight"></div>
+                </div>
+              </div>
+            </div>
+            <div class="ghost-smile" id="mouth"></div>
+            <div class="ghosttoungh" id="toungh"></div>
+          </div>
+          <div class="ghost-botton">
+            <div class="ghost-feet">
+              <div class="ghost-foot1"></div>
+              <div class="ghost-foot5"></div>
+              <div class="ghost-foot2"></div>
+              <div class="ghost-foot4"></div>
+              <div class="ghost-foot3"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!--<textarea rows="5" cols="30" class="js-contents"> Speak to your pet! </textarea>-->
+        <input type="text"  class="js-contents" id="js-contents" placeholder="Talk to your pet!"> 
 
-   <h3>Welcome back {{userName}}! Have fun with your pet {{petName}}!</h3>
-   
-  <img style="" id="js-pet" src="images/fig1.png" class="img-responsive center-block" alt="Responsive image" margin:0 auto>
-  <br>
+        <button class = "js-submit-comment btn buttonblue">
+          Text to your pet!!
+        </button> 
 
-  <div class="btn-group">
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_jump.gif'">Jump</button>
+        <button class="js-talk btn buttonblue">Talk to Pet!</button>
+        <br><br><br>
+        <input id="input" type="text"> <button class="js-text">Speak</button>
+        <br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
+        <ul>
+          {{#each a in showtalk}}
+            <li>{{a.from}}: {{a.str}}</li>
+          {{/each}}
+        </ul>
 
-  
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_melt.gif'">Melt</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_melt_sad_nocry.gif'">Unhappy</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_melt_sad_cry.gif'">Sad</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_melt_sad_crypuddle.gif'">Super Sad</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1_evolution_hands_wave.gif'">Evolve</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='images/fig1.png'">Reset</button>
-</div>
-<br>
-
-<!--<textarea rows="5" cols="30" class="js-contents"> Speak to your pet! </textarea>-->
-<input type="text"  class="js-contents" id="js-contents" placeholder="Talk to your pet!"> 
-
-<button class = "js-submit-comment btn buttonblue">
-  Text to your pet!!
-</button> 
-
-<button class="js-talk btn buttonblue">Talk to Pet!</button>
-<br><br><br>
-<input id="input" type="text"> <button class="js-text">Speak</button>
-<br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
-
-
-<div class="input-field col s9">
-      <select id="html5-voicelist">
-        <option value="" selected>Choose a voice</option>
-      </select>
     </div>
 
+  <!-- profile card -->
+    <div class="col-md-3 col-md-offset-1 transbox">
+      <div class="panel-heading">
+        <h3 class="panel-title"> 
+         Welcome back<br> {{userName}}! <br> Have fun with your pet<br> {{petName}}!
+        </h3>
+      </div>
+      <div class="panel-body">
+        <h5>Your last login time:<br> {{lastlogin}}<br></h5>
+        <h5>Your last logout time:<br> {{lastlogout}}</h5>
+        <h5>Current Online time:{{showtime}}<button class="js-timerefresh">refresh</button></h5>
+      </div>
+ </div>
+
 </div>
+
+
   
   {{else}}   
       {{>registerorlogin}}

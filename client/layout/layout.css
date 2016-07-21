@@ -1,5 +1,7 @@
 body {
-    background-image: url("/images/bg-img/opq05.jpg");
+/*    background-image: url("/images/bg-img/bg-blue.png");
+    background-size: 500px;*/
+    background-color:#BCE2F5;
     font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     background-repeat: repeat;
 }
@@ -31,4 +33,11 @@ ul.topnav li a {
 }
 
 /* Change background color of links on hover */
-ul.topnav li a:hover {background-color: #008CBA;color: white;}
+ul.topnav li a:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+ul {
+    list-style: none;
+}

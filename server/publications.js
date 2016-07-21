@@ -23,3 +23,8 @@ Meteor.publish("theUserProfile",
 	function(){
 	return UserProfile.find({uid:this.userId});
 });
+
+Meteor.publish("theConversations",
+	function(){
+	return Conversations.find({uid:this.userId});
+});

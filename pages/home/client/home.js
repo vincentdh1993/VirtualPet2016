@@ -1,16 +1,10 @@
 Session.set("obj",null);
 Session.set("transcript","");
 
-// Session.set("latLong", Geolocation.currentLocation());
-
 Tracker.autorun(function(){
 	console.log(Session.get("latLong"));
 });
 
-// console.log(Session.get(""))
-//  Tracker.autorun(function(){
-//  console.log(Session.get("latLong"));
-// })
 var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
 var subscriptionKey = "<your agent subscription key>";
 var baseUrl = "https://api.api.ai/v1/";
@@ -31,12 +25,31 @@ Template.home.onRendered(function () {
 
 Template.home.helpers({
 	userName: function(){
-		return UserProfile.findOne().nickname;
+		return this.nickname;
 	},
 
 	petName: function(){
-		return UserProfile.findOne().petname;
-	}
+		return this.petname;
+	},
+
+	lastlogin: function(){
+		return this.lastLogin;
+	},
+
+	lastlogout: function(){
+		return this.lastLogout;
+	},
+
+	showtime: function(){
+		var d = new Date;
+		var elapsed = d - this.lastLogin;
+		var newdate = new Date(elapsed).toISOString().substr(11, 8);
+		return newdate;
+	},
+
+	showtalk: function(){
+		return Conversations.find({});
+	},
 
 })
 
@@ -66,23 +79,23 @@ Template.home.events({
 	"click .js-talk": function(event){
       console.log("clicked it");
       $(".js-talk").html("Listening...");
-   // https://shapeshed.com/html5-speech-recognition-api/
       const recognition = new webkitSpeechRecognition();
       recognition.lang = 'en-US' 
       recognition.onresult = function(event) {
           console.dir(event);
           $(".js-talk").html("Talk to Pet!");
           Session.set("transcript",event.results[0][0].transcript);
-         
-         send();
-          
-//	      execute(Session.get("transcript")); 
+          var str_obj={
+			str:Session.get("transcript"),
+			createdAt: new Date(),
+			from: "user",
+			uid: Meteor.userId() ,
+			}
+		  Meteor.call("insertConversation",str_obj);
+          send();
         };
 		recognition.start();
-   //      console.log("starting the recognizer")
-
-    
-   },
+	},
 
     "click .js-text": function(event){
     	send();
@@ -103,15 +116,10 @@ function execute(transcript){
  		
  		Meteor.apply("getWeather",lat, lng, {returnStubValue: true},
       	function(error,result){
-
-        	console.dir(['getWeather',error,result]);
+			console.dir(['getWeather',error,result]);
         	r = JSON.parse(result);
         	console.dir(r);
-        	// return instance.state.set("recipes",r.results);
       });
-		// Session.set("obj",Weather.findOne({rnd:{$gte:Math.random()*6+1}}));
-		// console.dir( Session.get("obj"));
-		// document.getElementById('js-pet').src= Session.get("obj").imgsrc
 	}
 	if(transcript.includes("jump")){
 	// random weather generator
@@ -126,18 +134,6 @@ function execute(transcript){
 	}
 }
 
-
-// Template.map.onCreated(function() {
-//   this.state = new ReactiveDict();
-//   // this.state.set("latLng", Geolocation.latLng());
-//    // this.map.set("lat",)
-//    this.state.setDefault({
-//      latLng: null,
-//      // lat: 42,
-//      // lng: -73,
-//    });
-// })
-
 function send() {
 	var text =  Session.get("transcript");
 	$.ajax({
@@ -151,31 +147,41 @@ function send() {
 		},
 		data: JSON.stringify({ q: text, lang: "en" }),	
 		success: function(data) {
-				//	setResponse(JSON.stringify(data, undefined, 2));
-				//  r= JSON.parse(results);
-				//	console.dir(data.result.speech);
 			setResponse(data.result.speech);
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
-		//	"ocp-apim-subscription-key": subscriptionKey
 		},
 		data: JSON.stringify({ q: text, lang: "en" }),	
 		success: function(data) {
-			//setResponse(JSON.stringify(data, undefined, 2));
-				//  r= JSON.parse(results);
-				//	console.dir(data.result.speech);
 			console.dir(data)
 			setResponse(data.result.speech);
-
+			var str_obj={
+				str:data.result.speech,
+				createdAt: new Date(),
+				from: "pet",
+				uid: Meteor.userId() ,
+			}
+			Meteor.call("insertConversation",str_obj);
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
 			voices = synth.getVoices();
-
-			utterThis.voice = voices[14]; //44, 12 drowning, 14 singing, 16,20
-		//	utterThis.pitch = 2.2; //for 20
-		//	utterThis.pitch = 1.3; //for 44
-		//	utterThis.rate = 1.5; // for 20 
-		//	utterThis.rate = 1;  //for 44
-
+			utterThis.voice = voices[44]; 
+			utterThis.onstart = function(event){
+				$('.js-talk').attr('disabled','disabled');
+				document.getElementById("mouth").style.WebkitAnimation = "talking 0.8s ease-in-out infinite"
+				document.getElementById("mouth").style.animation = "talking 0.8s ease-in-out infinite";
+				document.getElementById("toungh").style.WebkitAnimation = "openmounth 0s ease-in-out infinite"
+				document.getElementById("toungh").style.animation = "openmounth 0s ease-in-out infinite"
+			}
+			
 			synth.speak(utterThis);
+			utterThis.onend = function(event){
+				$('.js-talk').removeAttr('disabled');
+				document.getElementById("mouth").style.WebkitAnimation = "talking 0s ease-in-out infinite"
+				document.getElementById("mouth").style.animation = "talking 0s ease-in-out infinite";
+				document.getElementById("toungh").style.WebkitAnimation = "openmounth 10s ease-in-out infinite"
+				document.getElementById("toungh").style.animation = "openmounth 10s ease-in-out infinite"
+			}
+			
+
 		},
 		error: function() {
 			setResponse("Internal Server Error");
@@ -187,6 +193,7 @@ function send() {
 function setResponse(val) {
 	$("#response").text(val);
 }
+
 
 
 
