@@ -1,3 +1,5 @@
 {
-	"weatherApiKey": "6329aa3c8124a706"
+	"weatherApiKey": "6329aa3c8124a706",
+	"accessToken": "8fd67a24e6ae40bb81af0eabd4cec15b",
+	"baseUrl": "https://api.api.ai/v1/"
 }

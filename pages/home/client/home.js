@@ -3,19 +3,14 @@ Session.set("transcript","");
 
 // Session.set("latLong", Geolocation.currentLocation());
 
-Tracker.autorun(function(){
-	console.log(Session.get("latLong"));
-});
+// Tracker.autorun(function(){
+// 	console.log(Session.get("latLong"));
+// });
 
 // console.log(Session.get(""))
 //  Tracker.autorun(function(){
 //  console.log(Session.get("latLong"));
 // })
-var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b"; 
-var subscriptionKey = "<your agent subscription key>";
-var baseUrl = "https://api.api.ai/v1/";
-
-var synth = window.speechSynthesis;	
 
 var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
 var subscriptionKey = "<your agent subscription key>";
@@ -102,11 +97,29 @@ Template.home.events({
 
 
 function execute(transcript){
-	if(transcript.includes("weather")){
-		const lat = Session.get("lat");
-		const lng = Session.get("lng");
-	
-		Meteor.call("getWeather", lat, lng,function(error,result){
+	const lat = Session.get("lat");
+	const lng = Session.get("lng");
+
+	if(transcript.includes("tomorrow")){
+		Meteor.call("getTomorrowsWeather", lat, lng, function(error, result){
+			if (error) {
+				console.log(error);
+			}
+			else {
+				console.log(result);
+				var utterThis = new SpeechSynthesisUtterance(result);
+				voices = synth.getVoices();
+				utterThis.voice = voices[44]; //61-82    61,64, 66, 67,  74 is top, 80, 22 weird singing
+				utterThis.pitch = 1.3;
+				utterThis.rate = 1;
+				synth.speak(utterThis);
+			}
+		})
+	}
+
+	else { //(transcript.includes("weather"))
+
+		Meteor.call("getWeather", lat, lng, function(error,result){
 			if (error) {
 				console.log(error);
 			}
@@ -160,15 +173,15 @@ function send() {
 			"Authorization": "Bearer " + accessToken,
 			"ocp-apim-subscription-key": subscriptionKey
 		},
-		data: JSON.stringify({ q: text, lang: "en" }),	
-		success: function(data) {
-				//	setResponse(JSON.stringify(data, undefined, 2));
-				//  r= JSON.parse(results);
-				//	console.dir(data.result.speech);
-			setResponse(data.result.speech);
-			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
-		//	"ocp-apim-subscription-key": subscriptionKey
-		},
+		// data: JSON.stringify({ q: text, lang: "en" }),	
+		// success: function(data) {
+		// 		//	setResponse(JSON.stringify(data, undefined, 2));
+		// 		//  r= JSON.parse(results);
+		// 		//	console.dir(data.result.speech);
+		// 	setResponse(data.result.speech);
+		// 	var utterThis = new SpeechSynthesisUtterance(data.result.speech);
+		// //	"ocp-apim-subscription-key": subscriptionKey
+		// },
 		data: JSON.stringify({ q: text, lang: "en" }),	
 		success: function(data) {
 			//setResponse(JSON.stringify(data, undefined, 2));
@@ -208,10 +221,10 @@ function send() {
 			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
 			voices = synth.getVoices();
 
-			utterThis.voice = voices[14]; //44, 12 drowning, 14 singing, 16,20
-		//	utterThis.pitch = 2.2; //for 20
+			utterThis.voice = voices[44]; //44, 12 drowning, 14 singing, 16,20
+			utterThis.pitch = 1.3; //for 20
 		//	utterThis.pitch = 1.3; //for 44
-		//	utterThis.rate = 1.5; // for 20 
+			utterThis.rate = 1; // for 20 
 		//	utterThis.rate = 1;  //for 44
 
 			synth.speak(utterThis);
