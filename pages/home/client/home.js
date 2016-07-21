@@ -24,16 +24,16 @@ Template.home.onRendered(function () {
 
 })
 
-// Template.home.helpers({
-// 	userName: function(){
-// 		return UserProfile.findOne().nickname;
-// 	},
+Template.home.helpers({
+ 	userName: function(){
+ 		return UserProfile.findOne().nickname;
+ 	},
 
-// 	petName: function(){
-// 		return UserProfile.findOne().petname;
-// 	}
+ 	petName: function(){
+ 		return UserProfile.findOne().petname;
+ 	}
 
-// })
+ })
 
 
 Template.home.events({
@@ -72,12 +72,9 @@ Template.home.events({
           Session.set("transcript",event.results[0][0].transcript);
          
         	if(!(Session.get("transcript").includes("in"))){
-        		if(Session.get("transcript").includes("weather")){
-        			execute(Session.get("transcript"));
-        		}
+          		execute(Session.get("transcript")); 
       		}
-
-      		send();
+      			send();
       		
       		
 		};
@@ -125,6 +122,11 @@ function execute(transcript){
 			}
 			else {
 				console.log(result);
+				if(result.includes("Clouds")){
+					document.getElementById('js-pet').src='images/weather/cloudy.gif'
+					console.log("hello");
+				}
+				//setResponse(result);
 				var utterThis = new SpeechSynthesisUtterance(result);
 				voices = synth.getVoices();
 				utterThis.voice = voices[44]; //61-82    61,64, 66, 67,  74 is top, 80, 22 weird singing
@@ -138,7 +140,7 @@ function execute(transcript){
 	// random weather generator
 		document.getElementById('js-pet').src='images/fig1_jump.gif'
 	}
-	if(transcript.includes("game")||transcript.includes("break")||transcript.includes("dodge")){
+	if(transcript.includes("game")||transcript.includes("break")||transcript.includes("Game Center")||transcript.includes("dodge")){
 		Router.go('/gamecenter')
 	}
 	if(transcript.includes("dashboard")){
@@ -190,18 +192,69 @@ function send() {
 			console.dir(data);
 			var url = data.result.resolvedQuery;
 			console.dir(url);
+			setInput(url);
 			setResponse(data.result.speech);
+			console.dir(data.result.speech);
+
+			if(data.result.speech.includes("sunny")){
+				console.log("sunny");
+				document.getElementById('js-pet').src='images/weather/sunny-cloud.gif'
+			} if(data.result.speech.includes("thunderstorm")){
+				console.log("thunderstorm");
+				document.getElementById('js-pet').src='images/weather/thunder.gif'
+			} if(data.result.speech.includes("clear")){
+				console.log("clear");
+				document.getElementById('js-pet').src='images/weather/sunny.gif'
+			} if(data.result.speech.includes("rain")){
+				console.log("rain");
+				document.getElementById('js-pet').src='images/weather/rainy.gif'
+			}
 
 
 			if(url.includes("YouTube")||url.includes("video")){
-			window.open('https://www.youtube.com', '_blank');
+			//window.open('https://www.youtube.com', '_blank');
+			var n = url.startsWith("Search") || url.startsWith("search");
+				if (n == true){
+					console.log(n);
+					var a = url.search("on YouTube");
+					console.log(a);
+					var search = url.substring(7,a);
+					console.log(search);
+					window.open('https://www.youtube.com/results?search_query='+search, '_blank');
+
+				} else{
+					window.open('https://www.youtube.com', '_blank');
+				}
 			}
+
 			if(url.includes("FaceBook")||url.includes("Facebook")){
 			window.open('https://www.facebook.com', '_blank');
 			}
+
 			if(url.includes("Google")||url.includes("google")){
-			window.open('https://www.google.com', '_blank');
+			//window.open('https://www.google.com', '_blank');
+			var n = url.startsWith("Search") || url.startsWith("search");
+			var s = url.startsWith("Google") || url.startsWith("google");
+				if (n == true){
+					console.log(n);
+					var a = url.search("on Google");
+					console.log(a);
+					var search = url.substring(7,a);
+					console.log(search);
+					window.open('https://www.google.com/#q='+search, '_blank');
+
+				} else if(s==true){
+					var a = url.length;
+					var search = url.substring(7,a);
+					console.log(search);
+					window.open('https://www.google.com/#q='+search, '_blank');
+				}
+
+				else{
+					window.open('https://www.google.com', '_blank');
+				}
 			}
+
 			if(url.includes("gmail")||url.includes("Gmail")){
 			window.open('https://www.gmail.com', '_blank');
 			}
@@ -240,13 +293,6 @@ function setResponse(val) {
 	$("#response").text(val);
 }
 
-
-
-
-
-
-
-
-
-
-
+function setInput(val) {
+	$("#input").text(val);
+}

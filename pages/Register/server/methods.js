@@ -5,7 +5,7 @@ Meteor.methods({
 		UserProfile.insert({
 			email: user.email, uid:Meteor.userId(), nickname:user.nickname, 
 			CreatedAt: d , lastLogin: d , 
-			pettype:"",
+			pettype:user.petshape,
 			petname:user.petname,
 			petStatus:{
 				health: 100, happiness:100, lv:1, exp:0, lastTimeFed: d, 
