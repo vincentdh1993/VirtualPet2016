@@ -1,4 +1,9 @@
 Meteor.methods({
+
+	"insertConversation":function(str_obj){
+		Conversations.insert(str_obj);
+	},
+
 	"getWeather": function(lat, lng){
 
 		const apiKey = Meteor.settings.weatherApiKey;
@@ -61,4 +66,5 @@ Meteor.methods({
   // "printWeather": function(weatherString){
   //   console.log(weatherString);
   // },
+
 })
