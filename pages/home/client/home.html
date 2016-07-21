@@ -66,7 +66,33 @@
       </div>
  </div>
 
+   <h3>Welcome back {{userName}}! Have fun with your pet {{petName}}!</h3>
+   
+  <img style="" id="js-pet" src="default/default.png" class="img-responsive center-block" alt="Responsive image" margin:0 auto>
+  <br>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_jump.gif'">Jump</button>
+
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_melt.gif'">Melt</button>
+
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_sad.gif'">Unhappy</button>
+
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_verysad.gif'">Sad</button>
+
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_supersad.gif'">Super Sad</button>
+
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_wavehands.gif'">Evolve</button>
+
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default.png'">Reset</button>
+
 </div>
+
+
+<button class="js-talk btn buttonblue">Talk to Pet!</button>
+<br><br><br>
+<textarea id="inpute" cols="20" rows="1"></textarea> <button class="js-text">Speak</button>
+<br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
 
 
   
