@@ -32,17 +32,15 @@
             </div>
           </div>
         </div>
-        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
         <!--<textarea rows="5" cols="30" class="js-contents"> Speak to your pet! </textarea>-->
-        <input type="text"  class="js-contents" id="js-contents" placeholder="Talk to your pet!"> 
+        <input type="text"  class="js-contents" id="js-contents"> 
 
-        <button class = "js-submit-comment btn buttonblue">
-          Text to your pet!!
-        </button> 
+        <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
 
         <button class="js-talk btn buttonblue">Talk to Pet!</button>
         <br><br><br>
-        <input id="input" type="text"> <button class="js-text">Speak</button>
         <br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
         <ul>
           {{#each a in showtalk}}
@@ -64,13 +62,10 @@
         <h5>Your last logout time:<br> {{lastlogout}}</h5>
         <h5>Current Online time:{{showtime}}<button class="js-timerefresh">refresh</button></h5>
       </div>
- </div>
+  </div>
 
-   <h3>Welcome back {{userName}}! Have fun with your pet {{petName}}!</h3>
-   
-  <img style="" id="js-pet" src="default/default.png" class="img-responsive center-block" alt="Responsive image" margin:0 auto>
-  <br>
-
+  <!-- <img style="" id="js-pet" src="default/default.png" class="img-responsive center-block" alt="Responsive image" margin:0 auto>
+  
   <div class="btn-group">
     <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_jump.gif'">Jump</button>
 
@@ -84,19 +79,9 @@
 
     <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_wavehands.gif'">Evolve</button>
 
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default.png'">Reset</button>
-
-</div>
-
-
-<button class="js-talk btn buttonblue">Talk to Pet!</button>
-<br><br><br>
-<textarea id="inpute" cols="20" rows="1"></textarea> <button class="js-text">Speak</button>
-<br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
-
-
-  
-  {{else}}   
+    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default.png'">Reset</button> -->
+  </div>
+  {{else}}
       {{>registerorlogin}}
   {{/if}}
   <!-- this is the end -->
