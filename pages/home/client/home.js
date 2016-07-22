@@ -9,12 +9,9 @@ var subscriptionKey = "<your agent subscription key>";
 var baseUrl = "https://api.api.ai/v1/";
 var synth = window.speechSynthesis;	
 
-Template.home.onRendered(function () {
-
-
-})
-
 Template.home.helpers({
+
+
 	userName: function(){
 		return this.nickname;
 	},
@@ -28,10 +25,10 @@ Template.home.helpers({
 		return this.lastLogout;
 	},
 	showtime: function(){
-		var d = new Date;
-		var elapsed = d - this.lastLogin;
-		var newdate = new Date(elapsed).toISOString().substr(11, 8);
-		return newdate;
+		// var d = new Date;
+		// var elapsed = d - this.lastLogin;
+		// var newdate = new Date(elapsed).toISOString().substr(11, 8);
+		// return newdate;
 	},
 	showtalk: function(){
 		return Conversations.find({});
@@ -61,6 +58,7 @@ Template.home.events({
 	},
 
 	"click .js-talk": function(event){
+		//Meteor.call("removeAllConversations");
       console.log("clicked it");
 	  $(".js-talk").html("Listening...");
       const recognition = new webkitSpeechRecognition();
@@ -74,6 +72,7 @@ Template.home.events({
 			createdAt: new Date(),
 			from: "user",
 			uid: Meteor.userId() ,
+			pic: "/images/profile_pic/user_profile_pic.png"
 			}
 		  Meteor.call("insertConversation",str_obj);
 		  if(!(Session.get("transcript").includes("in"))&& Session.get("transcript").includes("weather")){
@@ -100,8 +99,15 @@ function execute(transcript){
 			}
 			else {
 				console.log(result);
-				var utterThis = new SpeechSynthesisUtterance(result);
-				speaking(utterThis);
+				var str_obj={
+				str:result,
+				createdAt: new Date(),
+				from: "pet",
+				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/ghost_profile_pic.png"
+				}
+				Meteor.call("insertConversation",str_obj);
+				speaking(result);
 			}
 		})
 	}else { //(transcript.includes("weather"))
@@ -111,12 +117,19 @@ function execute(transcript){
 			}
 			else {
 				console.log(result);
-				if(result.includes("Clouds")){
+				if(result.includes("cloud")){
 					document.getElementById('js-pet').src='images/weather/cloudy.gif'
 					console.log("hello");
 				}
-				var utterThis = new SpeechSynthesisUtterance(result);
-				speaking(utterThis);
+				var str_obj={
+				str:result,
+				createdAt: new Date(),
+				from: "pet",
+				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/ghost_profile_pic.png"
+				}
+				Meteor.call("insertConversation",str_obj);
+				speaking(result);
 			}
 		});
 	}
@@ -217,10 +230,10 @@ function send() {
 				createdAt: new Date(),
 				from: "pet",
 				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/ghost_profile_pic.png"
 			}
 			Meteor.call("insertConversation",str_obj);
-			var utterThis = new SpeechSynthesisUtterance(data.result.speech);
-			speaking(utterThis);
+			speaking(data.result.speech);
 		},
 		error: function() {
 			setResponse("Internal Server Error");
@@ -235,12 +248,12 @@ function send() {
  }
 
 
-function speaking(utterThis){
+function speaking(str){
+	var utterThis = new SpeechSynthesisUtterance(str);
 	voices = synth.getVoices();
 	utterThis.voice = voices[44]; 
 	utterThis.pitch = 1.3; 
 	utterThis.rate = 1; 
-
 	utterThis.onstart = function(event){
 		$('.js-talk').attr('disabled','disabled');
 		document.getElementById("mouth").style.WebkitAnimation = "talking 0.8s ease-in-out infinite"
