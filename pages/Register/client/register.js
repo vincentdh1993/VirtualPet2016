@@ -1,3 +1,6 @@
+Session.set("counter",0);
+
+
 Template.register.onCreated(function() {
     this.state = new ReactiveDict();
     this.state.setDefault({
@@ -16,7 +19,7 @@ Template.register.helpers({
     },
     theCounter: function(){
     const instance = Template.instance();
-    return instance.state.get("counter");
+    return Session.get("counter");
   },
 })
 
@@ -28,7 +31,8 @@ Template.register.events({
         const nickname = $(".js-nickname").val()
         const petname =  $(".js-petname").val()
         const petshape = $(".carousel-inner").val();
-        calculate();
+        var pettype = calculate();
+        console.log(pettype);
         
         var user = {
             email: email,
@@ -36,6 +40,7 @@ Template.register.events({
             nickname: nickname,
             petshape:petshape,
             petname:petname,
+            pettype:pettype,
         }
         Accounts.createUser(user,function(error){
             if (error) {
@@ -49,20 +54,31 @@ Template.register.events({
         });
     },
     "click .js-right": function(event,instance){
-    const c = instance.state.get("counter");
-    instance.state.set("counter",c+1);
+    const c = Session.get("counter");
+    Session.set("counter",c+1);
     },
     "click .js-left": function(event,instance){
-    const c = instance.state.get("counter");
-    instance.state.set("counter",c-1);
+    const c = Session.get("counter");
+    Session.set("counter",c-1);
   },
 });
 
 
 function calculate(){
-    const c = theCounter;
-    if (c/3==1){
-        console.log("3 is ");
+    var c  = Session.get("counter");
+    console.log(c);
+    var type = ""
+    var r = c%3;
+    if (r==0 || r==-0){
+        console.log("default");
+        type = "default/default.png";
+    } else if(r==1||r==-2){
+        console.log("ghost");
+        type = "/ghost/ghost.gif";
+    } else {
+        console.log("slime");
+        type = "/slime/bounce.gif";
     }
+    return type;
 }
 

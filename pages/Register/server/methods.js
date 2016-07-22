@@ -7,7 +7,7 @@ Meteor.methods({
 			CreatedAt: d , lastLogin: d , lastLogout: d,
 			pettype:"",
 			CreatedAt: d , lastLogin: d , 
-			pettype:user.petshape,
+			pettype:user.pettype,
 			petname:user.petname,
 			petStatus:{
 				health: 100, happiness:100, lv:1, exp:0, lastTimeFed: d, 
