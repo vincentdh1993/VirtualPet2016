@@ -1,9 +1,7 @@
 Session.set("obj", null);
 Session.set("transcript","");
 
-Tracker.autorun(function(){
-	console.log(Session.get("latLong"));
-});
+
 var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
 var subscriptionKey = "<your agent subscription key>";
 var baseUrl = "https://api.api.ai/v1/";
@@ -31,7 +29,7 @@ Template.home.helpers({
 		// return newdate;
 	},
 	showtalk: function(){
-		return Conversations.find({});
+		return Conversations.find({}, {sort:{createdAt:-1}, limit:8});
 	},
 })
 
@@ -67,18 +65,49 @@ Template.home.events({
           console.dir(event);
           $(".js-talk").html("Talk to Pet!");
           Session.set("transcript",event.results[0][0].transcript);
-          var str_obj={
-			str:Session.get("transcript"),
-			createdAt: new Date(),
-			from: "user",
-			uid: Meteor.userId() ,
-			pic: "/images/profile_pic/user_profile_pic.png"
-			}
-		  Meteor.call("insertConversation",str_obj);
-		  if(!(Session.get("transcript").includes("in"))&& Session.get("transcript").includes("weather")){
-          		execute(Session.get("transcript")); 
-      	  }
-      	  send();
+         
+        	if(!(Session.get("transcript").includes("in")) && Session.get("transcript").includes("weather")){
+          		var str_obj={
+				str:Session.get("transcript"),
+				createdAt: new Date(),
+				from: "user",
+				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/user_profile_pic.png"
+				}
+		  		Meteor.call("insertConversation",str_obj);
+		  		execute(Session.get("transcript"));
+		  
+
+   //         }else if(Session.get("transcript").includes("elevator")){
+   //         		var str_obj={
+			// 	str:Session.get("transcript"),
+			// 	createdAt: new Date(),
+			// 	from: "user",
+			// 	uid: Meteor.userId() ,
+			// 	pic: "/images/profile_pic/user_profile_pic.png"
+			// 	}
+		 //  		Meteor.call("insertConversation",str_obj);
+		 //  		speaking("You are looking at it! I'm cool, I'm funny, and I'm cute. Plus I'm really good at math");
+		 //  		var str_obj1={
+			// 	str:"You are looking at it! I'm cool, I'm funny, and I'm cute. Plus I'm really good at math",
+			// 	createdAt: new Date(),
+			// 	from: "pet",
+			// 	uid: Meteor.userId() ,
+			// 	pic: "/images/profile_pic/ghost_profile_pic.png"
+			// }
+			// Meteor.call("insertConversation",str_obj1);
+           }else{
+           	var str_obj={
+				str:Session.get("transcript"),
+				createdAt: new Date(),
+				from: "user",
+				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/user_profile_pic.png"
+				}
+		  		Meteor.call("insertConversation",str_obj);
+		  		send();
+           }
+      	  
       	  
           
     };

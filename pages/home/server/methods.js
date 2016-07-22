@@ -54,7 +54,7 @@ Meteor.methods({
       const tomorrow = tenDayForecast[0];
       const tomorrowsWeather = (tomorrow.fcttext).replace(/F/g, " degrees Farenheit");
       // const tomorrowsWeatherFinal = tomorrowsWeather.replace(/W/g, "Winds");
-
+      
       return tomorrowsWeather;
   },
   "getAccessToken": function(){
