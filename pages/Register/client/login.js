@@ -24,6 +24,7 @@ Template.login.events({
       			console.log(instance.state.get("lastError"));
     		} else {
     			instance.state.set("lastError",null);
+          Meteor.call("updateLoginTime");
    				Router.go('home');       	
     		}
 		});

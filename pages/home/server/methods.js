@@ -1,4 +1,9 @@
 Meteor.methods({
+
+	"insertConversation":function(str_obj){
+		Conversations.insert(str_obj);
+	},
+
 	"getWeather": function(lat, lng){
 
 		const apiKey = Meteor.settings.weatherApiKey;
@@ -49,7 +54,7 @@ Meteor.methods({
       const tomorrow = tenDayForecast[0];
       const tomorrowsWeather = (tomorrow.fcttext).replace(/F/g, " degrees Farenheit");
       // const tomorrowsWeatherFinal = tomorrowsWeather.replace(/W/g, "Winds");
-
+      
       return tomorrowsWeather;
   },
   "getAccessToken": function(){
@@ -61,4 +66,5 @@ Meteor.methods({
   // "printWeather": function(weatherString){
   //   console.log(weatherString);
   // },
+
 })
