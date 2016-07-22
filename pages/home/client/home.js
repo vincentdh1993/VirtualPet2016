@@ -78,10 +78,19 @@ Template.home.events({
 		  		execute(Session.get("transcript"));
 		  
 
-          		 
-      	  }else{
-      	  send();
-      	  }
+           }else{
+           	var str_obj={
+				str:Session.get("transcript"),
+				createdAt: new Date(),
+				from: "user",
+				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/user_profile_pic.png"
+				}
+		  		Meteor.call("insertConversation",str_obj);
+		  		send();
+           }
+      	  
+      	  
           
     };
 		recognition.start();
@@ -197,17 +206,17 @@ function send() {
 					console.log(a);
 					var search = url.substring(7,a);
 					console.log(search);
-					return window.open('https://www.google.com/#q='+search, '_blank');
+					window.open('https://www.google.com/#q='+search, '_blank');
 
 				} else if(s==true){
 					var a = url.length;
 					var search = url.substring(7,a);
 					console.log(search);
-					return window.open('https://www.google.com/#q='+search, '_blank');
+					window.open('https://www.google.com/#q='+search, '_blank');
 				}
 
 				else{
-					return window.open('https://www.google.com', '_blank');
+					window.open('https://www.google.com', '_blank');
 				}
 			}
 
