@@ -71,7 +71,7 @@ Template.home.events({
           $(".js-talk").html("Talk to Pet!");
           Session.set("transcript",event.results[0][0].transcript);
          
-        	if(!(Session.get("transcript").includes("in"))){
+        	if(!(Session.get("transcript").includes("in")) && Session.get("transcript").includes("weather")){
           		execute(Session.get("transcript")); 
       		}
       			send();
@@ -241,17 +241,17 @@ function send() {
 					console.log(a);
 					var search = url.substring(7,a);
 					console.log(search);
-					window.open('https://www.google.com/#q='+search, '_blank');
+					return window.open('https://www.google.com/#q='+search, '_blank');
 
 				} else if(s==true){
 					var a = url.length;
 					var search = url.substring(7,a);
 					console.log(search);
-					window.open('https://www.google.com/#q='+search, '_blank');
+					return window.open('https://www.google.com/#q='+search, '_blank');
 				}
 
 				else{
-					window.open('https://www.google.com', '_blank');
+					return window.open('https://www.google.com', '_blank');
 				}
 			}
 
