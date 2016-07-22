@@ -1,9 +1,7 @@
 Session.set("obj", null);
 Session.set("transcript","");
 
-Tracker.autorun(function(){
-	console.log(Session.get("latLong"));
-});
+
 var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
 var subscriptionKey = "<your agent subscription key>";
 var baseUrl = "https://api.api.ai/v1/";
