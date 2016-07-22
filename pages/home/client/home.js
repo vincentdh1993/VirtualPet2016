@@ -29,7 +29,7 @@ Template.home.helpers({
 		// return newdate;
 	},
 	showtalk: function(){
-		return Conversations.find({}, {sort:{createdAt:-1}, limit:10});
+		return Conversations.find({}, {sort:{createdAt:-1}, limit:8});
 	},
 })
 
@@ -78,6 +78,24 @@ Template.home.events({
 		  		execute(Session.get("transcript"));
 		  
 
+   //         }else if(Session.get("transcript").includes("elevator")){
+   //         		var str_obj={
+			// 	str:Session.get("transcript"),
+			// 	createdAt: new Date(),
+			// 	from: "user",
+			// 	uid: Meteor.userId() ,
+			// 	pic: "/images/profile_pic/user_profile_pic.png"
+			// 	}
+		 //  		Meteor.call("insertConversation",str_obj);
+		 //  		speaking("You are looking at it! I'm cool, I'm funny, and I'm cute. Plus I'm really good at math");
+		 //  		var str_obj1={
+			// 	str:"You are looking at it! I'm cool, I'm funny, and I'm cute. Plus I'm really good at math",
+			// 	createdAt: new Date(),
+			// 	from: "pet",
+			// 	uid: Meteor.userId() ,
+			// 	pic: "/images/profile_pic/ghost_profile_pic.png"
+			// }
+			// Meteor.call("insertConversation",str_obj1);
            }else{
            	var str_obj={
 				str:Session.get("transcript"),
