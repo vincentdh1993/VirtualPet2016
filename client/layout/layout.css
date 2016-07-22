@@ -2,7 +2,7 @@ body {
 /*    background-image: url("/images/bg-img/bg-blue.png");
     background-size: 500px;*/
     background-color:#BCE2F5;
-    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-family: 'Lato', Arial, sans-serif;
     background-repeat: repeat;
 }
 
@@ -40,4 +40,32 @@ ul.topnav li a:hover {
 
 ul {
     list-style: none;
+}
+
+.box {
+    position:relative;
+}
+
+.chatbox {
+    position: relative;
+    display: inline-block;
+    left:10px;
+    width: 50%;
+    height: 30px;
+    padding: 0px;
+    background: #008CBA;
+    color:white;
+}
+
+.chatbox:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    border-style: solid;
+    border-width: 0px 10px 10px 0;
+    border-color: transparent #008CBA;
+    display: block;
+    width: 0;
+    z-index: 1;
 }
