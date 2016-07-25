@@ -31,6 +31,13 @@
 100% {opacity:1;}
 }
 /*@keyframes movewhole {
+=======
+  z-index: 16;
+  -webkit-animation: movewhole 30s ease-in-out infinite;
+  animation: movewhole 30s ease-in-out infinite;
+}
+@keyframes movewhole {
+>>>>>>> 47cb65cb7a59e3faca7a8f3617eaf2e0dd6ca0f9
 0% {left:50%;top: 0%;}
 20% {left:20%;top: 3%;}
 30% {left:40%;top: -2%;}
@@ -51,7 +58,9 @@
 70% {left:60%;top: -2%;}
 80% {left:70%;top: 3%;}
 100% {left:50%;top: 0%;}
+<<<<<<< HEAD
 }*/
+
 
 .ghost-face {
   width: 40vmin;
