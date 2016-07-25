@@ -15,6 +15,12 @@ Template.customize.helpers({
     const c = instance.state.get("image");
     return c;
  	},
+
+ 	theShape: function(){
+    const instance = Template.instance();
+    const c = instance.state.get("shape");
+    return c;
+ 	},
 	
 	userName: function() {
     return Meteor.user().profile.name;  
@@ -34,12 +40,7 @@ Template.customize.events({
 	},
 
 
-	"change .js-shape": function(event,instance){
-    const c = instance.$(".js-shape").val();
-    instance.state.set("shape",c);
-    // change the color field of the state object ...
-  },
-
+	
 
 
 

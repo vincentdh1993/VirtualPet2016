@@ -60,11 +60,28 @@
 		</div>
 
 	</div>
+<script>
+  function bgRed(){
+    var box = document.getElementById("f1");
+    box.style.backgroundColor="red"
+  }
 
 
+  function bgGreen(){
+    var box = document.getElementById("f2");
+    box.style.backgroundColor="green"
+  }
 
-
-
+  function bgWhite(){
+    var box = document.getElementById("f3");
+    box.style.backgroundColor="blue"
+  }
+</script>
+<body>
+  <input type="button" value="red" onclick="bgRed()">
+  <input type="button" value="green" onclick="bgGreen()">
+  <input type="button" value="white" onclick="bgWhite()">
+</body>
 
 
 
