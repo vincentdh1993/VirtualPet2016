@@ -1,0 +1,796 @@
+<template name = "newdodge">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+
+
+    <style type="text/css" align = "center">
+
+      body {
+          background-color: black;
+      }
+                           
+        canvas {   
+
+            position: fixed;
+            top: 15%;                
+            left: 15%;           
+            border: 5px solid blue;                 
+            background-color: black;
+            background-image: url("default/backgroundtp.png");        
+        }
+
+        
+        
+    </style>
+
+  </head>
+
+  <body>
+
+        
+      <canvas id="tim's-game" width="600px" height="400px"></canvas>
+      
+      <script type="text/javascript">
+          // up top. creates the canvas with given dimensions
+          // declares script type
+          
+          // Declaring global variables
+          var startTime;
+          var endTime;
+          var seconds;
+          var minutes;
+          var i = 0;
+          var j=0;
+          // Gets a handle to the element with id canvasOne.      
+          var canvas = document.getElementById("tim's-game");      
+          // Get a 2D context for the canvas.     
+          var ctx = canvas.getContext("2d");	  
+       
+          // Creates object for the balls 
+          var ball = {
+              // determines the position where the ball will apear math.random gives a random position on the x ace
+              position: {x: 20, y: 20}
+              // Will determine the size of the ball
+              , radius: 15
+              // Will determine the speed of the ball
+              //, velocity: {x: 3, y: 0}
+              // Will determine if the ball will get faster or slower
+              , acceleration: {x: 3, y: 2}        
+              // Function that draws the ball  
+              ,drawBall: function(){                  
+                  // Collour of the object         
+                  ctx.fillStyle = "rgb(25, 100, 100)";  
+                  // begins path
+                  ctx.beginPath();
+                  // calls the object it will draw with positions and size
+                  ctx.arc(ball.position.x, ball.position.y, ball.radius, 0, 2 * Math.PI);
+                  // fills the colour 
+                  ctx.fill();       
+                  
+                  // Update the y location.
+                  //ball.velocity.y += ball.acceleration.y;
+                  ball.position.x += ball.acceleration.x;
+                  ball.position.y += ball.acceleration.y;
+                  // Keep the animation going while the ball has not touched the canvas bottom.
+                  // Note there's a bug here.
+                  if ((ball.position.x >= canvas.width - ball.radius) ||  (ball.position.x <=                 ball.radius))
+                      ball.acceleration.x = -ball.acceleration.x;    
+                  if ((ball.position.y >= canvas.height - ball.radius) ||  (ball.position.y <=              ball.radius))
+                      ball.acceleration.y = -ball.acceleration.y;   
+                
+                  
+                  //displayt();
+              }
+              
+          }
+          var ball2 = {
+              // determines the position where the ball will apear math.random gives a random position on the x ace
+              position: {x: 580, y: 380}
+              // Will determine the size of the ball
+              , radius: 15
+              // Will determine the speed of the ball
+              //, velocity: {x: 3, y: 0}
+              // Will determine if the ball will get faster or slower
+              , acceleration: {x: 2, y: 2.5}        
+              // Function that draws the ball  
+              ,drawBall2: function(){                  
+                  // Collour of the object         
+                  ctx.fillStyle = "rgb(25, 100, 100)";  
+                  // begins path
+                  ctx.beginPath();
+                  // calls the object it will draw with positions and size
+                  ctx.arc(ball2.position.x, ball2.position.y, ball2.radius, 0, 2 * Math.PI);
+                  // fills the colour 
+                  ctx.fill();   
+                  
+                  // Calling collision functions for ball 2
+                  collideWithBall2();              
+                  collideWithBall21();              
+                  collideWithBall12();
+	
+                  // Update the y location.
+                  //ball2.velocity.y += ball2.acceleration.y;
+                  ball2.position.x += ball2.acceleration.x;
+                  ball2.position.y += ball2.acceleration.y;
+                  // Keep the animation going while the ball has not touched the canvas bottom.
+                  // Note there's a bug here.
+                  if ((ball2.position.x >= canvas.width - ball2.radius) ||  (ball2.position.x <= ball2.radius))
+                      ball2.acceleration.x = -ball2.acceleration.x;    
+                  if ((ball2.position.y >= canvas.height - ball2.radius) ||  (ball2.position.y <= ball2.radius))
+                      ball2.acceleration.y = -ball2.acceleration.y;
+              }
+          }
+          var ball3 = {
+              // determines the position where the ball will apear math.random gives a random position on the x ace
+              position: {x: 20 , y: 380}
+              // Will determine the size of the ball
+              , radius: 15
+              // Will determine the speed of the ball
+              //, velocity: {x: 3, y: 0}
+              // Will determine if the ball will get faster or slower
+              , acceleration: {x: 2.5, y: 2}        
+              // Function that draws the ball  
+              ,drawBall3: function(){                  
+                  // Collour of the object         
+                  ctx.fillStyle = "rgb(25, 100, 100)";  
+                  // begins path
+                  ctx.beginPath();
+                  // calls the object it will draw with positions and size
+                  ctx.arc(ball3.position.x, ball3.position.y, ball3.radius, 0, 2 * Math.PI);
+                  // fills the colour 
+                  ctx.fill();       
+                  //Calling colision functions for ball 3
+                  collideWithBall13();              
+                  collideWithBall23();              
+                  collideWithBall31();              
+                  collideWithBall32();              
+                  collideWithBall3();
+	
+                  // Update the y location.
+                  //ball3.velocity.y += ball3.acceleration.y;
+                  ball3.position.x += ball3.acceleration.x;
+                  ball3.position.y += ball3.acceleration.y;
+                  // Keep the animation going while the ball has not touched the canvas bottom.
+                  // Note there's a bug here.
+                  if ((ball3.position.x >= canvas.width - ball3.radius) ||  (ball3.position.x <= ball3.radius))
+                      ball3.acceleration.x = -ball3.acceleration.x;    
+                  if ((ball3.position.y >= canvas.height - ball3.radius) ||  (ball3.position.y <= ball3.radius))
+                      ball3.acceleration.y = -ball3.acceleration.y;
+              }
+          }
+          var ball4 = {
+              // determines the position where the ball will apear math.random gives a random position on the x ace
+              position: {x: 580, y: 20}
+              // Will determine the size of the ball
+              , radius: 15
+              // Will determine the speed of the ball
+              //, velocity: {x: 3, y: 0}
+              // Will determine if the ball will get faster or slower
+              , acceleration: {x: 2.7, y: 2.3}        
+              // Function that draws the ball  
+              ,drawBall4: function(){                  
+                  // Collour of the object         
+                  ctx.fillStyle = "rgb(25, 100, 100)";  
+                  // begins path
+                  ctx.beginPath();
+                  // calls the object it will draw with positions and size
+                  ctx.arc(ball4.position.x, ball4.position.y, ball4.radius, 0, 2 * Math.PI);
+                  // fills the colour 
+                  ctx.fill();       
+                  
+                  //Calling colision functions for ball 4
+                  collideWithBall14();
+                  collideWithBall24();              
+                  collideWithBall34();                                     
+                  collideWithBall41();        
+                  collideWithBall42();           
+                  collideWithBall43();
+                  collideWithBall4();
+                  
+                  // Update the y location.
+                  //ball4.velocity.y += ball4.acceleration.y;
+                  ball4.position.x += ball4.acceleration.x;
+                  ball4.position.y += ball4.acceleration.y;
+                  // Keep the animation going while the ball has not touched the canvas bottom.
+                  // Note there's a bug here.
+                  if ((ball4.position.x >= canvas.width - ball4.radius) ||  (ball4.position.x <= ball4.radius))
+                      ball4.acceleration.x = -ball4.acceleration.x;    
+                  if ((ball4.position.y >= canvas.height - ball4.radius) ||  (ball4.position.y <= ball4.radius))
+                      ball4.acceleration.y = -ball4.acceleration.y;
+              }
+          }
+          var ball5 = {
+              // determines the position where the ball will apear math.random gives a random position on the x ace
+              position: {x: canvas.width / 2 , y: canvas.height/2}
+              // Will determine the size of the ball
+              , radius: 15
+              // Will determine the speed of the ball
+              //, velocity: {x: 3, y: 0}
+              // Will determine if the ball will get faster or slower
+              , acceleration: {x: 2, y: 3}        
+              // Function that draws the ball  
+              ,drawBall5: function(){                  
+                  // Collour of the object         
+                  ctx.fillStyle = "rgb(25, 100, 100)";  
+                  // begins path
+                  ctx.beginPath();
+                  // calls the object it will draw with positions and size
+                  ctx.arc(ball5.position.x, ball5.position.y, ball5.radius, 0, 2 * Math.PI);
+                  // fills the colour 
+                  ctx.fill();       
+                  
+                  //Calling colision functions for ball 5
+	              collideWithBall15();              
+                  collideWithBall35();
+                  collideWithBall45();              
+                  collideWithBall25(); 
+                  collideWithBall51();              
+                  collideWithBall52();              
+                  collideWithBall53();              
+                  collideWithBall54();
+                  collideWithBall5();
+                  
+                  // Update the y location.
+                  //ball5.velocity.y += ball5.acceleration.y;
+                  ball5.position.x += ball5.acceleration.x;
+                  ball5.position.y += ball5.acceleration.y;
+                  // Keep the animation going while the ball has not touched the canvas bottom.
+                  // Note there's a bug here.
+                  if ((ball5.position.x >= canvas.width - ball5.radius) ||  (ball5.position.x <= ball5.radius))
+                      ball5.acceleration.x = -ball5.acceleration.x;    
+                  if ((ball5.position.y >= canvas.height - ball5.radius) ||  (ball5.position.y <= ball5.radius))
+                      ball5.acceleration.y = -ball5.acceleration.y;
+                  
+                  
+              }
+          }
+          
+          // Creates a new ball object 
+          // This ball will be used for moving around the canvas
+          var ballm = {
+              // spawns the ball in the middle of the canvas
+              position:{ x: canvas.width / 2
+              , y: canvas.height / 2
+              }
+              // Declares Radius
+              , r: 15              
+          };
+            
+          // Creates a draw circle function
+          function drawCircle() {
+              // Declares colour
+              ctx.fillStyle = "rgb(255, 255, 0)";
+              ctx.beginPath();
+              ctx.arc(ballm.position.x, ballm.position.y, ballm.r, 0, 2 * Math.PI);
+              ctx.fill();
+              // calls collision function
+              collideWithBall();
+              // calls displayt function
+              displayt();
+          }       
+          
+          // Creating collision with user ball function
+          function collideWithBall() {
+
+              // Distance calculation for x axis
+              var dx = (ball.position.x ) - (ballm.position.x );
+              // Distance calculation for y axis
+              var dy = (ball.position.y ) - (ballm.position.y );
+              // Distance calculation
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              // Creating if (if distance between 2 balls is less then 0 execute )
+              if (distance < ball.radius + ballm.r) {                 
+               
+                  // Calls game over function
+                  gameOver();
+                  
+              } 		
+          }
+          function collideWithBall2() {
+			    
+              var dx = (ball2.position.x ) - (ballm.position.x );
+              var dy = (ball2.position.y ) - (ballm.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball2.radius + ballm.r) {                 
+               
+                  gameOver();
+                  
+              } 		
+          }
+          function collideWithBall3() {
+			    
+              var dx = (ball3.position.x ) - (ballm.position.x );
+              var dy = (ball3.position.y ) - (ballm.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball3.radius + ballm.r) {                 
+               
+                 gameOver();
+                  
+              } 		
+          }
+          function collideWithBall4() {
+			    
+              var dx = (ball4.position.x ) - (ballm.position.x );
+              var dy = (ball4.position.y ) - (ballm.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball4.radius + ballm.r) {                 
+               
+                  gameOver();
+                  
+              } 		
+          }
+          function collideWithBall5() {
+			    
+              var dx = (ball5.position.x ) - (ballm.position.x );
+              var dy = (ball5.position.y ) - (ballm.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball5.radius + ballm.r) {                 
+               
+                  gameOver();
+                  
+              } 		
+          }
+          
+          // These are functions what handle the collision 
+          // between all the none user balls
+          // Code explained in collideWithBall()
+          function collideWithBall12() {
+			             
+              var dx = (ball.position.x ) - (ball2.position.x );
+              var dy = (ball.position.y ) - (ball2.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball.radius + ball2.radius) {                 
+                          
+                      ball.acceleration.x = +ball.acceleration.x;
+                  
+                      ball.acceleration.y = +ball.acceleration.y;       
+              }	
+          }
+          function collideWithBall13() {
+			    
+             
+              var dx = (ball.position.x ) - (ball3.position.x );
+              var dy = (ball.position.y ) - (ball3.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball.radius + ball3.radius) {                 
+               
+                  ball.acceleration.x = -ball.acceleration.x;  
+                  
+                  ball.acceleration.y = +ball.acceleration.y;       
+              }	
+          }
+          function collideWithBall14() {
+			             
+              var dx = (ball.position.x ) - (ball4.position.x );
+              var dy = (ball.position.y ) - (ball4.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball.radius + ball4.radius) {                 
+                          
+                      ball.acceleration.x = -ball.acceleration.x;
+                  
+                      ball.acceleration.y = -ball.acceleration.y;       
+              }	
+          }
+          function collideWithBall15() {
+			             
+              var dx = (ball.position.x ) - (ball5.position.x );
+              var dy = (ball.position.y ) - (ball5.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball.radius + ball5.radius) {                 
+                          
+                      ball.acceleration.x = +ball.acceleration.x;
+                  
+                      ball.acceleration.y = -ball.acceleration.y;       
+              }	
+          }         
+          function collideWithBall21() {
+  
+              var dx = (ball.position.x ) - (ball2.position.x );
+              var dy = (ball.position.y ) - (ball2.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball.radius + ball2.radius) {                 
+                   
+                      ball2.acceleration.x = -ball2.acceleration.x;      
+                        
+                      ball2.acceleration.y = -ball2.acceleration.y;          
+              } 		
+          }
+          function collideWithBall23() {
+			    
+             
+              var dx = (ball2.position.x ) - (ball3.position.x );
+              var dy = (ball2.position.y ) - (ball3.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball2.radius + ball3.radius) {                 
+               
+                  ball2.acceleration.x = +ball2.acceleration.x;   
+                  ball2.acceleration.y = +ball2.acceleration.y;       
+              }	
+          }
+          function collideWithBall24() {
+			    
+             
+              var dx = (ball2.position.x ) - (ball4.position.x );
+              var dy = (ball2.position.y ) - (ball4.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball2.radius + ball4.radius) {                 
+               
+                  ball2.acceleration.x = -ball2.acceleration.x;   
+                  ball2.acceleration.y = +ball2.acceleration.y;       
+              }	
+          }
+          function collideWithBall25() {
+			    
+             
+              var dx = (ball2.position.x ) - (ball5.position.x );
+              var dy = (ball2.position.y ) - (ball5.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball2.radius + ball5.radius) {                 
+               
+                  ball2.acceleration.x = -ball2.acceleration.x;   
+                  ball2.acceleration.y = -ball2.acceleration.y;       
+              }	
+          }
+          function collideWithBall31() {
+			    
+             
+              var dx = (ball.position.x ) - (ball3.position.x );
+              var dy = (ball.position.y ) - (ball3.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball.radius + ball3.radius) {                 
+               
+                  ball3.acceleration.x = -ball3.acceleration.x;   
+                  ball3.acceleration.y = -ball3.acceleration.y;       
+              }	
+          }
+          function collideWithBall32() {
+			    
+             
+              var dx = (ball2.position.x ) - (ball3.position.x );
+              var dy = (ball2.position.y ) - (ball3.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball2.radius + ball3.radius) {                 
+               
+                  ball3.acceleration.x = +ball3.acceleration.x;   
+                  ball3.acceleration.y = -ball3.acceleration.y;       
+              }	
+          }
+          function collideWithBall34() {
+			    
+             
+              var dx = (ball4.position.x ) - (ball3.position.x );
+              var dy = (ball4.position.y ) - (ball3.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball4.radius + ball3.radius) {                 
+               
+                  ball3.acceleration.x = -ball3.acceleration.x;   
+                  ball3.acceleration.y = -ball3.acceleration.y;       
+              }	
+          }
+          function collideWithBall35() {
+			    
+             
+              var dx = (ball5.position.x ) - (ball3.position.x );
+              var dy = (ball5.position.y ) - (ball3.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball5.radius + ball3.radius) {                 
+               
+                  ball3.acceleration.x = +ball3.acceleration.x;   
+                  ball3.acceleration.y = +ball3.acceleration.y;       
+              }	
+          }
+          function collideWithBall41() {
+  
+              var dx = (ball.position.x ) - (ball4.position.x );
+              var dy = (ball.position.y ) - (ball4.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball.radius + ball4.radius) {                 
+                   
+                      ball4.acceleration.x = -ball4.acceleration.x;      
+                        
+                      ball4.acceleration.y = -ball4.acceleration.y;          
+              } 		
+          }
+          function collideWithBall42() {
+			    
+             
+              var dx = (ball2.position.x ) - (ball4.position.x );
+              var dy = (ball2.position.y ) - (ball4.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball2.radius + ball4.radius) {                 
+               
+                  ball4.acceleration.x = +ball4.acceleration.x;   
+                  ball4.acceleration.y = -ball4.acceleration.y;       
+              }	
+          }
+          function collideWithBall43() {
+			    
+             
+              var dx = (ball3.position.x ) - (ball4.position.x );
+              var dy = (ball3.position.y ) - (ball4.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball3.radius + ball4.radius) {                 
+               
+                  ball4.acceleration.x = -ball4.acceleration.x;   
+                  ball4.acceleration.y = -ball4.acceleration.y;       
+              }	
+          }
+          function collideWithBall45() {
+			    
+             
+              var dx = (ball5.position.x ) - (ball4.position.x );
+              var dy = (ball5.position.y ) - (ball4.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball5.radius + ball4.radius) {                 
+               
+                  ball4.acceleration.x = +ball4.acceleration.x;   
+                  ball4.acceleration.y = +ball4.acceleration.y;       
+              }	
+          }
+          function collideWithBall51() {
+  
+              var dx = (ball.position.x ) - (ball5.position.x );
+              var dy = (ball.position.y ) - (ball5.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball.radius + ball5.radius) {                 
+                   
+                      ball5.acceleration.x = -ball5.acceleration.x;      
+                        
+                      ball5.acceleration.y = -ball5.acceleration.y;          
+              } 		
+          }
+          function collideWithBall52() {
+			    
+             
+              var dx = (ball2.position.x ) - (ball5.position.x );
+              var dy = (ball2.position.y ) - (ball5.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball2.radius + ball5.radius) {                 
+               
+                  ball5.acceleration.x = -ball5.acceleration.x;   
+                  ball5.acceleration.y = -ball5.acceleration.y;       
+              }	
+          }
+          function collideWithBall53() {
+			    
+             
+              var dx = (ball3.position.x ) - (ball5.position.x );
+              var dy = (ball3.position.y ) - (ball5.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball3.radius + ball5.radius) {                 
+               
+                  ball5.acceleration.x = -ball5.acceleration.x;   
+                  ball5.acceleration.y = -ball5.acceleration.y;       
+              }	
+          }
+          function collideWithBall54() {
+			    
+             
+              var dx = (ball4.position.x ) - (ball5.position.x );
+              var dy = (ball4.position.y ) - (ball5.position.y );
+              var distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < ball4.radius + ball5.radius) {                 
+               
+                  ball5.acceleration.x = -ball5.acceleration.x;   
+                  ball5.acceleration.y = +ball5.acceleration.y;       
+              }	
+          }
+          
+          // Function to check if the game has started
+          // if the game has started this function also makes sure
+          // that the variable startTime does not get overwritten
+          function checkStart(){
+              // i is a global variable
+              // 
+              if(i==0){
+              startTime = new Date();
+                  i++;
+              }
+          }
+          
+          //function that calculates time passed between 2 date variables;
+          function displayt() {
+
+              // later record end time
+              var endTime = new Date();
+
+              // time difference in ms
+              var timeDiff = endTime - startTime;
+
+              // strip the miliseconds
+              timeDiff /= 1000;
+
+              // get seconds
+              seconds = Math.round(timeDiff % 60);
+
+              // remove seconds from the date
+              timeDiff = Math.floor(timeDiff / 60);
+
+              // get minutes
+              minutes = Math.round(timeDiff % 60);
+              
+              //displays the time elapsed
+              ctx.fillText( minutes+":"+seconds, 560, 390);
+              
+              // Creates time parameter to call function 
+              // function is only active in the first 5 seconds of the game
+              if(seconds<=5&& minutes<=0){
+                  startMessage();
+              }
+              
+          }
+          
+          // Function that checks if given time has elapsed
+          // If the time has elapsed/ reached a certain point 
+          // Spawn another ball (up to 5)
+          function startBallTwo(){
+          
+              if( seconds >= 10 ||  minutes > 0){
+                  ball2.drawBall2();
+              }
+          }
+          function startBall3(){
+          
+              if( seconds >= 15 ||  minutes > 0){
+                  ball3.drawBall3();
+              }
+          }
+          function startBall4(){
+          
+              if( seconds >= 20 ||  minutes > 0){
+                  ball4.drawBall4();
+              }
+          }
+          function startBall5(){
+          
+              if( seconds >= 30 ||  minutes > 0){
+                  ball5.drawBall5();
+              }
+          }
+          
+          // function that increases  ball sizes to 20
+          // or shrinks them to 10
+          // when 40 seconds have elapse
+          function increaseradiusOne(){
+              if(seconds>40||minutes>0){
+                   
+                  ball.radius = 20;
+                  ball2.radius = 10;
+              }
+          }
+          // function that increases  ball sizes to 20
+          // or shrinks them to 10
+          // when 50 seconds have elapse
+          function increaseradiusTwo(){
+              if(seconds>50|| minutes>0){
+                  
+                  ball3.radius = 20;
+                  ball4.radius = 10;
+                  ball5.radius = 20;
+              }
+          }
+          // function that increases the players ball size to 20
+          // when one minute has elapsed
+          function increaseradiusBallm(){
+              if(minutes>0){
+                  ballm.r = 20;  
+              }
+          }
+          
+          // Creates a function that will hold a message
+          function startMessage(){
+              ctx.font = "20px Green";
+              ctx.fillText( "Dodge the ball(s) if you can!", canvas.width / 2.9 , 20);
+          }
+          
+          // A function to repeat every time the animation loops.
+          function repeatme() {
+              
+              // clears  the screan/canvas i.e. where the ball was previously does not show up.
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              // calls 
+              checkStart();
+              
+              //calls the draw circle function
+              drawCircle();
+              
+              // calls the function in the ball object
+              ball.drawBall();
+             
+              increaseradiusOne();
+              increaseradiusTwo();
+              increaseradiusBallm();
+              startBallTwo();
+              startBall3();
+              startBall4();
+              startBall5();
+              
+              endTime = new Date();
+              
+              
+              // gets the animation going
+              window.requestAnimationFrame(repeatme);  
+          }
+          
+          // Creates shutdown function
+          function shutdown(){
+                // if keycode == 13 (enter) if will execute
+                if (event.keyCode == 13 ){
+                    // resets global variable to 0
+                    i=0;
+                    // reloads the animation page
+                    location.reload();
+                    j=0;
+                }
+          }
+          
+          
+          
+          // Function that Displays a messgae to the user that the game is over
+          // and gives user instructions on how to continue.
+          function gameOver(){
+              j=1;
+              ctx.clearRect(0, 0, canvas.width, canvas.height);      
+              ctx.fillStyle = "red";  
+              ctx.font = "20px Arial";   
+              ctx.fillText('"Game Over"  ', canvas.width / 2.55, canvas.height/2 );   
+              ctx.fillText('  Press enter to restart', canvas.width / 3.25, canvas.height/2 + 20);  
+              ctx.fillText("Time survived: "+minutes+":"+seconds, canvas.width / 3.25+30, canvas.height/2 + 40);
+              //calls shutdown function
+              shutdown();
+              
+   
+          }
+          
+          // Add an event listener to the keypress event.          
+          window.addEventListener("keydown", function(event) {
+              // Makes arrow keys unpressable when in Game over mode. 
+              if(j==0){              
+                  // clear the canvas
+                  ctx.clearRect(0, 0, canvas.width, canvas.height);
+              
+                  // Right
+                  if (event.keyCode == 39 && ballm.position.x < canvas.width - ballm.r)
+                      // updates location by int given
+                      ballm.position.x += Math.min(15, canvas.width - ballm.position.x - ballm.r);
+
+                  // Left            
+                  else if (event.keyCode == 37 && ballm.position.x > ballm.r)
+                  
+                      // updates location by int given
+                      ballm.position.x -= 15;
+              
+                  // down
+                  else if (event.keyCode == 40 && ballm.position.y < canvas.height - ballm.r)
+                  
+                      // updates location by int given
+                      ballm.position.y += 15;       
+              
+                  // For up movement
+                  else if (event.keyCode == 38 && ballm.position.y > ballm.r)
+                      // updates location by int given
+                      ballm.position.y -= 15;
+                  
+                  // calls draw circle function
+                  drawCircle();
+              }
+              
+              else if (event.keyCode == 13 ){
+                    // resets global variable to 0
+                    i=0;
+                    // reloads the animation page
+                    location.reload();
+                    j=0;
+                }
+              
+          });
+   
+          // Get the animation going.
+          window.requestAnimationFrame(repeatme);
+          
+          // closing tags
+    </script>
+  </body>    
+</template>
