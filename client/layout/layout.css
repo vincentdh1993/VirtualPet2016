@@ -1,10 +1,155 @@
 body {
-/*    background-image: url("/images/bg-img/bg-blue.png");
-    background-size: 500px;*/
+    /*background-image: url("/images/bg-img/bg-blue.png");*/
+    /*Castle outside: http://cdn.playbuzz.com/cdn/eb599698-41e1-4691-9ce6-4261b1b49f3a/86e41c53-bf8a-47f5-b509-5045c71c53b2.jpg*/
+    /*Castle inside: http://3.bp.blogspot.com/_QdHn8FT7SdY/TB8KE6WCa5I/AAAAAAAAJjY/6tW65dwOAAY/s1600/beast403left.jpg;*/
+    /*Enchanted Woods:http://wallpapercave.com/wp/CPBAeXS.jpg;
+    http://img02.deviantart.net/1a99/i/2013/189/9/9/otherworld___magic_forest_by_firedudewraith-d6chh8c.jpg
+    http://hdwallpaperbackgrounds.net/wp-content/uploads/2015/09/Enchanted-Forest-High-Quality-Photo-3djhy-Free1.jpeg*/
+
+    /*background-image: url("http://wallpapercave.com/wp/CPBAeXS.jpg");
+    background-size: 100%;
     background-color:#BCE2F5;
-    font-family: 'Lato', Arial, sans-serif;
-    background-repeat: repeat;
+    
+    /*background-repeat: repeat;*/
+      background: url(http://cdn.playbuzz.com/cdn/eb599698-41e1-4691-9ce6-4261b1b49f3a/86e41c53-bf8a-47f5-b509-5045c71c53b2.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      font-family: 'Lato', Arial, sans-serif;
 }
+
+.homeicon {
+    position:fixed;
+    bottom:5px;
+    left:5px;
+}
+.homeicon a{
+    color:white;
+    font-size: 150%;
+    text-align: center;
+}
+
+.navbar-custom a{
+    color:white;
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 150%;
+    text-align: left;
+}
+
+.navbar-custom a:hover{
+    color:black;
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 150%;
+    text-align: left;
+}
+
+
+.userinfo {
+    position:fixed;
+    top: 5px;
+    left:-300px;
+    width:300px;
+    height:90%;
+    -webkit-border-radius: 0% 0% 5% 0% ;
+    border-radius: 0% 0% 5% 0% ;
+    background-color:rgba(87,110,92,0.5);
+    color:white;
+    z-index: 2;
+}
+
+.userinfo:after{
+    content: "Menu";
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    top: 21px;
+    right: -50px;
+    -webkit-border-radius: 15% 15% 0% 0%;
+    border-radius: 15% 15% 0% 0%;
+    background-color:rgba(87,110,92,0.5);
+    /*border-color: transparent white transparent transparent;*/
+    display: inline-block;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 150%;
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    -webkit-animation: textcolor 3s ease-in-out infinite;
+    animation: textcolor 3s ease-in-out infinite;
+}
+@keyframes textcolor {
+0% {text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;}
+20% {text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;}
+40% {text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;}
+60% {text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;}
+80% {text-shadow: -1px 0 purple, 0 1px purple, 1px 0 purple, 0 -1px purple;}
+100% {text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;}
+}
+@-webkit-keyframes textcolor {
+0% {text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;}
+20% {text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;}
+40% {text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;}
+60% {text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;}
+80% {text-shadow: -1px 0 purple, 0 1px purple, 1px 0 purple, 0 -1px purple;}
+100% {text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;}
+}
+
+.userinfo p{
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    -webkit-animation: textcolor 3s ease-in-out infinite;
+    animation: textcolor 3s ease-in-out infinite;
+}
+@keyframes textcolor {
+0% {text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;}
+20% {text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;}
+40% {text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;}
+60% {text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;}
+80% {text-shadow: -1px 0 purple, 0 1px purple, 1px 0 purple, 0 -1px purple;}
+100% {text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;}
+}
+@-webkit-keyframes textcolor {
+0% {text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;}
+20% {text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;}
+40% {text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;}
+60% {text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;}
+80% {text-shadow: -1px 0 purple, 0 1px purple, 1px 0 purple, 0 -1px purple;}
+100% {text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;}
+}
+
+.userinfo:hover {
+    left:0px;
+}
+
+
+
+.chatinput {
+    position: fixed;
+    bottom: 0;
+    text-align:center;
+    width:100%;
+    margin-top:20px;
+}
+
+
+.conversation li{
+    display:flex;
+}
+
+.avatar{
+    width:40px;
+}
+
+.avatar img{
+    width:100%;
+    display:block;
+}
+
+
 
 .aligncenter{
     text-align:center;
@@ -24,7 +169,7 @@ ul.topnav li {float: left;}
 /* Style the links inside the list items */
 ul.topnav li a {
     display: inline-block;
-    color: black;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -46,26 +191,63 @@ ul {
     position:relative;
 }
 
+.module{
+    position:fixed;
+    right:30px;
+    height:70%;
+    margin-bottom:10%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 2;
+}
+
+
 .chatbox {
     position: relative;
-    display: inline-block;
+    display: inline-block, flex;
     left:10px;
-    width: 50%;
-    height: 30px;
+    width:300px;
     padding: 0px;
-    background: #008CBA;
+    background-color:rgba(87,110,92,0.5);
+    
+}
+
+.chatbox p{
+    left: 5px;
+    color:white;
+    text-align: left;
+}
+
+.chatbox time{
     color:white;
 }
 
 .chatbox:after {
     content: "";
     position: absolute;
-    top: 0px;
+    width: 0;
+    height: 0;
+    top: 15px;
     left: -10px;
     border-style: solid;
-    border-width: 0px 10px 10px 0;
-    border-color: transparent #008CBA;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #576E5C transparent transparent;
+    /*border-color: transparent white transparent transparent;*/
+    opacity: 0.5;
     display: block;
     width: 0;
-    z-index: 1;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+ 
+::-webkit-scrollbar-track {
+    /*background: rgba(256,256,256,0);*/
+    background:rgba(255,255,255,0.3);
+}
+ 
+::-webkit-scrollbar-thumb {
+    /*background: rgba(256,256,256,0.7); */
+    background:rgba(255,255,255,0.7);
 }

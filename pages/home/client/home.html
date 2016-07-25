@@ -1,16 +1,67 @@
-<template name="home">
+<template name="home" >
+<div class="home">
 {{#if currentUser}}
+
+ <!--  <div class="overlay"></div>
+  <div class="popup">Hello</div> -->
+
   <div class="row">
-    <div class="col-md-8 col-md-offset-0 transbox">
-        <!-- <img style="" id="js-pet" src="/ghost/ghost.gif" class="img-responsive center-block" alt="Responsive image" margin:0 auto><br> -->
-        <div class="sunny hidden"></div> 
+
+    <!-- profile card -->
+    <!-- <div class="col-md-3 col-md-offset-0 userinfo">
+      <div class="panel-heading">
+        <h3 class="panel-title"> 
+         Welcome back<br> {{userName}}! <br> Have fun with your pet<br> {{petName}}!
+        </h3>
+      </div>
+      <div class="panel-body">
+        <h5>Your last login time:<br> {{lastlogin}}<br></h5>
+        <h5>Your last logout time:<br> {{lastlogout}}</h5>
+        <h5>Current Online time --><!-- :{{showtime}} --><!-- </h5> -->
+        <!-- <button class="js-timerefresh">refresh</button> -->
+      <!-- </div>
+    </div> -->
+        <!-- <div class="sunny hidden"></div> 
         <div class="cloudy hidden"></div>
         <div class="rainy hidden"></div>
         <div class="snowy hidden"></div>
         <div class="rainbow hidden"></div>
         <div class="starry hidden"></div>
-        <div class="stormy hidden"></div> 
-        <div class="ghost">
+        <div class="stormy hidden"></div>  -->
+
+        <div class="chatinput" >
+            <input type="text"  class="js-contents" id="js-contents"> 
+            <button class="js-talk btn buttonblue">Talk to Pet!</button>
+            <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
+
+        </div>
+
+        <!-- <section class="col-md-8 col-md-offset-1 transbox chatlog">
+            <ul class="dialog">
+              {{#each a in showtalk}}
+                <li><img src={{a.pic}} width=50px> <div class="chatbox">{{a.from}}:  {{a.str}}</div></li><br>
+              {{/each}}
+            </ul>
+        </section> -->
+
+        <section class="module">
+            <ul class="conversation">
+              {{#each a in showtalk}}
+              <li>
+                <div class="avatar">
+                  <img src={{a.pic}}>
+                </div>
+                <div class="chatbox">
+                  <p>{{a.from}}:  {{a.str}}</p>
+                  <time datetime="2009-11-13T20:00">@ {{a.createdAt}}</time>
+                </div>
+              </li><br>
+              {{/each}}
+            </ul>
+        </section>
+
+
+         <div class="ghost">
           <div class="ghost-face">
             <div class="ghost-eyes">
               <div class="ghost-eyes">
@@ -39,65 +90,12 @@
             </div>
           </div>
         </div>
-      
-       <br><br><br>
-        <!--<textarea rows="5" cols="30" class="js-contents"> Speak to your pet! </textarea>-->
-        <div class="box" >
-            <input type="text"  class="js-contents" id="js-contents"> 
-
-            <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
-
-   <!-- <h3>Welcome back {{userName}}! Have fun with your pet {{petName}}!</h3>
-   
-  <img style="" id="js-pet" src={{petType}} class="img-responsive center-block" alt="Responsive image" margin:0 auto>
-  <br> -->
 
 
-            <button class="js-talk btn buttonblue">Talk to Pet!</button>
-            <br><br><br>
-            <!-- <br>Response<br> <textarea id="response" cols="50" rows="5"></textarea> -->
-
-            <ul class="dialog">
-              {{#each a in showtalk}}
-                <li><img src={{a.pic}} width=50px> <div class="chatbox">{{a.from}}:  {{a.str}}</div></li><br>
-              {{/each}}
-            </ul>
-        </div>
-    </div>
-
-  <!-- profile card -->
-    <div class="col-md-3 col-md-offset-1 transbox">
-      <div class="panel-heading">
-        <h3 class="panel-title"> 
-         Welcome back<br> {{userName}}! <br> Have fun with your pet<br> {{petName}}!
-        </h3>
-      </div>
-      <div class="panel-body">
-        <h5>Your last login time:<br> {{lastlogin}}<br></h5>
-        <h5>Your last logout time:<br> {{lastlogout}}</h5>
-        <h5>Current Online time:{{showtime}}<button class="js-timerefresh">refresh</button></h5>
-      </div>
-  </div>
-
-  <!-- <img style="" id="js-pet" src="default/default.png" class="img-responsive center-block" alt="Responsive image" margin:0 auto>
-  
-  <div class="btn-group">
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_jump.gif'">Jump</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_melt.gif'">Melt</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_sad.gif'">Unhappy</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_verysad.gif'">Sad</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_supersad.gif'">Super Sad</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default_wavehands.gif'">Evolve</button>
-
-    <button type="button" class="btn btn-info" onclick="document.getElementById('js-pet').src='default/default.png'">Reset</button> -->
   </div>
   {{else}}
       {{>registerorlogin}}
   {{/if}}
   <!-- this is the end -->
+</div>
 </template>
