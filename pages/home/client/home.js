@@ -9,7 +9,6 @@ var synth = window.speechSynthesis;
 
 Template.home.onRendered(function(){
     //put what you want to do on welcome page here when it shows up
-    $(".overlay, .popup").show();
 })
 
 
@@ -43,10 +42,12 @@ Template.home.helpers({
 
 
 Template.home.events({
-	"click .js-pet": function(){
+	"click .js-info": function(){
+		$(".overlay").fadeToggle();
+		$(".popup").fadeToggle();
 		console.log("clicked");
-
 	},
+
 
 	"click .js-submit-comment":function(){
 		if($(".js-contents").val()=="jump"){
@@ -84,27 +85,7 @@ Template.home.events({
 				}
 		  		Meteor.call("insertConversation",str_obj);
 		  		execute(Session.get("transcript"));
-		  
-
-   //         }else if(Session.get("transcript").includes("elevator")){
-   //         		var str_obj={
-			// 	str:Session.get("transcript"),
-			// 	createdAt: new Date(),
-			// 	from: "user",
-			// 	uid: Meteor.userId() ,
-			// 	pic: "/images/profile_pic/user_profile_pic.png"
-			// 	}
-		 //  		Meteor.call("insertConversation",str_obj);
-		 //  		speaking("You are looking at it! I'm cool, I'm funny, and I'm cute. Plus I'm really good at math");
-		 //  		var str_obj1={
-			// 	str:"You are looking at it! I'm cool, I'm funny, and I'm cute. Plus I'm really good at math",
-			// 	createdAt: new Date(),
-			// 	from: "pet",
-			// 	uid: Meteor.userId() ,
-			// 	pic: "/images/profile_pic/ghost_profile_pic.png"
-			// }
-			// Meteor.call("insertConversation",str_obj1);
-           }else{
+            }else{
            	var str_obj={
 				str:Session.get("transcript"),
 				createdAt: new Date(),
@@ -185,9 +166,9 @@ function send() {
 			"ocp-apim-subscription-key": subscriptionKey
 		},
 		data: JSON.stringify({ q: text, lang: "en" }),	
-		
 		success: function(data) {
 // url part +navigation
+			console.dir(data);
 			var url = data.result.resolvedQuery;
 			if(url.includes("YouTube")||url.includes("video")){
 			var n = url.startsWith("Search") || url.startsWith("search");

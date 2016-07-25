@@ -1,10 +1,14 @@
 <template name="home" >
-<div class="home">
+
+  <div class="overlay"></div>
+  <div class="popup">
+    <h1>Welcome to the Virtual Pet Home Page</h1>
+    <h3>Here is the user guide</h3>
+    <img src="/userguide_home.jpg" width=100%>
+  </div>
+
+
 {{#if currentUser}}
-
- <!--  <div class="overlay"></div>
-  <div class="popup">Hello</div> -->
-
   <div class="row">
 
     <!-- profile card -->
@@ -91,11 +95,13 @@
           </div>
         </div>
 
-
+  <div class="homeicon">
+    <button class="js-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" ></span>  Info</button>
   </div>
+
+</div>
   {{else}}
       {{>registerorlogin}}
   {{/if}}
   <!-- this is the end -->
-</div>
 </template>

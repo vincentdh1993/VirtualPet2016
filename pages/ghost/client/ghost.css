@@ -11,7 +11,7 @@
   z-index: 0;
  /* -webkit-animation: movewhole 30s ease-in-out infinite;
   animation: movewhole 30s ease-in-out infinite;*/
-  -webkit-animation: changeOpacity 40s ease-in-out infinite;
+/*  -webkit-animation: changeOpacity 40s ease-in-out infinite;
   animation: changeOpacity 40s ease-in-out infinite;
 }
 @keyframes changeOpacity {
@@ -28,7 +28,7 @@
 40% {opacity:0.6;}
 60% {opacity:0.8;}
 80% {opacity:1;}
-100% {opacity:1;}
+100% {opacity:1;}*/
 }
 /*@keyframes movewhole {
 =======

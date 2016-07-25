@@ -13,26 +13,27 @@
 }
 
 .overlay {
-   position:absolute;
+   position:fixed;
    display:none;
-
    /* color with alpha transparency */
    background-color: rgba(0, 0, 0, 0.7);
 
    /* stretch to screen edges */
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
+   top: 5%;
+   left: 5%;
+   bottom: 5%;
+   right: 5%;
+   z-index: 2000;
 }
-.popup {
-   position: absolute;
-   min-width: 500px;
-   min-height: 500px;
-   display: none;
-   background-color: white;
 
-   /* center it ? */
-   left: 50%;
-   top: 50%
+.popup {
+   position:fixed;
+   display:none;
+   color:white;
+   /* stretch to screen edges */
+   top: 10%;
+   left: 20%;
+   bottom: 10%;
+   right: 20%;
+   z-index: 5000;
 }
