@@ -23,9 +23,9 @@ Template.login.events({
       			instance.state.set("lastError","* "+ error.reason);
       			console.log(instance.state.get("lastError"));
     		} else {
-    			instance.state.set("lastError",null);
+          instance.state.set("lastError",null);
           Meteor.call("updateLoginTime");
-   				Router.go('home');       	
+   				Router.go('/');       	
     		}
 		});
 	},

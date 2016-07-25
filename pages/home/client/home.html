@@ -1,6 +1,10 @@
 <template name="home" >
 
-  <div class="overlay"></div>
+  <div class="overlay">
+    <div class="js-close-popup">
+      <span class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </div>
+  </div>
   <div class="popup">
     <h1>Welcome to the Virtual Pet Home Page</h1>
     <h3>Here is the user guide</h3>
@@ -66,7 +70,7 @@
 
 
          <div class="ghost">
-          <div class="ghost-face">
+          <div class="ghost-face" id="face">
             <div class="ghost-eyes">
               <div class="ghost-eyes">
                 <div class="ghosteye">

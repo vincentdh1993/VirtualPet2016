@@ -17,13 +17,31 @@
    display:none;
    /* color with alpha transparency */
    background-color: rgba(0, 0, 0, 0.7);
-
    /* stretch to screen edges */
-   top: 5%;
-   left: 5%;
-   bottom: 5%;
-   right: 5%;
+   top: 0%;
+   left: 0%;
+   bottom: 0%;
+   right: 0%;
    z-index: 2000;
+}
+
+.overlay .js-close-popup{
+	position:fixed;
+	display:block;
+	background-color: rgba(0, 0, 0, 0.7);
+	top:0;
+	right:0;
+	z-index: 2000;
+}
+
+.overlay .js-close-popup span{
+	position:fixed;
+	display:block;
+	color:white;
+	top:10px;
+	right:10px;
+	font-size: 200%;
+	z-index: 2000;
 }
 
 .popup {

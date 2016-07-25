@@ -1,5 +1,6 @@
 Session.set("obj", null);
 Session.set("transcript","");
+//Session.set("color",UserProfile.findOne().petName)
 
 
 var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
@@ -7,15 +8,21 @@ var subscriptionKey = "<your agent subscription key>";
 var baseUrl = "https://api.api.ai/v1/";
 var synth = window.speechSynthesis;	
 
-Template.home.onRendered(function(){
-    //put what you want to do on welcome page here when it shows up
+Template.home.onCreated(function() {
+
+})
+
+
+
+Template.home.onRendered(function() {
+	  console.dir(UserProfile.findOne());
+      document.getElementById('face').style.backgroundColor = UserProfile.findOne().petname;
 })
 
 
 
 
 Template.home.helpers({
-
 
 	userName: function(){
 		return this.nickname;
@@ -46,6 +53,11 @@ Template.home.events({
 		$(".overlay").fadeToggle();
 		$(".popup").fadeToggle();
 		console.log("clicked");
+	},
+
+	"click .js-close-popup": function(){
+		$(".overlay").fadeToggle();
+		$(".popup").fadeToggle();
 	},
 
 
@@ -95,9 +107,7 @@ Template.home.events({
 				}
 		  		Meteor.call("insertConversation",str_obj);
 		  		send();
-           }
-      	  
-      	  
+           }      	  
           
     };
 		recognition.start();
