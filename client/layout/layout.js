@@ -6,3 +6,25 @@ Template.layout.events({
         Router.go('registerorlogin');
     }
 });
+
+Template.layout.helpers({
+
+	userName: function(){
+		return UserProfile.findOne().nickname;
+	},
+	petName: function(){
+		return UserProfile.findOne().petname;
+	},
+	lastlogin: function(){
+		return UserProfile.findOne().lastLogin;
+	},
+	lastlogout: function(){
+		return UserProfile.findOne().lastLogout;
+	},
+	showtime: function(){
+		// var d = new Date;
+		// var elapsed = d - this.lastLogin;
+		// var newdate = new Date(elapsed).toISOString().substr(11, 8);
+		// return newdate;
+	},
+})

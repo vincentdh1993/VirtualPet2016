@@ -7,6 +7,14 @@ var subscriptionKey = "<your agent subscription key>";
 var baseUrl = "https://api.api.ai/v1/";
 var synth = window.speechSynthesis;	
 
+Template.home.onRendered(function(){
+    //put what you want to do on welcome page here when it shows up
+    $(".overlay, .popup").show();
+})
+
+
+
+
 Template.home.helpers({
 
 
@@ -29,7 +37,7 @@ Template.home.helpers({
 		// return newdate;
 	},
 	showtalk: function(){
-		return Conversations.find({}, {sort:{createdAt:-1}, limit:8});
+		return Conversations.find({},{sort:{createdAt:-1}, limit:30});
 	},
 })
 
@@ -163,20 +171,6 @@ function execute(transcript){
 		});
 	}
 
-	if(transcript.includes("jump")){
-	// random weather generator
-		document.getElementById('js-pet').src='images/fig1_jump.gif'
-	}
-	if(transcript.includes("game")||transcript.includes("break")||transcript.includes("Game Center")||transcript.includes("dodge")){
-		Router.go('/gamecenter')
-	}
-	if(transcript.includes("dashboard")){
-	// random weather generator
-		Router.go('/dashboard')
-	}
-	if(transcript.includes("youtube")||transcript.includes("video")){
-		window.open('https://www.youtube.com', '_blank');
-	}
 }
 
 function send() {
@@ -251,18 +245,58 @@ function send() {
 			window.open('https://www.baidu.com', '_blank');
 			}
 
-// conversation part
-			
-			setResponse(data.result.speech);
-			var str_obj={
-				str:data.result.speech,
-				createdAt: new Date(),
-				from: "pet",
-				uid: Meteor.userId() ,
-				pic: "/images/profile_pic/ghost_profile_pic.png"
+			if(url.includes("jump")){
+			// random weather generator
+				document.getElementById('js-pet').src='images/fig1_jump.gif'
 			}
-			Meteor.call("insertConversation",str_obj);
-			speaking(data.result.speech);
+			if(url.includes("game")||url.includes("break")||url.includes("Game Center")||url.includes("dodge")){
+				Router.go('/gamecenter')
+			}
+			if(url.includes("dashboard")){
+			// random weather generator
+				Router.go('/dashboard')
+			}
+
+			if(url.includes("my name")||url.includes("who I am")||url.includes("who am I")){
+				var str = "Your name is "+ UserProfile.findOne().nickname;
+				var str_obj={
+						str:str,
+						createdAt: new Date(),
+						from: "pet",
+						uid: Meteor.userId() ,
+						pic: "/images/profile_pic/ghost_profile_pic.png"
+				}
+				console.log(str)
+				Meteor.call("insertConversation",str_obj);
+				speaking(str);
+			} else if(url.includes("your name")||url.includes("who are you")||url.includes("who you are")){
+				var str = "My name is "+ UserProfile.findOne().petname;
+				var str_obj={
+						str:str,
+						createdAt: new Date(),
+						from: "pet",
+						uid: Meteor.userId() ,
+						pic: "/images/profile_pic/ghost_profile_pic.png"
+				}
+				console.log(str)
+				Meteor.call("insertConversation",str_obj);
+				speaking(str);
+			}else{
+				setResponse(data.result.speech);// conversation part
+				var str_obj={
+					str:data.result.speech,
+					createdAt: new Date(),
+					from: "pet",
+					uid: Meteor.userId() ,
+					pic: "/images/profile_pic/ghost_profile_pic.png"
+				}
+				Meteor.call("insertConversation",str_obj);
+				speaking(data.result.speech);
+
+			}
+
+
+
 		},
 		error: function() {
 			setResponse("Internal Server Error");
@@ -295,8 +329,8 @@ function speaking(str){
 		$('.js-talk').removeAttr('disabled');
 		document.getElementById("mouth").style.WebkitAnimation = "talking 0s ease-in-out infinite"
 		document.getElementById("mouth").style.animation = "talking 0s ease-in-out infinite";
-		document.getElementById("toungh").style.WebkitAnimation = "openmounth 10s ease-in-out infinite"
-		document.getElementById("toungh").style.animation = "openmounth 10s ease-in-out infinite"
+		document.getElementById("toungh").style.WebkitAnimation = "openmounth 2s ease-in-out infinite"
+		document.getElementById("toungh").style.animation = "openmounth 2s ease-in-out infinite"
 	}
 }
 

@@ -12,8 +12,27 @@
 	background-color: #008CBA;
 }
 
+.overlay {
+   position:absolute;
+   display:none;
 
-/*
-id card section
-*/
+   /* color with alpha transparency */
+   background-color: rgba(0, 0, 0, 0.7);
 
+   /* stretch to screen edges */
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+}
+.popup {
+   position: absolute;
+   min-width: 500px;
+   min-height: 500px;
+   display: none;
+   background-color: white;
+
+   /* center it ? */
+   left: 50%;
+   top: 50%
+}
