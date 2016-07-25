@@ -10,6 +10,30 @@
             display: block; 
             margin: 0 auto; 
             border: 2px solid #0095DD;}
+
+
+            .button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+
     </style>
 </head>
 <body>
@@ -87,10 +111,10 @@ function gameOver(){
               j=1;
               ctx.clearRect(0, 0, canvas.width, canvas.height);      
               ctx.fillStyle = "red";  
-              ctx.font = "40px Arial"; 
+              ctx.font = "40px Arial";
               ctx.fillText('"Game Over"  ', canvas.width / 2.55, canvas.height/2 );   
               ctx.fillText('  Press F5 to restart', canvas.width / 3.05, canvas.height/2 + 40);
-              ctx.fillText("Your Score: "+score, canvas.width / 3.05, canvas.height/2 + 80);  
+              ctx.fillText("Your Score: "+score, canvas.width / 3.05, canvas.height/2 + 80); 
               //calls shutdown function
               shutdown();
               
@@ -231,4 +255,16 @@ draw();
 </script>
 
 </body>
+
+
+<form action="/brickbreak">
+    <button class="js-talk btn buttonblue">Play Again!</button>
+</form>
+
+<form action="/">
+    <button class="js-talk btn buttonblue">Go back to Home!</button>
+</form>
+
+
+
 </template>
