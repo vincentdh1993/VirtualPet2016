@@ -1,0 +1,16 @@
+select.face-color option[value="#ffffff"]{
+	background-color:#ffffff;
+}
+
+select.face-color option[value="#f2f2f2"]{
+	color:#f2f2f2;
+}
+
+select.face-color option[value="#e5e5e5"]{
+	color:#e5e5e5;
+}
+
+select.face-color option[value="#727272"]{
+	color:red;
+}
+

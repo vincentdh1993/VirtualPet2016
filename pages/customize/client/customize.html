@@ -38,16 +38,18 @@
 		</div>
 
 		<div class="col-md-3 col-md-offset-1" backgroundcolor: white>
+
 			
 			<h1>Color Options</h1>
 
 			Face 
-			<select>
-  <option id="option-1">Option 1</option>
-  <option id="option-2">Option 2</option>
-  <option id="option-3">Option 3</option>
-  <option id="option-4">Option 4</option>
-</select><br>
+			<select class="face-color">
+        <option value="#ffffff">#ffffff</option>
+        <option value="#f2f2f2">#f2f2f2</option>
+        <option value="#e5e5e5">#e5e5e5</option>
+        <option value="#727272">#727272</option>
+      </select><br>
+      
 			Eyeball <br>
 			Mouth <br>
 			Leg1 <br>
@@ -57,34 +59,21 @@
 			Leg5 <br>
 
 
+
 		</div>
 
 	</div>
-<script>
-  function bgRed(){
-    var box = document.getElementById("f1");
-    box.style.backgroundColor="red"
-  }
-
-
-  function bgGreen(){
-    var box = document.getElementById("f2");
-    box.style.backgroundColor="green"
-  }
-
-  function bgWhite(){
-    var box = document.getElementById("f3");
-    box.style.backgroundColor="blue"
-  }
-</script>
-<body>
-  <input type="button" value="red" onclick="bgRed()">
-  <input type="button" value="green" onclick="bgGreen()">
-  <input type="button" value="white" onclick="bgWhite()">
-</body>
 
 
 
+
+
+<div class="chatinput" >
+            <input type="text"  class="js-contents" id="js-contents"> 
+            <button class="js-talk btn buttonblue">Talk to Pet!</button>
+            <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
+
+        </div>
 
 
 
