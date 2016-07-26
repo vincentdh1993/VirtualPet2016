@@ -8,10 +8,10 @@
   -webkit-transform: scale(0.75, 0.75) translateX(-70%); /* Safari and Chrome */
   -o-transform: scale(0.75, 0.75) translateX(-70%); /* Opera */
   -moz-transform: scale(0.75, 0.75) translateX(-70%); /* Firefox */
-  z-index: 0;
+  z-index: 500;
  /* -webkit-animation: movewhole 30s ease-in-out infinite;
   animation: movewhole 30s ease-in-out infinite;*/
-  -webkit-animation: changeOpacity 40s ease-in-out infinite;
+/*  -webkit-animation: changeOpacity 40s ease-in-out infinite;
   animation: changeOpacity 40s ease-in-out infinite;
 }
 @keyframes changeOpacity {
@@ -28,7 +28,7 @@
 40% {opacity:0.6;}
 60% {opacity:0.8;}
 80% {opacity:1;}
-100% {opacity:1;}
+100% {opacity:1;}*/
 }
 /*@keyframes movewhole {
 =======
@@ -65,13 +65,14 @@
 .ghost-face {
   width: 40vmin;
   height: 42vmin;
-  background-color: #FFFFFF;
+/*  background-color: #FFFFFF;*/
   -webkit-border-radius: 50% 50% 0% 0%;
   border-radius: 50%  50%  0% 0%;
   transform: rotate(0deg);
   border-right: 3px solid #BED7E9;
   -webkit-animation: movehead 10s ease-in-out infinite;
   animation: movehead 10s ease-in-out infinite;
+  z-index:12;
 }
 @keyframes movehead {
 0% {transform: rotate(0deg);}
@@ -160,7 +161,7 @@
   bottom: 0;
   position: absolute;
   width: 100%;
-  z-index: 10;
+  z-index: -1;
 }
 
 .ghost-foot1{
@@ -178,6 +179,7 @@
   transform: rotate(25deg);
   -webkit-animation: footonemove 2s ease-in-out infinite;
   animation: footonemove 2s ease-in-out infinite;
+  z-index: -1;
 }
 @keyframes footonemove {
 0% {transform: rotate(25deg);}
@@ -215,6 +217,7 @@
   transform: rotate(22.5deg);
   -webkit-animation: foottwomove 2s ease-in-out infinite;
   animation: foottwomove 2s ease-in-out infinite;
+  z-index: -2;
 }
 @keyframes foottwomove {
 0% {transform: rotate(22.5deg);}

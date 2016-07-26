@@ -37,22 +37,30 @@ body {
     left:5px;
 }
 .homeicon a{
-    color:white;
-    font-size: 150%;
+    color:black;
+    font-size: 100%;
+    text-align: center;
+}
+
+.homeicon .js-info{
+    position:relative;
+    left:70px;
+    display:block;
+    font-size: 100%;
     text-align: center;
 }
 
 .navbar-custom a{
     color:white;
     font-family: 'Lato', Arial, sans-serif;
-    font-size: 150%;
+    font-size: 100%;
     text-align: left;
 }
 
 .navbar-custom a:hover{
     color:black;
     font-family: 'Lato', Arial, sans-serif;
-    font-size: 150%;
+    font-size: 100%;
     text-align: left;
 }
 
