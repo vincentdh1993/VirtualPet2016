@@ -38,10 +38,18 @@ Template.register.events({
             email: email,
             password: password,
             nickname: nickname,
-            petshape:petshape,
             petname:petname,
-            pettype:pettype,
         }
+
+        var pet = {
+            petname: petname,
+            facecolor:'white',
+            eyeballcolor:'white',
+            iriscolor: 'white',
+
+        }
+
+
         Accounts.createUser(user,function(error){
             if (error) {
                 instance.state.set("lastError","* "+ error.reason);
@@ -62,23 +70,3 @@ Template.register.events({
     Session.set("counter",c-1);
   },
 });
-
-
-function calculate(){
-    var c  = Session.get("counter");
-    console.log(c);
-    var type = ""
-    var r = c%3;
-    if (r==0 || r==-0){
-        console.log("default");
-        type = "default/default.png";
-    } else if(r==1||r==-2){
-        console.log("ghost");
-        type = "/ghost/ghost.gif";
-    } else {
-        console.log("slime");
-        type = "/slime/bounce.gif";
-    }
-    return type;
-}
-
