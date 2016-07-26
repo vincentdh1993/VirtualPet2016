@@ -31,9 +31,7 @@ Template.register.events({
         const nickname = $(".js-nickname").val()
         const petname =  $(".js-petname").val()
         const petshape = $(".carousel-inner").val();
-        var pettype = calculate();
-        console.log(pettype);
-        
+
         var user = {
             email: email,
             password: password,
