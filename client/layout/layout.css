@@ -11,12 +11,24 @@ body {
     background-color:#BCE2F5;
     
     /*background-repeat: repeat;*/
-      background: url(http://cdn.playbuzz.com/cdn/eb599698-41e1-4691-9ce6-4261b1b49f3a/86e41c53-bf8a-47f5-b509-5045c71c53b2.jpg) no-repeat center center fixed; 
+      
+      background: no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
       font-family: 'Lato', Arial, sans-serif;
+
+      /*<div class="form-group">
+        <label for="sel1" class="col-sm-offset-1 col-sm-2 control-label">Choose your background:</label>
+        <div class="col-sm-6">
+        <select class="form-control" id="sel1">
+          <option>Castle Outside</option>
+          <option>Castle Inside</option>
+          <option>Enchanted Woods</option>
+        </select>
+      </div>
+      */
 }
 
 .homeicon {

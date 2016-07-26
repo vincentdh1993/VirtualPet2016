@@ -9,10 +9,13 @@ Meteor.methods({
 			CreatedAt: d , lastLogin: d , 
 			pettype:user.pettype,
 			petname:user.petname,
+			url: user.url,
 			petStatus:{
 				health: 100, happiness:100, lv:1, exp:0, lastTimeFed: d, 
 			}
+
 		});
 	}
+
 
 })

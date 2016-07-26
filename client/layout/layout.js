@@ -1,3 +1,18 @@
+Template.layout.onRendered(function(){
+	// if(Session.get("background_url") === null || Session.get("background_url") === undefined){
+	// 	$("body").css("background", "url('http://cdn.playbuzz.com/cdn/eb599698-41e1-4691-9ce6-4261b1b49f3a/86e41c53-bf8a-47f5-b509-5045c71c53b2.jpg')");
+	// }else{
+	// 	$("body").css("background", "url('"+Session.get("background_url")+"')");
+	// }
+	var user = UserProfile.findOne();
+	console.log(user);
+	if(Meteor.user()){
+		$("body").css("background", "url('"+user.url+"')");
+	}else{
+		$("body").css("background", "url('http://cdn.playbuzz.com/cdn/eb599698-41e1-4691-9ce6-4261b1b49f3a/86e41c53-bf8a-47f5-b509-5045c71c53b2.jpg')");
+	}
+});
+
 Template.layout.events({
     'click .logout': function(event){
         event.preventDefault();
@@ -6,6 +21,10 @@ Template.layout.events({
         Router.go('registerorlogin');
     }
 });
+
+
+
+
 
 Template.layout.helpers({
 
@@ -27,4 +46,7 @@ Template.layout.helpers({
 		// var newdate = new Date(elapsed).toISOString().substr(11, 8);
 		// return newdate;
 	},
+	background_url: function(){
+		return Session.get("background_url");
+	}
 })
