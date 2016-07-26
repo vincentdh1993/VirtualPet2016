@@ -163,82 +163,162 @@ Template.customize.events({
 
 //@@@@@@@@@@@@@@@@@@@@@@@--------------iris----------------------------------
 
-  "click .js-rediris": function bgRed(){
+"click .js-rediris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="red";
+    box2.style.borderColor="red";
+  },
+
+  "click .js-orangeiris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="orange";
+    box2.style.borderColor="orange";
+  },
+
+"click .js-yellowiris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="yellow";
+    box2.style.borderColor="yellow";
+  },
+
+"click .js-greeniris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="green";
+    box2.style.borderColor="green";
+  },
+
+"click .js-blueiris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="blue";
+    box2.style.borderColor="blue";
+  },
+
+"click .js-navyiris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="navy";
+    box2.style.borderColor="navy";
+  },
+
+"click .js-purpleiris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="purple";
+    box2.style.borderColor="purple";
+  },
+
+"click .js-whiteiris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="white";
+    box2.style.borderColor="white";
+  },
+
+"click .js-blackiris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="black";
+    box2.style.borderColor="black";
+  },
+
+"click .js-grayiris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="gray";
+    box2.style.borderColor="gray";
+  },
+
+"click .js-lightblueiris": function bgRed(){
+    var box = document.getElementById("iris1");
+    var box2 = document.getElementById("iris2");
+    box.style.borderColor="lightblue";
+    box2.style.borderColor="lightblue";
+  },
+
+
+  //------------------------------pupils
+"click .js-redpupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="red";
     box2.style.backgroundColor="red";
   },
 
-  "click .js-orangeiris": function bgRed(){
+  "click .js-orangepupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="orange";
     box2.style.backgroundColor="orange";
   },
 
-"click .js-yellowiris": function bgRed(){
+"click .js-yellowpupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="yellow";
     box2.style.backgroundColor="yellow";
   },
 
-"click .js-greeniris": function bgRed(){
+"click .js-greenpupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="green";
     box2.style.backgroundColor="green";
   },
 
-"click .js-blueiris": function bgRed(){
+"click .js-bluepupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="blue";
     box2.style.backgroundColor="blue";
   },
 
-"click .js-navyiris": function bgRed(){
+"click .js-navypupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="navy";
     box2.style.backgroundColor="navy";
   },
 
-"click .js-purpleiris": function bgRed(){
+"click .js-purplepupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="purple";
     box2.style.backgroundColor="purple";
   },
 
-"click .js-whiteiris": function bgRed(){
+"click .js-whitepupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="white";
     box2.style.backgroundColor="white";
   },
 
-"click .js-blackiris": function bgRed(){
+"click .js-blackpupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="black";
     box2.style.backgroundColor="black";
   },
 
-"click .js-grayiris": function bgRed(){
+"click .js-graypupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="gray";
     box2.style.backgroundColor="gray";
   },
 
-"click .js-lightblueiris": function bgRed(){
+"click .js-lightbluepupils": function bgRed(){
     var box = document.getElementById("iris1");
     var box2 = document.getElementById("iris2");
     box.style.backgroundColor="lightblue";
     box2.style.backgroundColor="lightblue";
   },
+
 
 
   //----------------------------------------------------mouth-----------------
