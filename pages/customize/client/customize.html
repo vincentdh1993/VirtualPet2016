@@ -1,12 +1,16 @@
 <template name = "customize">
 <h1>Customize your pet</h1>
+    <div class="chatinput" >
+            <input type="text"  class="js-contents" id="js-contents"> 
+            <button class="js-talk btn buttonblue">Talk to Pet!</button>
+            <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
+    </div>
 
 
-<div class="row">
-		<div class="col-md-5 col-md-offset-1">
+  <div class="row editarea">
+		<div class="col-md-4 col-md-offset-0">
 		<h1>Preview</h1>
-
-			     <div class="ghost">
+        <div class="ghost">
           <div class="ghost-face" id="face">
             <div class="ghost-eyes">
               <div class="ghost-eyes">
@@ -37,12 +41,10 @@
         </div>
 		</div>
 
-		<div class="transbox col-md-3 col-md-offset-1" backgroundcolor: white>
-			
+		<div class="transbox col-md-7 col-md-offset-1">
 			<h1>Color Options</h1>
-
-      <h2>FACE</h2>
-<body>
+      <div class="col-md-6 col-md-offset-0">
+      <h3>FACE</h3>
    <button class="colorblock js-redface" style = "background-color:red"> </button>
    <button class="colorblock js-orangeface" style ="background-color:orange"> </button>
    <button class="colorblock js-yellowface" style ="background-color:yellow"> </button>
@@ -54,9 +56,8 @@
    <button class="colorblock js-blackface" style ="background-color:black"> </button>
    <button class="colorblock js-grayface" style ="background-color:gray"> </button>
    <button class="colorblock js-lightblueface" style ="background-color:lightblue"> </button>
-</body>
 
-      <h2>EYEBALLS</h2>
+      <h3>EYEBALLS</h3>
 <body>
    <button class="colorblock js-redeyeball" style = "background-color:red"> </button>
    <button class="colorblock js-orangeeyeball" style ="background-color:orange"> </button>
@@ -71,7 +72,8 @@
    <button class="colorblock js-lightblueeyeball" style ="background-color:lightblue"> </button>
 </body>
 
-     <h2>PUPILS</h2>
+
+     <h3>PUPILS</h3>
 <body>
    <button class="colorblock js-redpupils" style = "background-color:red"> </button>
    <button class="colorblock js-orangepupils" style ="background-color:orange"> </button>
@@ -86,7 +88,8 @@
    <button class="colorblock js-lightbluepupils" style ="background-color:lightblue"> </button>
 </body>
 
-     <h2>IRIS</h2>
+
+     <h3>IRIS</h3>
 <body>
    <button class="colorblock js-rediris" style = "background-color:red"> </button>
    <button class="colorblock js-orangeiris" style ="background-color:orange"> </button>
@@ -103,7 +106,7 @@
 
 
 
-    <h2>MOUTH</h2>
+    <h3>MOUTH</h3>
 <body>
    <button class="colorblock js-redmouth" style = "background-color:red"> </button>
    <button class="colorblock js-orangemouth" style ="background-color:orange"> </button>
@@ -118,7 +121,11 @@
    <button class="colorblock js-lightbluemouth" style ="background-color:lightblue"> </button>
 </body>
 
-    <h2>LEG1</h2>
+
+</div> <!-- END OF LEFT HALF -->
+
+<div class="col-md-6 col-md-offset-0">
+    <h3>LEG1</h3>
 <body>
    <button class="colorblock js-redleg1" style = "background-color:red"> </button>
    <button class="colorblock js-orangeleg1" style ="background-color:orange"> </button>
@@ -133,7 +140,7 @@
    <button class="colorblock js-lightblueleg1" style ="background-color:lightblue"> </button>
 </body>
 
-    <h2>LEG2</h2>
+    <h3>LEG2</h3>
 <body>
    <button class="colorblock js-redleg2" style = "background-color:red"> </button>
    <button class="colorblock js-orangeleg2" style ="background-color:orange"> </button>
@@ -148,7 +155,8 @@
    <button class="colorblock js-lightblueleg2" style ="background-color:lightblue"> </button>
 </body>
 
-    <h2>LEG3</h2>
+
+    <h3>LEG3</h3>
 <body>
    <button class="colorblock js-redleg3" style = "background-color:red"> </button>
    <button class="colorblock js-orangeleg3" style ="background-color:orange"> </button>
@@ -164,7 +172,7 @@
 </body>
 
 
-    <h2>LEG4</h2>
+    <h3>LEG4</h3>
 <body>
    <button class="colorblock js-redleg4" style = "background-color:red"> </button>
    <button class="colorblock js-orangeleg4" style ="background-color:orange"> </button>
@@ -180,7 +188,7 @@
 </body>
 
 
-    <h2>LEG5</h2>
+    <h3>LEG5</h3>
 <body>
    <button class="colorblock js-redleg5" style = "background-color:red"> </button>
    <button class="colorblock js-orangeleg5" style ="background-color:orange"> </button>
@@ -194,22 +202,17 @@
    <button class="colorblock js-grayleg5" style ="background-color:gray"> </button>
    <button class="colorblock js-lightblueleg5" style ="background-color:lightblue"> </button>
 </body>
+<br><br><br>
+</div>
+<!-- END OF RIGHT HALF -->
+    
+    <button class="js-updateColorScheme btn btn-warning">Save My Design</button>
+    <button class="js-defaultColorScheme btn btn-warning">Reset To Default</button>
+      
 
 
+ </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-
-  </div>
+</div>
 </template>

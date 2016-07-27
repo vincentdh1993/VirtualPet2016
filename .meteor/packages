@@ -26,5 +26,9 @@ reactive-dict
 session
 mdg:geolocation
 mizzao:jquery-ui
+
+u2622:persistent-session
+
 cfs:standard-packages
 cfs:gridfs
+

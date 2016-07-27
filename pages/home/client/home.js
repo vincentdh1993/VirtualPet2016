@@ -3,7 +3,7 @@ Session.set("transcript","");
 //Session.set("color",UserProfile.findOne().petName)
 
 
-var accessToken = "8fd67a24e6ae40bb81af0eabd4cec15b";
+var accessToken = "5fa16e67ce0e42168a914552e3d85941";
 var subscriptionKey = "<your agent subscription key>";
 var baseUrl = "https://api.api.ai/v1/";
 var synth = window.speechSynthesis;	
@@ -15,8 +15,22 @@ Template.home.onCreated(function() {
 
 
 Template.home.onRendered(function() {
-	  console.dir(UserProfile.findOne());
-      document.getElementById('face').style.backgroundColor = UserProfile.findOne().petname;
+	  console.dir(PetProfile.findOne());
+	  var pet = PetProfile.findOne();
+      document.getElementById('face').style.backgroundColor = pet.facecolor;
+      document.getElementById('eyeball1').style.backgroundColor = pet.eyeballcolor;
+      document.getElementById('irisandpupils1').style.borderColor = pet.iriscolor;
+      document.getElementById('irisandpupils1').style.backgroundColor = pet.pupilscolor;
+      document.getElementById('eyeball2').style.backgroundColor = pet.eyeballcolor;
+      document.getElementById('irisandpupils2').style.borderColor = pet.iriscolor;
+      document.getElementById('irisandpupils2').style.backgroundColor = pet.pupilscolor;
+      document.getElementById('mouth').style.backgroundColor = pet.mouthcolor;
+      document.getElementById('toungh').style.backgroundColor = pet.mouthcolor;
+      document.getElementById('foot1').style.backgroundColor = pet.legonecolor;
+      document.getElementById('foot2').style.backgroundColor = pet.legtwocolor;
+      document.getElementById('foot3').style.backgroundColor = pet.legthreecolor;
+      document.getElementById('foot4').style.backgroundColor = pet.legfourcolor;
+      document.getElementById('foot5').style.backgroundColor = pet.legfivecolor;
 })
 
 
@@ -37,14 +51,23 @@ Template.home.helpers({
 		return this.lastLogout;
 	},
 	showtime: function(){
-		// var d = new Date;
-		// var elapsed = d - this.lastLogin;
-		// var newdate = new Date(elapsed).toISOString().substr(11, 8);
-		// return newdate;
+		var d = new Date;
+		var elapsed = d - this.lastLogin;
+		var newdate = new Date(elapsed).toISOString().substr(11, 8);
+		return newdate;
 	},
 	showtalk: function(){
 		return Conversations.find({},{sort:{createdAt:-1}, limit:30});
 	},
+	nearbypet: function(){
+		return PetMap.find( { location :
+                         { $near :
+                           { $geometry :
+                              { type : "Point" ,
+                                coordinates : [ -71.2587932 , 42.3670646] } ,
+                                $maxDistance : 100, /*<distance in meters>*/
+                      } } } )
+	}
 })
 
 
@@ -98,12 +121,12 @@ Template.home.events({
 		  		Meteor.call("insertConversation",str_obj);
 		  		execute(Session.get("transcript"));
             }else{
-           	var str_obj={
-				str:Session.get("transcript"),
-				createdAt: new Date(),
-				from: "user",
-				uid: Meteor.userId() ,
-				pic: "/images/profile_pic/user_profile_pic.png"
+	           	var str_obj={
+					str:Session.get("transcript"),
+					createdAt: new Date(),
+					from: "user",
+					uid: Meteor.userId() ,
+					pic: "/images/profile_pic/user_profile_pic.png"
 				}
 		  		Meteor.call("insertConversation",str_obj);
 		  		send();

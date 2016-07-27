@@ -1,5 +1,5 @@
 <template name="home" >
-
+​
   <div class="overlay">
     <div class="js-close-popup">
       <span class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -10,11 +10,11 @@
     <h3>Here is the user guide</h3>
     <img src="/userguide_home.jpg" width=100%>
   </div>
-
-
+​
+​
 {{#if currentUser}}
   <div class="row">
-
+​
     <!-- profile card -->
     <!-- <div class="col-md-3 col-md-offset-0 userinfo">
       <div class="panel-heading">
@@ -36,14 +36,14 @@
         <div class="rainbow hidden"></div>
         <div class="starry hidden"></div>
         <div class="stormy hidden"></div>  -->
-
+​
         <div class="chatinput" >
             <input type="text"  class="js-contents" id="js-contents"> 
             <button class="js-talk btn buttonblue">Talk to Pet!</button>
             <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
-
+​
         </div>
-
+​
         <!-- <section class="col-md-8 col-md-offset-1 transbox chatlog">
             <ul class="dialog">
               {{#each a in showtalk}}
@@ -51,6 +51,8 @@
               {{/each}}
             </ul>
         </section> -->
+
+
 
         <section class="module">
             <ul class="conversation">
@@ -67,20 +69,20 @@
               {{/each}}
             </ul>
         </section>
-
-
+​
+​
          <div class="ghost">
           <div class="ghost-face" id="face">
             <div class="ghost-eyes">
               <div class="ghost-eyes">
                 <div class="ghosteye">
-                  <div class="ghosteye ghosteyeball"></div>
-                  <div class="ghosteye ghosteyeball ghostiris"></div>
+                  <div class="ghosteye ghosteyeball" id = "eyeball1"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="irisandpupils1"></div>
                   <div class="ghosteye ghosteyeball ghosteyelight"></div>
                 </div>
                 <div class="ghosteye">
-                  <div class="ghosteye ghosteyeball"></div>
-                  <div class="ghosteye ghosteyeball ghostiris"></div>
+                  <div class="ghosteye ghosteyeball" id="eyeball2"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="irisandpupils2"></div>
                   <div class="ghosteye ghosteyeball ghosteyelight"></div>
                 </div>
               </div>
@@ -90,19 +92,26 @@
           </div>
           <div class="ghost-botton">
             <div class="ghost-feet">
-              <div class="ghost-foot1"></div>
-              <div class="ghost-foot5"></div>
-              <div class="ghost-foot2"></div>
-              <div class="ghost-foot4"></div>
-              <div class="ghost-foot3"></div>
+              <div class="ghost-foot1" id="foot1"></div>
+              <div class="ghost-foot5" id="foot5"></div>
+              <div class="ghost-foot2" id="foot2"></div>
+              <div class="ghost-foot4" id="foot4"></div>
+              <div class="ghost-foot3" id="foot3"></div>
             </div>
           </div>
         </div>
-
+​
   <div class="homeicon">
     <button class="js-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" ></span>  Info</button>
   </div>
-
+        {{#each a in nearbypet}}
+              <li>
+                <div class="chatbox">
+                  <p>{{a.petname}} is nearby</p>
+                </div>
+              </li><br>
+        {{/each}}
+​
 </div>
   {{else}}
       {{>registerorlogin}}

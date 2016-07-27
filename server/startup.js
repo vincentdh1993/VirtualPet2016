@@ -7,3 +7,5 @@ Meteor.startup(function(){
 	Weather.insert({type:"thunder",imgsrc:'/images/weather/thunder.gif',rnd:6})
 	Weather.insert({type:"windy",imgsrc:'/images/weather/windy.gif',rnd:7})
 })
+
+

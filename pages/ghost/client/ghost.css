@@ -8,7 +8,8 @@
   -webkit-transform: scale(0.75, 0.75) translateX(-70%); /* Safari and Chrome */
   -o-transform: scale(0.75, 0.75) translateX(-70%); /* Opera */
   -moz-transform: scale(0.75, 0.75) translateX(-70%); /* Firefox */
-  z-index: 500;
+  z-index: 0;
+}
  /* -webkit-animation: movewhole 30s ease-in-out infinite;
   animation: movewhole 30s ease-in-out infinite;*/
 /*  -webkit-animation: changeOpacity 40s ease-in-out infinite;
@@ -28,16 +29,9 @@
 40% {opacity:0.6;}
 60% {opacity:0.8;}
 80% {opacity:1;}
-100% {opacity:1;}*/
-}
+100% {opacity:1;}
+}*/
 /*@keyframes movewhole {
-=======
-  z-index: 16;
-  -webkit-animation: movewhole 30s ease-in-out infinite;
-  animation: movewhole 30s ease-in-out infinite;
-}
-@keyframes movewhole {
->>>>>>> 47cb65cb7a59e3faca7a8f3617eaf2e0dd6ca0f9
 0% {left:50%;top: 0%;}
 20% {left:20%;top: 3%;}
 30% {left:40%;top: -2%;}
@@ -58,18 +52,16 @@
 70% {left:60%;top: -2%;}
 80% {left:70%;top: 3%;}
 100% {left:50%;top: 0%;}
-<<<<<<< HEAD
 }*/
 
 
 .ghost-face {
   width: 40vmin;
   height: 42vmin;
-background-color: #FFFFFF;
+  background-color: #FFFFFF;
   -webkit-border-radius: 50% 50% 0% 0%;
   border-radius: 50%  50%  0% 0%;
   transform: rotate(0deg);
-  border-right: 3px solid #BED7E9;
   -webkit-animation: movehead 10s ease-in-out infinite;
   animation: movehead 10s ease-in-out infinite;
   z-index:12;
@@ -179,7 +171,6 @@ background-color: #FFFFFF;
   transform: rotate(25deg);
   -webkit-animation: footonemove 2s ease-in-out infinite;
   animation: footonemove 2s ease-in-out infinite;
-  z-index: -1;
 }
 @keyframes footonemove {
 0% {transform: rotate(25deg);}
@@ -217,7 +208,6 @@ background-color: #FFFFFF;
   transform: rotate(22.5deg);
   -webkit-animation: foottwomove 2s ease-in-out infinite;
   animation: foottwomove 2s ease-in-out infinite;
-  z-index: -2;
 }
 @keyframes foottwomove {
 0% {transform: rotate(22.5deg);}
@@ -482,7 +472,6 @@ background-color: #FFFFFF;
 
 .ghost:hover  .ghost-face{
   background: #EFEFF0; /*eyeball color*/
-  border-right: 6px solid #E1E1E1;
 }
 
 .ghost:hover  .ghost-foot1{
