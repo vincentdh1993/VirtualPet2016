@@ -1,6 +1,3 @@
-Session.set("counter",0);
-
-
 Template.register.onCreated(function() {
     this.state = new ReactiveDict();
     this.state.setDefault({
@@ -22,7 +19,7 @@ Template.register.events({
         const password =  $(".js-password").val()
         const nickname = $(".js-nickname").val()
         const petname =  $(".js-petname").val()
-       
+
         var user = {
             email: email,
             password: password,
@@ -33,9 +30,6 @@ Template.register.events({
         var pet = {
             usernickname: nickname,
             petname: petname,
-            // petlat: Geolocation.latLng().lat,
-            petlat:1,
-            petlng:2,
         }
 
         Accounts.createUser(user,function(error){

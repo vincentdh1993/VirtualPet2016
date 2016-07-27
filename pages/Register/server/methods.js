@@ -30,6 +30,7 @@ Meteor.methods({
 			petStatus:{
 				health: 100, happiness:100, lv:1, exp:0, lastTimeFed: d, 
 			}
+
 		});
 	},
 
@@ -43,5 +44,6 @@ Meteor.methods({
    			petid:Meteor.userId(),
 		});
 	}
+
 
 })

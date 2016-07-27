@@ -9,15 +9,14 @@ body {
     /*background-image: url("http://wallpapercave.com/wp/CPBAeXS.jpg");
     background-size: 100%;
     background-color:#BCE2F5;
-    
-    /*background-repeat: repeat;*/
-      /*background: url(http://cdn.playbuzz.com/cdn/eb599698-41e1-4691-9ce6-4261b1b49f3a/86e41c53-bf8a-47f5-b509-5045c71c53b2.jpg) no-repeat center center fixed; */
-     background-color:lightblue;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      font-family: 'Lato', Arial, sans-serif;
+    */
+    background-color:lightblue;
+/*    background: no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Lato', Arial, sans-serif;
 }
 
 .homeicon {
@@ -42,14 +41,14 @@ body {
 .navbar-custom a{
     color:white;
     font-family: 'Lato', Arial, sans-serif;
-    font-size: 100%;
+    font-size: 150%;
     text-align: left;
 }
 
 .navbar-custom a:hover{
     color:black;
     font-family: 'Lato', Arial, sans-serif;
-    font-size: 100%;
+    font-size: 150%;
     text-align: left;
 }
 
@@ -59,10 +58,10 @@ body {
     top: 5px;
     left:-300px;
     width:300px;
-    height:90%;
+    height:70%;
     -webkit-border-radius: 0% 0% 5% 0% ;
     border-radius: 0% 0% 5% 0% ;
-    background-color:rgba(87,110,92,0.5);
+    background-color:rgba(87,110,92,0.4);
     color:white;
     z-index: 2;
 }
@@ -72,7 +71,7 @@ body {
     position: absolute;
     width: 70px;
     height: 30px;
-    top: 21px;
+    top: 20px;
     right: -50px;
     -webkit-border-radius: 15% 15% 0% 0%;
     border-radius: 15% 15% 0% 0%;
@@ -260,3 +259,69 @@ ul {
     /*background: rgba(256,256,256,0.7); */
     background:rgba(255,255,255,0.7);
 }
+
+
+
+
+
+/*css from chatroom*/
+#js-pet{
+    float: center;
+}
+.js-user-comment{
+    clear:left;
+    float:left;
+}
+body {
+    font:12px arial;
+    color: #222;
+    text-align:center;
+    padding:35px; }
+  
+form, p, span {
+    margin:0;
+    padding:0; }
+  
+input { font:12px arial; }
+  
+a {
+    color:#0000FF;
+    text-decoration:none; }
+  
+    a:hover { text-decoration:underline; }
+  
+#wrapper {
+    margin:0 auto;
+    padding-bottom:25px;
+    background:#EBF4FB;
+    width:504px;
+    border:1px solid #ACD8F0;
+    float: left; }
+  
+
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:270px;
+    width:430px;
+    border:1px solid #ACD8F0;
+    overflow:auto; }
+  
+#usermsg {
+    width:395px;
+    border:1px solid #ACD8F0; }
+  
+#submit { width: 60px; }
+  
+.error { color: #ff0000; }
+  
+#menu { padding:12.5px 25px 12.5px 25px; }
+  
+.welcome { float:left; }
+  
+.logout { float:right; }
+  
+.msgln { margin:0 0 2px 0; }
