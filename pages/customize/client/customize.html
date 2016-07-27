@@ -1,85 +1,218 @@
 <template name = "customize">
 <h1>Customize your pet</h1>
+    <div class="chatinput" >
+            <input type="text"  class="js-contents" id="js-contents"> 
+            <button class="js-talk btn buttonblue">Talk to Pet!</button>
+            <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
+    </div>
 
 
-<div class="row">
-		<div class="col-md-5 col-md-offset-1">
+  <div class="row editarea">
+		<div class="col-md-4 col-md-offset-0">
 		<h1>Preview</h1>
-
-			     <div class="ghost">
+        <div class="ghost">
           <div class="ghost-face" id="face">
             <div class="ghost-eyes">
               <div class="ghost-eyes">
                 <div class="ghosteye">
-                  <div class="ghosteye ghosteyeball" id="eyenall"></div>
-                  <div class="ghosteye ghosteyeball ghostiris" id="iris"></div>
+                  <div class="ghosteye ghosteyeball" id="eyeball1"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="iris1"></div>
                   <div class="ghosteye ghosteyeball ghosteyelight"></div>
                 </div>
                 <div class="ghosteye">
-                  <div class="ghosteye ghosteyeball" id="eyenall"></div>
-                  <div class="ghosteye ghosteyeball ghostiris" id="iris"></div>
+                  <div class="ghosteye ghosteyeball" id="eyeball2"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="iris2"></div>
                   <div class="ghosteye ghosteyeball ghosteyelight"></div> 
                 </div>
               </div>
             </div>
             <div class="ghost-smile" id="mouth"></div>
-            <div class="ghosttoungh" id="toungh"></div>
+            <div class="ghosttoungh" id="tounge"></div>
           </div>
           <div class="ghost-botton">
             <div class="ghost-feet">
-              <div class="ghost-foot1" id="f1"></div>
-              <div class="ghost-foot5" id="f5"></div>
-              <div class="ghost-foot2" id="f2"></div>
-              <div class="ghost-foot4" id="f4"></div>
-              <div class="ghost-foot3" id="f3"></div>
+              <div class="ghost-foot1" id="leg1"></div>
+              <div class="ghost-foot5" id="leg5"></div>
+              <div class="ghost-foot2" id="leg2"></div>
+              <div class="ghost-foot4" id="leg4"></div>
+              <div class="ghost-foot3" id="leg3"></div>
             </div>
           </div>
         </div>
 		</div>
 
-		<div class="col-md-3 col-md-offset-1" backgroundcolor: white>
-
-			
+		<div class="transbox col-md-7 col-md-offset-1">
 			<h1>Color Options</h1>
+      <div class="col-md-6 col-md-offset-0">
+      <h3>FACE</h3>
+   <button class="colorblock js-redface" style = "background-color:red"> </button>
+   <button class="colorblock js-orangeface" style ="background-color:orange"> </button>
+   <button class="colorblock js-yellowface" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greenface" style ="background-color:green"> </button>
+   <button class="colorblock js-blueface" style ="background-color:blue"> </button>
+   <button class="colorblock js-navyface" style ="background-color:navy"> </button>
+   <button class="colorblock js-purpleface" style ="background-color:purple"> </button>
+   <button class="colorblock js-whiteface" style ="background-color:white"> </button>
+   <button class="colorblock js-blackface" style ="background-color:black"> </button>
+   <button class="colorblock js-grayface" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightblueface" style ="background-color:lightblue"> </button>
 
-			Face 
-			<select class="face-color">
-        <option value="#ffffff">#ffffff</option>
-        <option value="#f2f2f2">#f2f2f2</option>
-        <option value="#e5e5e5">#e5e5e5</option>
-        <option value="#727272">#727272</option>
-      </select><br>
+      <h3>EYEBALLS</h3>
+<body>
+   <button class="colorblock js-redeyeball" style = "background-color:red"> </button>
+   <button class="colorblock js-orangeeyeball" style ="background-color:orange"> </button>
+   <button class="colorblock js-yelloweyeball" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greeneyeball" style ="background-color:green"> </button>
+   <button class="colorblock js-blueeyeball" style ="background-color:blue"> </button>
+   <button class="colorblock js-navyeyeball" style ="background-color:navy"> </button>
+   <button class="colorblock js-purpleeyeball" style ="background-color:purple"> </button>
+   <button class="colorblock js-whiteeyeball" style ="background-color:white"> </button>
+   <button class="colorblock js-blackeyeball" style ="background-color:black"> </button>
+   <button class="colorblock js-grayeyeball" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightblueeyeball" style ="background-color:lightblue"> </button>
+</body>
+
+
+     <h3>PUPILS</h3>
+<body>
+   <button class="colorblock js-redpupils" style = "background-color:red"> </button>
+   <button class="colorblock js-orangepupils" style ="background-color:orange"> </button>
+   <button class="colorblock js-yellowpupils" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greenpupils" style ="background-color:green"> </button>
+   <button class="colorblock js-bluepupils" style ="background-color:blue"> </button>
+   <button class="colorblock js-navypupils" style ="background-color:navy"> </button>
+   <button class="colorblock js-purplepupils" style ="background-color:purple"> </button>
+   <button class="colorblock js-whitepupils" style ="background-color:white"> </button>
+   <button class="colorblock js-blackpupils" style ="background-color:black"> </button>
+   <button class="colorblock js-graypupils" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightbluepupils" style ="background-color:lightblue"> </button>
+</body>
+
+
+     <h3>IRIS</h3>
+<body>
+   <button class="colorblock js-rediris" style = "background-color:red"> </button>
+   <button class="colorblock js-orangeiris" style ="background-color:orange"> </button>
+   <button class="colorblock js-yellowiris" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greeniris" style ="background-color:green"> </button>
+   <button class="colorblock js-blueiris" style ="background-color:blue"> </button>
+   <button class="colorblock js-navyiris" style ="background-color:navy"> </button>
+   <button class="colorblock js-purpleiris" style ="background-color:purple"> </button>
+   <button class="colorblock js-whiteiris" style ="background-color:white"> </button>
+   <button class="colorblock js-blackiris" style ="background-color:black"> </button>
+   <button class="colorblock js-grayiris" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightblueiris" style ="background-color:lightblue"> </button>
+</body>
+
+
+
+    <h3>MOUTH</h3>
+<body>
+   <button class="colorblock js-redmouth" style = "background-color:red"> </button>
+   <button class="colorblock js-orangemouth" style ="background-color:orange"> </button>
+   <button class="colorblock js-yellowmouth" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greenmouth" style ="background-color:green"> </button>
+   <button class="colorblock js-bluemouth" style ="background-color:blue"> </button>
+   <button class="colorblock js-navymouth" style ="background-color:navy"> </button>
+   <button class="colorblock js-purplemouth" style ="background-color:purple"> </button>
+   <button class="colorblock js-pinkmouth" style ="background-color:#F7B4B4"> </button>
+   <button class="colorblock js-blackmouth" style ="background-color:black"> </button>
+   <button class="colorblock js-graymouth" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightbluemouth" style ="background-color:lightblue"> </button>
+</body>
+
+
+</div> <!-- END OF LEFT HALF -->
+
+<div class="col-md-6 col-md-offset-0">
+    <h3>LEG1</h3>
+<body>
+   <button class="colorblock js-redleg1" style = "background-color:red"> </button>
+   <button class="colorblock js-orangeleg1" style ="background-color:orange"> </button>
+   <button class="colorblock js-yellowleg1" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greenleg1" style ="background-color:green"> </button>
+   <button class="colorblock js-blueleg1" style ="background-color:blue"> </button>
+   <button class="colorblock js-navyleg1" style ="background-color:navy"> </button>
+   <button class="colorblock js-purpleleg1" style ="background-color:purple"> </button>
+   <button class="colorblock js-whiteleg1" style ="background-color:white"> </button>
+   <button class="colorblock js-blackleg1" style ="background-color:black"> </button>
+   <button class="colorblock js-grayleg1" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightblueleg1" style ="background-color:lightblue"> </button>
+</body>
+
+    <h3>LEG2</h3>
+<body>
+   <button class="colorblock js-redleg2" style = "background-color:red"> </button>
+   <button class="colorblock js-orangeleg2" style ="background-color:orange"> </button>
+   <button class="colorblock js-yellowleg2" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greenleg2" style ="background-color:green"> </button>
+   <button class="colorblock js-blueleg2" style ="background-color:blue"> </button>
+   <button class="colorblock js-navyleg2" style ="background-color:navy"> </button>
+   <button class="colorblock js-purpleleg2" style ="background-color:purple"> </button>
+   <button class="colorblock js-whiteleg2" style ="background-color:white"> </button>
+   <button class="colorblock js-blackleg2" style ="background-color:black"> </button>
+   <button class="colorblock js-grayleg2" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightblueleg2" style ="background-color:lightblue"> </button>
+</body>
+
+
+    <h3>LEG3</h3>
+<body>
+   <button class="colorblock js-redleg3" style = "background-color:red"> </button>
+   <button class="colorblock js-orangeleg3" style ="background-color:orange"> </button>
+   <button class="colorblock js-yellowleg3" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greenleg3" style ="background-color:green"> </button>
+   <button class="colorblock js-blueleg3" style ="background-color:blue"> </button>
+   <button class="colorblock js-navyleg3" style ="background-color:navy"> </button>
+   <button class="colorblock js-purpleleg3" style ="background-color:purple"> </button>
+   <button class="colorblock js-whiteleg3" style ="background-color:white"> </button>
+   <button class="colorblock js-blackleg3" style ="background-color:black"> </button>
+   <button class="colorblock js-grayleg3" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightblueleg3" style ="background-color:lightblue"> </button>
+</body>
+
+
+    <h3>LEG4</h3>
+<body>
+   <button class="colorblock js-redleg4" style = "background-color:red"> </button>
+   <button class="colorblock js-orangeleg4" style ="background-color:orange"> </button>
+   <button class="colorblock js-yellowleg4" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greenleg4" style ="background-color:green"> </button>
+   <button class="colorblock js-blueleg4" style ="background-color:blue"> </button>
+   <button class="colorblock js-navyleg4" style ="background-color:navy"> </button>
+   <button class="colorblock js-purpleleg4" style ="background-color:purple"> </button>
+   <button class="colorblock js-whiteleg4" style ="background-color:white"> </button>
+   <button class="colorblock js-blackleg4" style ="background-color:black"> </button>
+   <button class="colorblock js-grayleg4" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightblueleg4" style ="background-color:lightblue"> </button>
+</body>
+
+
+    <h3>LEG5</h3>
+<body>
+   <button class="colorblock js-redleg5" style = "background-color:red"> </button>
+   <button class="colorblock js-orangeleg5" style ="background-color:orange"> </button>
+   <button class="colorblock js-yellowleg5" style ="background-color:yellow"> </button>
+   <button class="colorblock js-greenleg5" style ="background-color:green"> </button>
+   <button class="colorblock js-blueleg5" style ="background-color:blue"> </button>
+   <button class="colorblock js-navyleg5" style ="background-color:navy"> </button>
+   <button class="colorblock js-purpleleg5" style ="background-color:purple"> </button>
+   <button class="colorblock js-whiteleg5" style ="background-color:white"> </button>
+   <button class="colorblock js-blackleg5" style ="background-color:black"> </button>
+   <button class="colorblock js-grayleg5" style ="background-color:gray"> </button>
+   <button class="colorblock js-lightblueleg5" style ="background-color:lightblue"> </button>
+</body>
+<br><br><br>
+</div>
+<!-- END OF RIGHT HALF -->
+    
+    <button class="js-updateColorScheme btn btn-warning">Save My Design</button>
+    <button class="js-defaultColorScheme btn btn-warning">Reset To Default</button>
       
-			Eyeball <br>
-			Mouth <br>
-			Leg1 <br>
-			Leg2 <br>
-			Leg3 <br>
-			Leg4 <br>
-			Leg5 <br>
 
 
-
-		</div>
-
-	</div>
+ </div>
 
 
-
-
-
-<div class="chatinput" >
-            <input type="text"  class="js-contents" id="js-contents"> 
-            <button class="js-talk btn buttonblue">Talk to Pet!</button>
-            <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
-
-        </div>
-
-
-
-
-
-
-
-
+</div>
 </template>

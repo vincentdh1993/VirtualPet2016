@@ -24,7 +24,17 @@ Meteor.publish("theUserProfile",
 	return UserProfile.find({uid:this.userId});
 });
 
+Meteor.publish("thePetProfile",
+	function(){
+	return PetProfile.find({petid:this.userId});
+});
+
 Meteor.publish("theConversations",
 	function(){
 	return Conversations.find({uid:this.userId});
+});
+
+Meteor.publish("thePetMap",
+	function(){
+	return PetMap.find();
 });

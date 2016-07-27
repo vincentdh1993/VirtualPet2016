@@ -5,7 +5,6 @@ Template.register.onCreated(function() {
     this.state = new ReactiveDict();
     this.state.setDefault({
          lastError:null,
-         counter: 0,
     });
 });
 
@@ -14,13 +13,6 @@ Template.register.helpers({
         const instance = Template.instance();
         return instance.state.get("lastError");
     },
-    email: function(){
-        return $('div.carousel-inner .item').children("img").get(0).height;
-    },
-    theCounter: function(){
-    const instance = Template.instance();
-    return Session.get("counter");
-  },
 })
 
 Template.register.events({
@@ -30,55 +22,34 @@ Template.register.events({
         const password =  $(".js-password").val()
         const nickname = $(".js-nickname").val()
         const petname =  $(".js-petname").val()
-        const petshape = $(".carousel-inner").val();
-        var pettype = calculate();
-        console.log(pettype);
-        
+       
         var user = {
             email: email,
             password: password,
             nickname: nickname,
-            petshape:petshape,
             petname:petname,
-            pettype:pettype,
         }
+
+        var pet = {
+            usernickname: nickname,
+            petname: petname,
+            // petlat: Geolocation.latLng().lat,
+            petlat:1,
+            petlng:2,
+        }
+
         Accounts.createUser(user,function(error){
             if (error) {
                 instance.state.set("lastError","* "+ error.reason);
                 console.log(instance.state.get("lastError"));
             } else {
                 Meteor.call("addUserProf",user);
+                Meteor.call("addPetProf",pet);
+                Meteor.call("addToPetMap",petname,Session.get("latLong").lng,Session.get("latLong").lat);
                 instance.state.set("lastError",null);
-                Router.go('home');
+                Router.go('customize');
             }
         });
     },
-    "click .js-right": function(event,instance){
-    const c = Session.get("counter");
-    Session.set("counter",c+1);
-    },
-    "click .js-left": function(event,instance){
-    const c = Session.get("counter");
-    Session.set("counter",c-1);
-  },
+
 });
-
-
-function calculate(){
-    var c  = Session.get("counter");
-    console.log(c);
-    var type = ""
-    var r = c%3;
-    if (r==0 || r==-0){
-        console.log("default");
-        type = "default/default.png";
-    } else if(r==1||r==-2){
-        console.log("ghost");
-        type = "/ghost/ghost.gif";
-    } else {
-        console.log("slime");
-        type = "/slime/bounce.gif";
-    }
-    return type;
-}
-

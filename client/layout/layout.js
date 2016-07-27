@@ -22,9 +22,9 @@ Template.layout.helpers({
 		return UserProfile.findOne().lastLogout;
 	},
 	showtime: function(){
-		// var d = new Date;
-		// var elapsed = d - this.lastLogin;
-		// var newdate = new Date(elapsed).toISOString().substr(11, 8);
-		// return newdate;
+		var d = new Date;
+		var elapsed = d - UserProfile.findOne().lastLogin;
+		var newdate = new Date(elapsed).toISOString().substr(11, 8);
+		return newdate;
 	},
 })
