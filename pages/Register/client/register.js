@@ -19,10 +19,7 @@ Template.register.events({
         const password =  $(".js-password").val()
         const nickname = $(".js-nickname").val()
         const petname =  $(".js-petname").val()
-<<<<<<< HEAD
-        const petshape = $(".carousel-inner").val();
-=======
->>>>>>> origin/master
+
 
         var user = {
             email: email,
