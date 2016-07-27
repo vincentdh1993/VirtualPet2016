@@ -256,6 +256,7 @@ function send() {
 			if(url.includes("Google")||url.includes("google")){
 			//window.open('https://www.google.com', '_blank');
 			var n = url.startsWith("Search") || url.startsWith("search");
+			var a = url.startsWith("Search for") || url.startsWith("search for");
 			var s = url.startsWith("Google") || url.startsWith("google");
 				if (n == true){
 					console.log(n);
@@ -269,6 +270,10 @@ function send() {
 					var a = url.length;
 					var search = url.substring(7,a);
 					console.log(search);
+					window.open('https://www.google.com/#q='+search, '_blank');
+				} else if(a==true){
+					var a = url.search("on Google");
+					var search = url.substring(11,a);
 					window.open('https://www.google.com/#q='+search, '_blank');
 				}
 
