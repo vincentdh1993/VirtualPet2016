@@ -1,3 +1,13 @@
+/*
+Color Scheme
+POWER blue: #A7D2CB   (191,216,210,1)
+PINK light: #EFD9C1   (254,220,210,1)
+MINTY: #C7D8C6 (199, 216, 198,1) 
+YELLOW:  #f2d388 (242,211,136,1)
+
+*/
+
+
 body {
     /*background-image: url("/images/bg-img/bg-blue.png");*/
     /*Castle outside: http://cdn.playbuzz.com/cdn/eb599698-41e1-4691-9ce6-4261b1b49f3a/86e41c53-bf8a-47f5-b509-5045c71c53b2.jpg*/
@@ -10,7 +20,7 @@ body {
     background-size: 100%;
     background-color:#BCE2F5;
     */
-    background-color:lightblue;
+    background-color:rgba(255, 212, 100,0.9);
 /*    background: no-repeat center center fixed; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -18,6 +28,14 @@ body {
     background-size: cover;
     font-family: 'Lato', Arial, sans-serif;
 }
+
+h1 {font-family: 'Raleway',sans-serif; font-size: 50px; font-weight: 800; line-height:60px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+
+
+h2 h3 {font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 800; line-height: 40px; margin: 0 0 24px; text-align: center; }
+
+
+p {font-family: 'Raleway',sans-serif; font-size: 15px; font-weight: 500; line-height: 25px; margin: 0 0 24px; }
 
 .homeicon {
     position:fixed;
@@ -55,27 +73,25 @@ body {
 
 .userinfo {
     position:fixed;
-    top: 5px;
+    top: 0;
     left:-300px;
     width:300px;
-    height:70%;
-    -webkit-border-radius: 0% 0% 5% 0% ;
-    border-radius: 0% 0% 5% 0% ;
-    background-color:rgba(87,110,92,0.4);
-    color:white;
+    height:100%;
+    background-color:#1245a4; /*blue*/
+    color:#f4f4f2;
     z-index: 2;
 }
 
 .userinfo:after{
     content: "Menu";
+    color:#f4f4f2;
     position: absolute;
     width: 70px;
     height: 30px;
     top: 20px;
     right: -50px;
-    -webkit-border-radius: 15% 15% 0% 0%;
-    border-radius: 15% 15% 0% 0%;
-    background-color:rgba(87,110,92,0.5);
+
+    background-color:#1245a4; /*blue*/
     /*border-color: transparent white transparent transparent;*/
     display: inline-block;
     -webkit-transform: rotate(90deg);
@@ -213,15 +229,18 @@ ul {
 .chatbox {
     position: relative;
     display: inline-block, flex;
+    text-align:center;
     left:10px;
     width:300px;
     padding: 0px;
-    background-color:rgba(87,110,92,0.5);
+    background-color:#F26964;
     
 }
 
 .chatbox p{
-    left: 5px;
+    position: relative;
+    left:5px;
+    width:280px;
     color:white;
     text-align: left;
 }
@@ -235,15 +254,67 @@ ul {
     position: absolute;
     width: 0;
     height: 0;
-    top: 15px;
+    top: 0px;
     left: -10px;
     border-style: solid;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #576E5C transparent transparent;
+    border-width: 0px 10px 10px 0;
+    border-color: transparent #F26964 transparent transparent;
     /*border-color: transparent white transparent transparent;*/
-    opacity: 0.5;
     display: block;
     width: 0;
+}
+
+.neighborsec {
+  list-style: none;
+  position:fixed;
+  left:0;
+  top:320px;
+  bottom:50px;
+  width:250px;
+  overflow-x: hidden;
+  overflow-y: scroll; 
+}
+
+.neighbortitle{
+    position:fixed;
+    left:0;
+    top:260px;
+    color:#1245a4;
+    left:5px;
+    width:250px;
+    height:30px;
+}
+
+.neighborinfo{
+  display: inline-block, flex;
+  color:#F26964;
+  text-align:left;
+}
+
+.neighborinfo a{
+  background-color: #F26964;
+  color:white;
+  font-size:100%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.neighborinfo lead{
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.lead1 {
+  background-color: #1245a4;
+  color:white;
+  font-size:120%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.lead2 {
+  font-size:120%;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 ::-webkit-scrollbar {
@@ -260,7 +331,16 @@ ul {
     background:rgba(255,255,255,0.7);
 }
 
+.neighborpet{
+    position:relative;
+    top:60%;
+}
 
+.js-gohome {
+    position:fixed;
+    bottom:10%;
+    left:47%;
+}
 
 
 

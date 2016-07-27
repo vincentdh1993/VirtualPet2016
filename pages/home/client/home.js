@@ -15,8 +15,29 @@ Template.home.onCreated(function() {
 
 
 Template.home.onRendered(function() {
-	  console.dir(PetProfile.findOne());
-	  var pet = PetProfile.findOne();
+	  console.dir(PetProfile.findOne({petid:Meteor.userId()}));
+	  var pet = PetProfile.findOne({petid:Meteor.userId()});
+      document.getElementById('face').style.backgroundColor = pet.facecolor;
+      document.getElementById('eyeball1').style.backgroundColor = pet.eyeballcolor;
+      document.getElementById('irisandpupils1').style.borderColor = pet.iriscolor;
+      document.getElementById('irisandpupils1').style.backgroundColor = pet.pupilscolor;
+      document.getElementById('eyeball2').style.backgroundColor = pet.eyeballcolor;
+      document.getElementById('irisandpupils2').style.borderColor = pet.iriscolor;
+      document.getElementById('irisandpupils2').style.backgroundColor = pet.pupilscolor;
+      document.getElementById('mouth').style.backgroundColor = pet.mouthcolor;
+      document.getElementById('toungh').style.backgroundColor = pet.mouthcolor;
+      document.getElementById('foot1').style.backgroundColor = pet.legonecolor;
+      document.getElementById('foot2').style.backgroundColor = pet.legtwocolor;
+      document.getElementById('foot3').style.backgroundColor = pet.legthreecolor;
+      document.getElementById('foot4').style.backgroundColor = pet.legfourcolor;
+      document.getElementById('foot5').style.backgroundColor = pet.legfivecolor;
+})
+
+Template.showNeighbors.onRendered(function() {
+	  var url = document.URL;
+	  var id = url.substring(url.lastIndexOf('/') + 1); 
+	  console.dir(PetProfile.findOne({petid:id}));
+	  var pet = PetProfile.findOne({petid:id});
       document.getElementById('face').style.backgroundColor = pet.facecolor;
       document.getElementById('eyeball1').style.backgroundColor = pet.eyeballcolor;
       document.getElementById('irisandpupils1').style.borderColor = pet.iriscolor;
@@ -34,7 +55,12 @@ Template.home.onRendered(function() {
 })
 
 
+Template.showNeighbors.events({
+	"click .js-gohome": function(){
+		Router.go("/");
+	},
 
+}),
 
 Template.home.helpers({
 
@@ -60,14 +86,18 @@ Template.home.helpers({
 		return Conversations.find({},{sort:{createdAt:-1}, limit:30});
 	},
 	nearbypet: function(){
-		return PetMap.find( { location :
+		return PetMap.find({ 
+					 location :
                          { $near :
                            { $geometry :
                               { type : "Point" ,
-                                coordinates : [ -71.2587932 , 42.3670646] } ,
-                                $maxDistance : 100, /*<distance in meters>*/
-                      } } } )
-	}
+                                coordinates : [Session.get("lng"), Session.get("lat")] ,
+                                $maxDistance : 0.1, /*<distance in meters>*/
+                     		  }
+                     	   }
+                     	 }
+                    })
+	},
 })
 
 
@@ -85,6 +115,7 @@ Template.home.events({
 
 
 	"click .js-submit-comment":function(){
+		Meteor.call("removeAllNeighbors");
 		if($(".js-contents").val()=="jump"){
 			document.getElementById('js-pet').src='images/fig1_jump.gif'
 			console.log("hi click");
@@ -96,7 +127,7 @@ Template.home.events({
 		}else if($(".js-contents").val()=="who wants a cookie"){
 			document.getElementById('js-pet').src='images/fig1_evolution_hands_wave.gif'
 		}
-		execute($(".js-contents").val()); 
+		// execute($(".js-contents").val()); 
 	},
 
 	"click .js-talk": function(event){

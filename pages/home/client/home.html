@@ -14,19 +14,6 @@
 ​
 {{#if currentUser}}
   <div class="row">
-​
-    <!-- profile card -->
-    <!-- <div class="col-md-3 col-md-offset-0 userinfo">
-      <div class="panel-heading">
-        <h3 class="panel-title"> 
-         Welcome back<br> {{userName}}! <br> Have fun with your pet<br> {{petName}}!
-        </h3>
-      </div>
-      <div class="panel-body">
-        <h5>Your last login time:<br> {{lastlogin}}<br></h5>
-        <h5>Your last logout time:<br> {{lastlogout}}</h5>
-        <h5>Current Online time --><!-- :{{showtime}} --><!-- </h5> -->
-        <!-- <button class="js-timerefresh">refresh</button> -->
       <!-- </div>
     </div> -->
         <!-- <div class="sunny hidden"></div> 
@@ -44,16 +31,6 @@
 ​
         </div>
 ​
-        <!-- <section class="col-md-8 col-md-offset-1 transbox chatlog">
-            <ul class="dialog">
-              {{#each a in showtalk}}
-                <li><img src={{a.pic}} width=50px> <div class="chatbox">{{a.from}}:  {{a.str}}</div></li><br>
-              {{/each}}
-            </ul>
-        </section> -->
-
-
-
         <section class="module">
             <ul class="conversation">
               {{#each a in showtalk}}
@@ -69,7 +46,6 @@
               {{/each}}
             </ul>
         </section>
-​
 ​
          <div class="ghost">
           <div class="ghost-face" id="face">
@@ -104,13 +80,23 @@
   <div class="homeicon">
     <button class="js-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" ></span>  Info</button>
   </div>
+
+
+  <h3 class="neighbortitle"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color:#1245a4"></span>  
+  <lead class="lead2">Neighbor</lead><lead class="lead2">Radar</lead></h3>
+  <div class="neighborsec">
+    <div  class="neighborbox">
+    <ul>
         {{#each a in nearbypet}}
               <li>
-                <div class="chatbox">
-                  <p>{{a.petname}} is nearby</p>
+                <div class="neighborinfo">
+                  <p><a class="text-uppercase" href="/showNeighbor/{{a.petid}}">{{a.petname}}</a><lead>is nearby</lead></p>
                 </div>
               </li><br>
         {{/each}}
+    </ul>
+    </div>
+  </div>
 ​
 </div>
   {{else}}
@@ -118,3 +104,52 @@
   {{/if}}
   <!-- this is the end -->
 </template>
+
+<template name="showNeighbors">
+    <h1> Hi, My name is {{petname}}. <br>My master is {{usernickname}}.</h1>
+  <div class="neighborpet">
+    <div class="ghost">
+          <div class="ghost-face" id="face">
+            <div class="ghost-eyes">
+              <div class="ghost-eyes">
+                <div class="ghosteye">
+                  <div class="ghosteye ghosteyeball" id = "eyeball1"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="irisandpupils1"></div>
+                  <div class="ghosteye ghosteyeball ghosteyelight"></div>
+                </div>
+                <div class="ghosteye">
+                  <div class="ghosteye ghosteyeball" id="eyeball2"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="irisandpupils2"></div>
+                  <div class="ghosteye ghosteyeball ghosteyelight"></div>
+                </div>
+              </div>
+            </div>
+            <div class="ghost-smile" id="mouth"></div>
+            <div class="ghosttoungh" id="toungh"></div>
+          </div>
+          <div class="ghost-botton">
+            <div class="ghost-feet">
+              <div class="ghost-foot1" id="foot1"></div>
+              <div class="ghost-foot5" id="foot5"></div>
+              <div class="ghost-foot2" id="foot2"></div>
+              <div class="ghost-foot4" id="foot4"></div>
+              <div class="ghost-foot3" id="foot3"></div>
+            </div>
+          </div>
+    </div>
+  </div>
+
+  <button class="btn buttonblue js-gohome">HOME</button>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
