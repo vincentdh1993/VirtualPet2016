@@ -4,17 +4,11 @@
 <!-- 		<ul class="nav nav-pills"> -->
     <ul class="nav nav-pills nav-stacked userinfo">
         <li>    <!-- profile card -->
-          <div class="panel-heading">
-            <h3 class="panel-title"> 
-             Welcome back<br><p> {{userName}} !</p> <br> Have fun with your pet<br> <p>{{petName}} !</p>
-            </h3>
-          </div>
-          <div class="panel-body">
-            <h5>Your last login time:<br> {{lastlogin}}<br></h5>
-            <h5>Your last logout time:<br> {{lastlogout}}</h5>
-            <h5>Current Online time:{{showtime}}</h5>
-            <!-- <button class="js-timerefresh">refresh</button> -->
-          </div>
+            <h4>Welcome back<br><p> {{userName}} !</p></h4> 
+            <h4>Have fun with your pet<br> <p>{{petName}} !</p></h4>
+            <h4>Your last login time:<br> <p>{{lastlogin}}</p></h4>
+            <h4>Your last logout time:<br> <p>{{lastlogout}}</p></h4>
+            <h4>Current Online time:<br><p>{{showtime}}</p></h4>
        </li>
   			<li role="presentation">
   				<a href="{{pathFor 'home'}}"><span class="glyphicon glyphicon-home" aria-hidden="true" ></span>  Home</a>

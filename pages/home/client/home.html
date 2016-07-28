@@ -24,9 +24,9 @@
         <div class="stormy hidden"></div>  -->
 ​
         <div class="chatinput" >
-            <input type="text"  class="js-contents" id="js-contents"> 
+            <input type="text"  class="js-contents" id="js-contents" placeholder="Say something to your pet..."> 
+            <button class = "js-submit-text btn buttonblue"> Text to your pet!!</button> 
             <button class="js-talk btn buttonblue">Talk to Pet!</button>
-            <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
         </div>
 ​
         <section class="module">
@@ -84,6 +84,10 @@
   <lead class="lead2">Neighbor Radar</lead></h3>
   <div class="neighborsec">
     <div  class="neighborbox">
+    <input type="text" class="js-maxr" id="js-maxr" placeholder="Max Radius in Meters">
+    <button class="btn btn-warning js-searchR"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color:white"></span></button>
+    <br>
+    <p>Pets within {{range}}m range</p>
     <ul>
         {{#each a in nearbypet}}
               <li>

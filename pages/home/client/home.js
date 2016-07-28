@@ -1,5 +1,6 @@
 Session.set("obj", null);
 Session.set("transcript","");
+Session.set("maxR",50);
 //Session.set("color",UserProfile.findOne().petName)
 
 
@@ -86,22 +87,32 @@ Template.home.helpers({
 		return Conversations.find({},{sort:{createdAt:-1}, limit:30});
 	},
 	nearbypet: function(){
+		// PetMap._ensureIndex( { 'location': "2dsphere" } ); only aviliable on server collections
 		return PetMap.find({ 
 					 location :
                          { $near :
                            { $geometry :
-                              { type : "Point" ,
+                              { type : 'Point' ,
                                 coordinates : [Session.get("lng"), Session.get("lat")] ,
-                                $maxDistance : 0.1, /*<distance in meters>*/
-                     		  }
+                     		  },
+                     		 $maxDistance : Session.get("maxR"), /*<distance in meters>*/
                      	   }
                      	 }
                     })
+	},
+
+	range:function(){
+		return Session.get("maxR")
 	},
 })
 
 
 Template.home.events({
+	"click .js-searchR": function(){
+		Session.set("maxR",$(".js-maxr").val())
+		$(".js-maxr").val("");
+	},
+
 	"click .js-info": function(){
 		$(".overlay").fadeToggle();
 		$(".popup").fadeToggle();
@@ -114,24 +125,35 @@ Template.home.events({
 	},
 
 
-	"click .js-submit-comment":function(){
-		if($(".js-contents").val()=="jump"){
-			document.getElementById('js-pet').src='images/fig1_jump.gif'
-			console.log("hi click");
-			Meteor.call("getWeather",Session.get("latLong").lat,Session.get("latLong").lng);
-		}else if($(".js-contents").val()=="stop"){
-			document.getElementById('js-pet').src='images/fig1.png'
-		}else if($(".js-contents").val()=="i love you"){
-			document.getElementById('js-pet').src='images/fig1_jump.gif'
-		}else if($(".js-contents").val()=="who wants a cookie"){
-			document.getElementById('js-pet').src='images/fig1_evolution_hands_wave.gif'
-		}
-		// execute($(".js-contents").val()); 
+	"click .js-submit-text":function(){
+		Session.set("transcript",$(".js-contents").val());
+		if(!(Session.get("transcript").includes("in")) && Session.get("transcript").includes("weather")){
+          		var str_obj={
+				str:Session.get("transcript"),
+				createdAt: new Date(),
+				from: "user",
+				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/user_profile_pic.png"
+				}
+		  		Meteor.call("insertConversation",str_obj);
+		  		execute(Session.get("transcript"));
+            }else{
+	           	var str_obj={
+					str:Session.get("transcript"),
+					createdAt: new Date(),
+					from: "user",
+					uid: Meteor.userId() ,
+					pic: "/images/profile_pic/user_profile_pic.png"
+				}
+		  		Meteor.call("insertConversation",str_obj);
+		  		send();
+           } 
+        $(".js-contents").val("");
+
 	},
 
 	"click .js-talk": function(event){
-		//Meteor.call("removeAllConversations");
-      console.log("clicked it");
+	  console.log("clicked it");
 	  $(".js-talk").html("Listening...");
       const recognition = new webkitSpeechRecognition();
       recognition.lang = 'en-US' 
