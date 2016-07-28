@@ -26,14 +26,14 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font-family: 'Lato', Arial, sans-serif;
+    /*font-family: 'Lato', Arial, sans-serif;*/
+    font-family: 'Raleway',sans-serif
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.2); 
 }
 
 h1 {font-family: 'Raleway',sans-serif; font-size: 50px; font-weight: 800; line-height:60px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
 
-
 h2 h3 {font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 800; line-height: 40px; margin: 0 0 24px; text-align: center; }
-
 
 p {font-family: 'Raleway',sans-serif; font-size: 15px; font-weight: 500; line-height: 25px; margin: 0 0 24px; }
 
@@ -217,7 +217,7 @@ ul {
 
 .module{
     position:fixed;
-    right:30px;
+    right:5px;
     height:70%;
     margin-bottom:10%;
     overflow-x: hidden;
@@ -243,6 +243,7 @@ ul {
     width:280px;
     color:white;
     text-align: left;
+
 }
 
 .chatbox time{
@@ -298,6 +299,18 @@ ul {
   padding-right: 5px;
   padding-left: 5px;
 }
+
+.neighborinfo a:hover{
+  background-color: #F26964;
+  color:white;
+  font-size:100%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+
+
+
 .neighborinfo lead{
   padding-right: 5px;
   padding-left: 5px;
@@ -318,17 +331,17 @@ ul {
 }
 
 ::-webkit-scrollbar {
-    width: 2px;
+    width: 5px;
 }
  
 ::-webkit-scrollbar-track {
     /*background: rgba(256,256,256,0);*/
-    background:rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0);
 }
  
 ::-webkit-scrollbar-thumb {
     /*background: rgba(256,256,256,0.7); */
-    background:rgba(255,255,255,0.7);
+    background:rgba(255,255,255,1);
 }
 
 .neighborpet{
@@ -363,12 +376,7 @@ form, p, span {
     padding:0; }
   
 input { font:12px arial; }
-  
-a {
-    color:#0000FF;
-    text-decoration:none; }
-  
-    a:hover { text-decoration:underline; }
+    
   
 #wrapper {
     margin:0 auto;

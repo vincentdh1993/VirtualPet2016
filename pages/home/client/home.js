@@ -115,7 +115,6 @@ Template.home.events({
 
 
 	"click .js-submit-comment":function(){
-		Meteor.call("removeAllNeighbors");
 		if($(".js-contents").val()=="jump"){
 			document.getElementById('js-pet').src='images/fig1_jump.gif'
 			console.log("hi click");
