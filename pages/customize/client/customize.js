@@ -3,7 +3,7 @@ Template.customize.helpers({
 })
 
 Template.customize.onRendered(function() {
-    var pet = PetProfile.findOne();
+    var pet = PetProfile.findOne({petid:Meteor.userId()});
       document.getElementById('face').style.backgroundColor = pet.facecolor;
       document.getElementById('eyeball1').style.backgroundColor = pet.eyeballcolor;
       document.getElementById('iris1').style.borderColor = pet.iriscolor;
@@ -24,7 +24,7 @@ Template.customize.onRendered(function() {
 
 Template.customize.events({
   "click .js-updateColorScheme": function(){
-      console.dir(PetProfile.findOne())
+      console.dir(PetProfile.findOne({petid:Meteor.userId()}))
       Router.go("home");
   },
 
@@ -53,7 +53,7 @@ Template.customize.events({
       Meteor.call("addlegthreecolor","white")
       Meteor.call("addlegfourcolor","white")
       Meteor.call("addlegfivecolor","white")
-      console.dir(PetProfile.findOne())
+      console.dir(PetProfile.findOne({petid:Meteor.userId()}))
   },
 
   "click .js-redface": function bgRed(){

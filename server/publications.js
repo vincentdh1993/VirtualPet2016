@@ -26,7 +26,8 @@ Meteor.publish("theUserProfile",
 
 Meteor.publish("thePetProfile",
 	function(){
-	return PetProfile.find({petid:this.userId});
+	return PetProfile.find();
+	//{petid:this.userId}
 });
 
 Meteor.publish("theConversations",
