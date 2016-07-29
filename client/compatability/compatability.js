@@ -7,7 +7,6 @@ Tracker.autorun(function() {
 			Session.set("lat", Session.get("latLong").lat);
 			Session.set("lng", Session.get("latLong").lng);
 	}
-	console.log(Session.get("latLong"));
  	Meteor.call("updatelatlng",Session.get("lng"),Session.get("lat"));
  })
 

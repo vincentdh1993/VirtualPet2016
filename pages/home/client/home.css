@@ -6,11 +6,64 @@
     border:2px solid #1253A4;
     border-radius: 8px;
     color:white;
+    font-size: 110%
 
 }
 #js-contents:focus{
 	background-color: #1253A4;
 }
+
+#js-contents::-webkit-input-placeholder {
+   color:  #1253A4;
+}
+
+#js-contents:-moz-placeholder { /* Firefox 18- */
+   color:  #1253A4;  
+}
+
+#js-contents::-moz-placeholder {  /* Firefox 19+ */
+   color:  #1253A4;  
+}
+
+#js-contents:-ms-input-placeholder {  
+   color:  #1253A4;  
+}
+
+
+#js-maxr {
+  width:180px;
+  height: 20%;
+  padding: 10px 20px;
+  margin: 6px 0;
+  border:2px solid #e39525;
+  background-color: #f0ad4e;
+  border-radius: 8px;
+  font-size: 110%;
+  color:white;
+  background-color:white;
+}
+
+#js-maxr:focus{
+  background-color:#e39525;
+}
+
+#js-maxr::-webkit-input-placeholder {
+   color: #e39525;
+}
+
+#js-maxr:-moz-placeholder { /* Firefox 18- */
+   color: #e39525;  
+}
+
+#js-maxr::-moz-placeholder {  /* Firefox 19+ */
+   color: #e39525;  
+}
+
+#js-maxr:-ms-input-placeholder {  
+   color: #e39525;  
+}
+
+
 
 
 .overlay {
