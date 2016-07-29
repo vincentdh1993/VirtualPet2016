@@ -4,7 +4,13 @@ Template.layout.onRendered(function(){
 	// }else{
 	// 	$("body").css("background", "url('"+Session.get("background_url")+"')");
 	// }
+	 
+		var pet = PetProfile.findOne({petid:Meteor.userId()});
+		if(pet.background !== undefined || pet.background !== null){
+      		$("body").css("background", "url('"+pet.background+"')");
+		}
 	
+
 });
 
 Template.layout.events({
