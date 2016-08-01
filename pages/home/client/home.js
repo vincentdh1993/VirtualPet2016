@@ -2,6 +2,7 @@ Session.set("obj", null);
 Session.set("transcript","");
 Session.set("maxR",50);
 //Session.set("color",UserProfile.findOne().petName)
+//document.getElementById("myBar").style.width = PetProfile.findOne({petid:this.userId}).petStatus.happiness + '%'
 
 
 var accessToken = "5fa16e67ce0e42168a914552e3d85941";
@@ -12,8 +13,6 @@ var synth = window.speechSynthesis;
 Template.home.onCreated(function() {
 
 })
-
-
 
 Template.home.onRendered(function() {
 	  console.dir(PetProfile.findOne({petid:Meteor.userId()}));
@@ -104,6 +103,11 @@ Template.home.helpers({
 	range:function(){
 		return Session.get("maxR")
 	},
+
+	health:function(){
+		console.log(PetProfile.findOne({petid:Meteor.userId()}).petStatus.happiness)
+		return PetProfile.findOne({petid:Meteor.userId()}).petStatus.happiness
+	}
 })
 
 

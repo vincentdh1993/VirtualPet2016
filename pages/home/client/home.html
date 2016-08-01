@@ -14,6 +14,7 @@
 ​
 {{#if currentUser}}
   <div class="row">
+        <!-- {{health}} this is pet's health level -->
 
         <!-- <div class="sunny hidden"></div> 
         <div class="cloudy hidden"></div>
@@ -74,7 +75,12 @@
             </div>
           </div>
         </div>
-​
+
+        Pet health: {{health}}%
+​<!--   <div id="myProgress">
+        <div id="myBar">{{healthValue}}</div>
+  </div><br>
+ -->
   <div class="homeicon">
     <button class="js-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" ></span>  Info</button>
   </div>
