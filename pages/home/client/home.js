@@ -325,7 +325,8 @@ function send() {
 				document.getElementById('js-pet').src='images/fig1_jump.gif'
 			}
 			if(url.includes("game")||url.includes("break")||url.includes("Game Center")||url.includes("dodge")){
-				Router.go('/gamecenter')
+				speaking("Going to game center");
+				Router.go('/gamecenter');
 			}
 			if(url.includes("dashboard")){
 			// random weather generator
