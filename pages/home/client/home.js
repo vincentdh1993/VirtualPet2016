@@ -1,9 +1,6 @@
 Session.set("obj", null);
 Session.set("transcript","");
 Session.set("maxR",50);
-//Session.set("color",UserProfile.findOne().petName)
-//document.getElementById("myBar").style.width = PetProfile.findOne({petid:this.userId}).petStatus.happiness + '%'
-
 
 var accessToken = "5fa16e67ce0e42168a914552e3d85941";
 var subscriptionKey = "<your agent subscription key>";
@@ -11,7 +8,10 @@ var baseUrl = "https://api.api.ai/v1/";
 var synth = window.speechSynthesis;	
 
 Template.home.onCreated(function() {
-
+ 	this.state = new ReactiveDict();
+	this.state.setDefault({
+   		 feedError:null,
+ 	});
 })
 
 Template.home.onRendered(function() {
@@ -105,13 +105,60 @@ Template.home.helpers({
 	},
 
 	health:function(){
-		console.log(PetProfile.findOne({petid:Meteor.userId()}).petStatus.happiness)
 		return PetProfile.findOne({petid:Meteor.userId()}).petStatus.happiness
-	}
+	},
+
+	feedErrorMessage: function() {
+    	const instance = Template.instance();
+    	return instance.state.get("feedError");
+  	}
 })
 
 
 Template.home.events({
+	"click .js-health": function(){
+		$(".healthbar").fadeToggle();
+	},
+
+	"click .js-feed":function(event,instance){
+		if(PetProfile.findOne({petid:Meteor.userId()}).petStatus.happiness<96){
+			Meteor.call("updateHealthFood");
+			var str_obj={
+				str:"Thanks!",
+				createdAt: new Date(),
+				from: "pet",
+				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/ghost_profile_pic.png"
+				}
+			Meteor.call("insertConversation",str_obj);
+			speaking("Thanks");
+			instance.state.set("feedError",null);
+		}else if(PetProfile.findOne({petid:Meteor.userId()}).petStatus.happiness<100){
+			Meteor.call("setHealth",100);
+			var str_obj={
+				str:"Thanks!",
+				createdAt: new Date(),
+				from: "pet",
+				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/ghost_profile_pic.png"
+			}
+			Meteor.call("insertConversation",str_obj);
+			speaking("Thanks");
+			instance.state.set("feedError",null);
+		}else{
+			instance.state.set("feedError","I am full, I can't eat any more!"); 
+			var str_obj={
+				str:instance.state.get("feedError"),
+				createdAt: new Date(),
+				from: "pet",
+				uid: Meteor.userId() ,
+				pic: "/images/profile_pic/ghost_profile_pic.png"
+				}
+			Meteor.call("insertConversation",str_obj);
+			speaking(instance.state.get("feedError"));
+		}
+	},
+
 	"click .js-searchR": function(){
 		Session.set("maxR",$(".js-maxr").val())
 		$(".js-maxr").val("");
@@ -120,7 +167,6 @@ Template.home.events({
 	"click .js-info": function(){
 		$(".overlay").fadeToggle();
 		$(".popup").fadeToggle();
-		console.log("clicked");
 	},
 
 	"click .js-close-popup": function(){
@@ -258,6 +304,19 @@ function send() {
 		success: function(data) {
 // url part +navigation
 			console.dir(data);
+			if(data.result.speech!=""){
+				setResponse(data.result.speech);// conversation part
+				var str_obj={
+					str:data.result.speech,
+					createdAt: new Date(),
+					from: "pet",
+					uid: Meteor.userId() ,
+					pic: "/images/profile_pic/ghost_profile_pic.png"
+				}
+				Meteor.call("insertConversation",str_obj);
+				speaking(data.result.speech);
+			}else{
+
 			var url = data.result.resolvedQuery;
 			if(url.includes("YouTube")||url.includes("video")){
 			var n = url.startsWith("Search") || url.startsWith("search");
@@ -267,9 +326,11 @@ function send() {
 					console.log(a);
 					var search = url.substring(7,a);
 					console.log(search);
+					speaking("Openning Youtube in a new window.");
 					window.open('https://www.youtube.com/results?search_query='+search, '_blank');
 
 				} else{
+					speaking("Openning Youtube in a new window.");
 					window.open('https://www.youtube.com', '_blank');
 				}
 			}
@@ -320,18 +381,26 @@ function send() {
 			window.open('https://www.baidu.com', '_blank');
 			}
 
-			if(url.includes("jump")){
-			// random weather generator
-				document.getElementById('js-pet').src='images/fig1_jump.gif'
-			}
 			if(url.includes("game")||url.includes("break")||url.includes("Game Center")||url.includes("dodge")){
 				speaking("Going to game center");
-				Router.go('/gamecenter');
+				Router.go('/gamecenter')
 			}
 			if(url.includes("dashboard")){
 			// random weather generator
+				speaking("Going to dashboard");
 				Router.go('/dashboard')
 			}
+			if(url.includes("customize your color")){
+			// random weather generator
+				speaking("Going to customize center");
+				Router.go('/customize')
+			}
+			if(url.includes("your color")){
+			// random weather generator
+				speaking("You can change my color in customize center");
+				Router.go('/customize')
+			}
+
 
 			if(url.includes("my name")||url.includes("who I am")||url.includes("who am I")){
 				var str = "Your name is "+ UserProfile.findOne().nickname;
@@ -345,7 +414,8 @@ function send() {
 				console.log(str)
 				Meteor.call("insertConversation",str_obj);
 				speaking(str);
-			} else if(url.includes("your name")||url.includes("who are you")||url.includes("who you are")){
+			}
+			if(url.includes("your name")||url.includes("who are you")||url.includes("who you are")){
 				var str = "My name is "+ UserProfile.findOne().petname;
 				var str_obj={
 						str:str,
@@ -357,19 +427,9 @@ function send() {
 				console.log(str)
 				Meteor.call("insertConversation",str_obj);
 				speaking(str);
-			}else{
-				setResponse(data.result.speech);// conversation part
-				var str_obj={
-					str:data.result.speech,
-					createdAt: new Date(),
-					from: "pet",
-					uid: Meteor.userId() ,
-					pic: "/images/profile_pic/ghost_profile_pic.png"
-				}
-				Meteor.call("insertConversation",str_obj);
-				speaking(data.result.speech);
-
 			}
+
+		}
 
 
 
@@ -391,7 +451,7 @@ function speaking(str){
 	var utterThis = new SpeechSynthesisUtterance(str);
 	voices = synth.getVoices();
 	utterThis.voice = voices[44]; 
-	utterThis.pitch = 1.3; 
+	utterThis.pitch = 1.1 ; 
 	utterThis.rate = 1; 
 	utterThis.onstart = function(event){
 		$('.js-talk').attr('disabled','disabled');

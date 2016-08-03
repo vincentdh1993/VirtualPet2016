@@ -10,6 +10,23 @@
   -moz-transform: scale(0.75, 0.75) translateX(-70%); /* Firefox */
   z-index: 0;
 }
+
+.healthbar{
+   position:absolute;
+   top:150%;
+   width:40vmin;
+   left: 0%;
+   transform: scale(1.5, 1.5);
+   -ms-transform: scale(1.5, 1.5); /* IE 9 */
+   -webkit-transform: scale(1.5, 1.5); /* Safari and Chrome */
+   -o-transform: scale(1.5, 1.5);/* Opera */
+   -moz-transform: scale(1.5, 1.5); /* Firefox */
+ 
+}
+.healthbar p{
+    color:black;
+}
+
  /* -webkit-animation: movewhole 30s ease-in-out infinite;
   animation: movewhole 30s ease-in-out infinite;*/
 /*  -webkit-animation: changeOpacity 40s ease-in-out infinite;
@@ -427,8 +444,8 @@
     background-color: #000000;
     -webkit-border-radius: 0% 0% 90% 90%;
     border-radius:  0% 0% 90% 90%;
-    -webkit-animation: scare 0.1s ease-in-out infinite;
-    animation: scare 0.1s ease-in-out infinite;
+    -webkit-animation: scare 0s ease-in-out infinite;
+    animation: scare 0s ease-in-out infinite;
 }
 
 @keyframes scare {

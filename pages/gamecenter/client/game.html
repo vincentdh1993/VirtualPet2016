@@ -1,20 +1,45 @@
 <template name="game">
 	<h2>Welcome to the Game Center!</h2>
 	<div class="chatinput" >
-            <input type="text"  class="js-contents" id="js-contents"> 
+            <input type="text"  class="js-contents" id="js-contents" placeholder="Say something to your pet..."> 
+            <button class = "js-submit-text btn buttonblue"> Text to your pet!!</button> 
             <button class="js-talk btn buttonblue">Talk to Pet!</button>
-            <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
-    </div>
-	<br>
-	<h3>
-	<a href="/newdodge">Dodge Ball!</a>
-	<br>
-	<br>
-	<a href="/brickbreak">Break the DISCO BRICKS!</a>
-	<br>
-	<br>
-	<a href="/shootghost">Shoot the Ghost!</a>
-	</h3>
+        </div>
+
+	<div class="row">
+	  <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+	      <img src="/1.png" >
+	      <div class="caption">
+	        <h3>Dodge Ball</h3>
+	        <p>Try to dodge balls using keyboard. New balls will appear any second! Good luck!</p><br>
+	        <button class="btn btn-success js-dodge">Dodge Dodge!</button>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+	      <img src="/22.png">
+	      <div class="caption">
+	        <h3>Break Bricks!</h3>
+	        <p>Break all the bricks using keyboard as fast as you can. You get only two chances. They move fast!</p><br>
+	        <button class="btn btn-success js-bricks">Break Bricks!</button>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+	      <img src="/33.png">
+	      <div class="caption">
+	        <h3>Shoot the Ghosts</h3>
+	        <p>Move your mouse to shoot all the ghosts before the time runs out. I am sure you will never finish the game.</p><br>
+	        <button class="btn btn-success js-shoot">Let's shoot!</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 
 

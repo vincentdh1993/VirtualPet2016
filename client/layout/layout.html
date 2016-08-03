@@ -14,17 +14,11 @@
   				<a href="{{pathFor 'home'}}"><span class="glyphicon glyphicon-home" aria-hidden="true" ></span>  Home</a>
   			</li>
   			{{#if currentUser}}
-        <li role="presentation">
-        <a href="/dashboard"><span class=" glyphicon glyphicon-th" aria-hidden="true" ></span>  Dashboard</a>
-       </li>
        <li role="presentation">
         <a href="/gamecenter"><span class="glyphicon glyphicon-king" aria-hidden="true" ></span>  Game Center</a>
        </li>
        <li role="presentation">
         <a href="/customize"><span class="glyphicon glyphicon-wrench" aria-hidden="true" ></span>  Customize Pet</a>
-       </li>
-       <li role="presentation">
-        <a href="/background"><span class="glyphicon glyphicon-wrench" aria-hidden="true" ></span>  Customize Background</a>
        </li>
        <li><a href="#" class="logout"><span class="glyphicon glyphicon-off" aria-hidden="true" ></span>  Logout</a></li>
        {{else}}

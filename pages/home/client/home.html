@@ -74,9 +74,21 @@
               <div class="ghost-foot3" id="foot3"></div>
             </div>
           </div>
+          <div class="healthbar">
+            <p><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>  Current Health Status</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{health}}%;">
+                  {{health}}%
+                </div>
+            </div>
+            <button class="btn btn-warning js-feed"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Feed Me</button>
+            <!-- <p>{{feedErrorMessage}}</p> -->
+          </div>
         </div>
+      <!-- health bar -->
+          
 
-        Pet health: {{health}}%
+
 ​<!--   <div id="myProgress">
         <div id="myBar">{{healthValue}}</div>
   </div><br>
