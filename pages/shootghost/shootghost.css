@@ -1,8 +1,7 @@
 /*hide checkbox*/
-input{position:fixed; left:-10px; top:-10px;}
+。input-circle {position:fixed; left:-10px; top:-10px;}
 
-h1{margin:0; text-align:center;}
-h2{position:fixed; right:20px; bottom:0; font-size:18px; color:red;}
+#h1{margin:0; text-align:center;}
 
 /*play area*/
 
