@@ -1,0 +1,49 @@
+<template name="register">
+<div class="aligncenter">
+	<form class="form-horizontal register transbox">
+		<h2 class="text-center">Welcome to Virtual Pet</h2>
+<!-- email  -->
+  		<div class="form-group">
+  		  <label for="inputEmail3" class="col-sm-offset-1 col-sm-2 control-label">Email</label>
+    		<div class="col-sm-6">
+    		  <input type="email" class="form-control js-email" placeholder="Email">
+   			</div>
+  		</div>
+<!-- password -->
+  		<div class="form-group">
+  		  <label for="inputPassword3" class="col-sm-offset-1 col-sm-2 control-label">Password</label>
+    		<div class="col-sm-6">
+    		  <input type="password" class="form-control js-password" placeholder="Password">
+   			</div>
+  		</div>
+<!-- user's nickname -->
+      <div class="form-group">
+        <label class="col-sm-offset-1 col-sm-2 control-label">Nickname</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control js-nickname" placeholder="e.g. Pokemon Master">
+        </div>
+      </div>
+
+<!-- pet's name -->
+  		<div class="form-group">
+  		  <label class="col-sm-offset-1 col-sm-2 control-label">Please name your pet</label>
+    		<div class="col-sm-6">
+    		  <input type="text" class="form-control js-petname" placeholder='e.g. " Ollie the Owl "'>
+   			</div>
+  		</div>
+      
+<!-- showing error message -->
+  		<div class="error">{{errorMessage}}</div>
+<!-- submit registration form -->
+  		<div class="form-group">
+    			<button type="submit" class="button buttonblue" value="Register">Register</button>	
+  		</div>
+	</form>
+</div>
+<div class="chatinput" >
+            <input type="text"  class="js-contents" id="js-contents"> 
+            <button class="js-talk btn buttonblue">Talk to Pet!</button>
+            <button class = "js-submit-comment btn buttonblue"> Text to your pet!!</button> 
+
+</div>
+</template>

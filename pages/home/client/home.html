@@ -1,9 +1,175 @@
-<template name="home">
-  <h1>Brandeis CarPooling App!!</h1>
-  Welcome! Have fun with your pet!
-  {{#if currentUser}}
-     Congratulations for getting logged in!
+<template name="home" >
+​
+  <div class="overlay">
+    <div class="js-close-popup">
+      <span class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="popup">
+    <h1>Welcome to the Virtual Pet Home Page</h1>
+    <h3>Here is the user guide</h3>
+    <img src="/userguide_home.jpg" width=100%>
+  </div>
+​
+​
+{{#if currentUser}}
+  <div class="row">
+        <!-- {{health}} this is pet's health level -->
+
+        <!-- <div class="sunny hidden"></div> 
+        <div class="cloudy hidden"></div>
+        <div class="rainy hidden"></div>
+        <div class="snowy hidden"></div>
+        <div class="rainbow hidden"></div>
+        <div class="starry hidden"></div>
+        <div class="stormy hidden"></div>  -->
+​
+        <div class="chatinput" >
+            <input type="text"  class="js-contents" id="js-contents" placeholder="Say something to your pet..."> 
+            <button class = "js-submit-text btn buttonblue"> Text to your pet!!</button> 
+            <button class="js-talk btn buttonblue">Talk to Pet!</button>
+        </div>
+​
+        <section class="module">
+            <ul class="conversation">
+              {{#each a in showtalk}}
+              <li>
+                <div class="avatar">
+                  <img src={{a.pic}}>
+                </div>
+                <div class="chatbox">
+                  <p>{{a.from}}:  {{a.str}}</p>
+                  <time datetime="2009-11-13T20:00">@ {{a.createdAt}}</time>
+                </div>
+              </li><br>
+              {{/each}}
+            </ul>
+        </section>
+​
+         <div class="ghost">
+          <div class="ghost-face" id="face">
+            <div class="ghost-eyes">
+              <div class="ghost-eyes">
+                <div class="ghosteye">
+                  <div class="ghosteye ghosteyeball" id = "eyeball1"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="irisandpupils1"></div>
+                  <div class="ghosteye ghosteyeball ghosteyelight"></div>
+                </div>
+                <div class="ghosteye">
+                  <div class="ghosteye ghosteyeball" id="eyeball2"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="irisandpupils2"></div>
+                  <div class="ghosteye ghosteyeball ghosteyelight"></div>
+                </div>
+              </div>
+            </div>
+            <div class="ghost-smile" id="mouth"></div>
+            <div class="ghosttoungh" id="toungh"></div>
+          </div>
+          <div class="ghost-botton">
+            <div class="ghost-feet">
+              <div class="ghost-foot1" id="foot1"></div>
+              <div class="ghost-foot5" id="foot5"></div>
+              <div class="ghost-foot2" id="foot2"></div>
+              <div class="ghost-foot4" id="foot4"></div>
+              <div class="ghost-foot3" id="foot3"></div>
+            </div>
+          </div>
+          <div class="healthbar">
+            <p><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>  Current Health Status</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{health}}%;">
+                  {{health}}%
+                </div>
+            </div>
+            <button class="btn btn-warning js-feed"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span> Feed Me</button>
+            <!-- <p>{{feedErrorMessage}}</p> -->
+          </div>
+        </div>
+      <!-- health bar -->
+          
+
+
+​<!--   <div id="myProgress">
+        <div id="myBar">{{healthValue}}</div>
+  </div><br>
+ -->
+  <div class="homeicon">
+    <button class="js-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true" ></span>  Info</button>
+  </div>
+
+
+  <h3 class="neighbortitle"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color:#1245a4"></span>  
+  <lead class="lead2">Neighbor Radar</lead></h3>
+  <div class="neighborsec">
+    <div  class="neighborbox">
+    <input type="text" class="js-maxr" id="js-maxr" placeholder="Max Radius in Meters">
+    <button class="btn btn-warning js-searchR"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color:white"></span></button>
+    <br>
+    <p>Pets within {{range}}m range</p>
+    <ul>
+        {{#each a in nearbypet}}
+              <li>
+                <div class="neighborinfo">
+                  <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>  <a class="text-uppercase" href="/showNeighbor/{{a.petid}}">{{a.petname}}</a><lead>is nearby</lead></p>
+                </div>
+              </li><br>
+        {{/each}}
+    </ul>
+    </div>
+  </div>
+​
+</div>
   {{else}}
-     You better log in!!!
+      {{>registerorlogin}}
   {{/if}}
+  <!-- this is the end -->
 </template>
+
+<template name="showNeighbors">
+    <h1> Hi, My name is {{petname}}. <br>My master is {{usernickname}}.</h1>
+  <div class="neighborpet">
+    <div class="ghost">
+          <div class="ghost-face" id="face">
+            <div class="ghost-eyes">
+              <div class="ghost-eyes">
+                <div class="ghosteye">
+                  <div class="ghosteye ghosteyeball" id = "eyeball1"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="irisandpupils1"></div>
+                  <div class="ghosteye ghosteyeball ghosteyelight"></div>
+                </div>
+                <div class="ghosteye">
+                  <div class="ghosteye ghosteyeball" id="eyeball2"></div>
+                  <div class="ghosteye ghosteyeball ghostiris" id="irisandpupils2"></div>
+                  <div class="ghosteye ghosteyeball ghosteyelight"></div>
+                </div>
+              </div>
+            </div>
+            <div class="ghost-smile" id="mouth"></div>
+            <div class="ghosttoungh" id="toungh"></div>
+          </div>
+          <div class="ghost-botton">
+            <div class="ghost-feet">
+              <div class="ghost-foot1" id="foot1"></div>
+              <div class="ghost-foot5" id="foot5"></div>
+              <div class="ghost-foot2" id="foot2"></div>
+              <div class="ghost-foot4" id="foot4"></div>
+              <div class="ghost-foot3" id="foot3"></div>
+            </div>
+          </div>
+    </div>
+  </div>
+
+  <button class="btn buttonblue js-gohome">HOME</button>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+

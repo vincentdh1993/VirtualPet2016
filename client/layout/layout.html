@@ -1,26 +1,43 @@
 <template name="layout">
-	<div class="container">
-		<ul class="nav nav-pills">
+  <br><br><br>
+	<div class="navbar navbar-custom">
+<!-- 		<ul class="nav nav-pills"> -->
+    <ul class="nav nav-pills nav-stacked userinfo">
+        <li>    <!-- profile card -->
+            <h4>Welcome back<br><p> {{userName}} !</p></h4> 
+            <h4>Have fun with your pet<br> <p>{{petName}} !</p></h4>
+            <h4>Your last login time:<br> <p>{{lastlogin}}</p></h4>
+            <h4>Your last logout time:<br> <p>{{lastlogout}}</p></h4>
+            <h4>Current Online time:<br><p>{{showtime}}</p></h4>
+       </li>
   			<li role="presentation">
-  				<a href="{{pathFor 'home'}}">Home</a>
+  				<a href="{{pathFor 'home'}}"><span class="glyphicon glyphicon-home" aria-hidden="true" ></span>  Home</a>
   			</li>
-  			<li role="presentation">
-  				<a href="/about">About</a>
-  			</li>
- 			 <li role="presentation">
- 			 	<a href="/comments">Comments</a>
- 			 </li>
-			<li role="presentation">
- 			 	<a href="/showRides">Available Carpooling Rides</a>
- 			 </li>
- 			 li role="presentation">
- 			 	<a href="/play">Play with your pet</a>
- 			 </li>
- 			 <li>
+  			{{#if currentUser}}
+       <li role="presentation">
+        <a href="/gamecenter"><span class="glyphicon glyphicon-king" aria-hidden="true" ></span>  Game Center</a>
+       </li>
+       <li role="presentation">
+        <a href="/customize"><span class="glyphicon glyphicon-wrench" aria-hidden="true" ></span>  Customize Pet</a>
+       </li>
+       <li><a href="#" class="logout"><span class="glyphicon glyphicon-off" aria-hidden="true" ></span>  Logout</a></li>
+       {{else}}
+       <li><a href="{{pathFor route='registerorlogin'}}"><span class="glyphicon glyphicon-off" aria-hidden="true" ></span>  Register/ Login</a></li>
+       {{/if}}
+      
+       <!-- <li>
  			 	{{> loginButtons}}
- 			 </li>
+ 			 </li>  -->
 		</ul>
-	{{> yield}}
+	 {{> yield}}
+</div>
 
-	</div>
+<div class="homeicon">
+  <button><a href="{{pathFor 'home'}}"><span class="glyphicon glyphicon-home" aria-hidden="true" ></span>  Home</a></button>
+</div>
+
+
+
+
+
 </template>

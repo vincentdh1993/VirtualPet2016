@@ -1,0 +1,59 @@
+<template name ="randomcolor">
+<head>
+	<title>Random Color Generator</title>
+</head>
+
+<body>
+	<style type="text/css">
+		div {margin: auto;}  /*Centers Div*/
+		h1 {text-align: center;} /*Centers header*/
+	</style>
+
+	<div id="myDiv" style="height: 500px; width: 800px;"> <!-- Div that will change color -->
+		<h1 id="currentHexColorHeader"></h1> <!-- Header that will display hexcolor -->
+	</div>
+</body>
+
+<script type="text/javascript">
+var delay = 2.5;  //Delay in seconds between color changes
+// Grab div and store in variable.
+var coloredDiv = document.getElementById("myDiv"); 
+// Grab header and store in variable
+var headerTitle = document.getElementById("currentHexColorHeader");
+// Timer to change color based on "delay" time at top of script
+setInterval(function(){
+	var currentHexColor = getHexColor();
+	//Change div background color
+	coloredDiv.style.backgroundColor = currentHexColor;
+	//Update color name
+	headerTitle.innerHTML= currentHexColor;
+},(delay*1000));
+// Main function that returns random hex color
+var getHexColor = function () {
+	var hexColor = "#";
+	for (var i = 0; i < 6; i++) {
+		var digit = Math.floor((Math.random() * 16));
+		if (digit === 10) {
+			digit = "A";
+		} 
+		else if (digit === 11) {
+			digit = "B";
+		}
+		else if (digit === 12) {
+			digit = "C";
+		}
+		else if (digit === 13) {
+			digit = "D";
+		}
+		else if (digit === 14) {
+			digit = "E";
+		}
+		else if (digit === 15) {
+			digit = "F";
+		}
+		hexColor = hexColor + digit; // Concatenates digit to the hexColor
+	}
+	return hexColor;
+}
+</script>
+</template>

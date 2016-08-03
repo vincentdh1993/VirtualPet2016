@@ -1,0 +1,416 @@
+/*
+Color Scheme
+POWER blue: #A7D2CB   (191,216,210,1)
+PINK light: #EFD9C1   (254,220,210,1)
+MINTY: #C7D8C6 (199, 216, 198,1) 
+YELLOW:  #f2d388 (242,211,136,1)
+
+*/
+
+
+body {
+    /*background-image: url("/images/bg-img/bg-blue.png");*/
+    /*Castle outside: http://cdn.playbuzz.com/cdn/eb599698-41e1-4691-9ce6-4261b1b49f3a/86e41c53-bf8a-47f5-b509-5045c71c53b2.jpg*/
+    /*Castle inside: http://3.bp.blogspot.com/_QdHn8FT7SdY/TB8KE6WCa5I/AAAAAAAAJjY/6tW65dwOAAY/s1600/beast403left.jpg;*/
+    /*Enchanted Woods:http://wallpapercave.com/wp/CPBAeXS.jpg;
+    http://img02.deviantart.net/1a99/i/2013/189/9/9/otherworld___magic_forest_by_firedudewraith-d6chh8c.jpg
+    http://hdwallpaperbackgrounds.net/wp-content/uploads/2015/09/Enchanted-Forest-High-Quality-Photo-3djhy-Free1.jpeg*/
+
+    /*background-image: url("http://wallpapercave.com/wp/CPBAeXS.jpg");
+    background-size: 100%;
+    background-color:#BCE2F5;
+    */
+   /* background-color:rgba(255, 212, 100,0.9);*/
+   background-color: #ffca77;
+/*    background: no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /*font-family: 'Lato', Arial, sans-serif;*/
+    font-family: 'Raleway',sans-serif
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.2); 
+}
+
+h1 {font-family: 'Raleway',sans-serif; font-size: 50px; font-weight: 800; line-height:60px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+
+h2 h3 {font-family: 'Raleway',sans-serif; font-size: 25px; font-weight: 800; line-height: 40px; margin: 0 0 24px; text-align: center; }
+
+p {font-family: 'Raleway',sans-serif; font-size: 15px; font-weight: 500; line-height: 25px; margin: 0 0 24px; }
+
+.homeicon {
+    position:fixed;
+    bottom:5px;
+    left:5px;
+}
+.homeicon a{
+    color:black;
+    font-size: 100%;
+    text-align: center;
+}
+
+.homeicon .js-info{
+    position:relative;
+    left:70px;
+    display:block;
+    font-size: 100%;
+    text-align: center;
+}
+
+.navbar-custom a{
+    color:white;
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 150%;
+    text-align: left;
+}
+
+.navbar-custom a:hover{
+    color:black;
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 150%;
+    text-align: left;
+}
+
+
+.userinfo {
+    position:fixed;
+    top: 0%;
+    left:-300px;
+    width:300px;
+    height:100%;
+    background-color:#355081; /*blue*/
+    color:#f4f4f2;
+    z-index: 2;
+}
+
+.userinfo:after{
+    content: "Menu";
+    color:#f4f4f2;
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    top: 20px;
+    right: -50px;
+
+    background-color:#355081; /*blue*/
+    /*border-color: transparent white transparent transparent;*/
+    display: inline-block;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 150%;
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    -webkit-animation: textcolor 3s ease-in-out infinite;
+    animation: textcolor 3s ease-in-out infinite;
+}
+@keyframes textcolor {
+0% {text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;}
+20% {text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;}
+40% {text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;}
+60% {text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;}
+80% {text-shadow: -1px 0 purple, 0 1px purple, 1px 0 purple, 0 -1px purple;}
+100% {text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;}
+}
+@-webkit-keyframes textcolor {
+0% {text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;}
+20% {text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;}
+40% {text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;}
+60% {text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;}
+80% {text-shadow: -1px 0 purple, 0 1px purple, 1px 0 purple, 0 -1px purple;}
+100% {text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;}
+}
+
+.userinfo p{
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    -webkit-animation: textcolor 3s ease-in-out infinite;
+    animation: textcolor 3s ease-in-out infinite;
+}
+@keyframes textcolor {
+0% {text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;}
+20% {text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;}
+40% {text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;}
+60% {text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;}
+80% {text-shadow: -1px 0 purple, 0 1px purple, 1px 0 purple, 0 -1px purple;}
+100% {text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;}
+}
+@-webkit-keyframes textcolor {
+0% {text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;}
+20% {text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;}
+40% {text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;}
+60% {text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;}
+80% {text-shadow: -1px 0 purple, 0 1px purple, 1px 0 purple, 0 -1px purple;}
+100% {text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;}
+}
+
+.userinfo:hover {
+    left:0px;
+}
+
+
+
+.chatinput {
+    position: fixed;
+    bottom: 0;
+    text-align:center;
+    width:100%;
+    margin-top:20px;
+}
+
+
+.conversation li{
+    display:flex;
+}
+
+.avatar{
+    width:40px;
+}
+
+.avatar img{
+    width:100%;
+    display:block;
+}
+
+
+
+.aligncenter{
+    text-align:center;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: ;
+}
+
+/* Float the list items side by side */
+ul.topnav li {float: left;}
+
+/* Style the links inside the list items */
+ul.topnav li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.topnav li a:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
+
+.box {
+    position:relative;
+}
+
+.module{
+    position:fixed;
+    right:5px;
+    height:70%;
+    margin-bottom:10%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 2;
+}
+
+
+.chatbox {
+    position: relative;
+    display: inline-block, flex;
+    text-align:center;
+    left:10px;
+    width:300px;
+    padding: 0px;
+    background-color:#F26964;
+    
+}
+
+.chatbox p{
+    position: relative;
+    left:5px;
+    width:280px;
+    color:white;
+    text-align: left;
+
+}
+
+.chatbox time{
+    color:white;
+}
+
+.chatbox:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 0px;
+    left: -10px;
+    border-style: solid;
+    border-width: 0px 10px 10px 0;
+    border-color: transparent #F26964 transparent transparent;
+    /*border-color: transparent white transparent transparent;*/
+    display: block;
+    width: 0;
+}
+
+.neighborsec {
+  list-style: none;
+  position:fixed;
+  left:0;
+  top:320px;
+  bottom:50px;
+  width:250px;
+  overflow-x: hidden;
+  overflow-y: scroll; 
+}
+
+.neighbortitle{
+    position:fixed;
+    left:0;
+    top:260px;
+    color:#1245a4;
+    left:5px;
+    width:250px;
+    height:30px;
+}
+
+.neighborinfo{
+  display: inline-block, flex;
+  color:#F26964;
+  text-align:left;
+}
+
+.neighborinfo a{
+  background-color: #F26964;
+  color:white;
+  font-size:100%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.neighborinfo a:hover{
+  background-color: #F26964;
+  color:white;
+  font-size:100%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+
+
+
+.neighborinfo lead{
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.lead1 {
+  background-color: #1245a4;
+  color:white;
+  font-size:120%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.lead2 {
+  font-size:120%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    /*background: rgba(256,256,256,0);*/
+    background:rgba(255,255,255,0);
+}
+ 
+::-webkit-scrollbar-thumb {
+    /*background: rgba(256,256,256,0.7); */
+    background:rgba(255,255,255,1);
+}
+
+.neighborpet{
+    position:relative;
+    top:60%;
+}
+
+.js-gohome {
+    position:fixed;
+    bottom:10%;
+    left:47%;
+}
+
+
+
+/*css from chatroom*/
+#js-pet{
+    float: center;
+}
+.js-user-comment{
+    clear:left;
+    float:left;
+}
+body {
+    font:12px arial;
+    color: #222;
+    text-align:center;
+    padding:35px; }
+  
+form, p, span {
+    margin:0;
+    padding:0; }
+  
+input { font:12px arial; }
+    
+  
+#wrapper {
+    margin:0 auto;
+    padding-bottom:25px;
+    background:#EBF4FB;
+    width:504px;
+    border:1px solid #ACD8F0;
+    float: left; }
+  
+
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:270px;
+    width:430px;
+    border:1px solid #ACD8F0;
+    overflow:auto; }
+  
+#usermsg {
+    width:395px;
+    border:1px solid #ACD8F0; }
+  
+#submit { width: 60px; }
+  
+.error { color: #ff0000; }
+  
+#menu { padding:12.5px 25px 12.5px 25px; }
+  
+.welcome { float:left; }
+  
+.logout { float:left; }
+  
+.msgln { margin:0 0 2px 0; }
